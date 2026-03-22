@@ -8,7 +8,7 @@ package pildorasinformatica_gemini;
  *
  * @author slipk
  */
-public class Director extends Jefe {
+public final class Director extends Jefe {
     private final double BONUS_DIRECTOR = 5000;
     
     public Director(String nombre, int edad) {
@@ -17,7 +17,7 @@ public class Director extends Jefe {
     
     @Override
     public double establecerBonus(double gratificacion) {
-        return super.establecerBonus(gratificacion) + this.BONUS_DIRECTOR;
+        return super.establecerBonus(gratificacion + this.BONUS_DIRECTOR) ;
     }
     
 }

@@ -23,6 +23,6 @@ public class Jefe extends Empleado {
 
     @Override
     public double establecerBonus(double gratificacion) {
-        return super.establecerBonus(gratificacion) + this.BONUS_PRIMA;
+        return super.establecerBonus(gratificacion + this.BONUS_PRIMA);
     }
 }

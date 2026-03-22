@@ -39,7 +39,22 @@ public class Empleado extends Persona implements Trabajador {
     }
 
     @Override
-    public double establecerBonus(double gratificacion) {
-        return Trabajador.BONUS_BASE + gratificacion;
+    public double establecerBonus(double gratificacion) {        
+        Auditor audi = new Auditor();
+        double bonus = Trabajador.BONUS_BASE + gratificacion;
+        if(audi.validarBono(bonus)){
+            return bonus;
+        }else if (this instanceof Director){
+                return Trabajador.BONUS_MAXIMO;
+        }else return 0;
+    }
+    
+    private class Auditor{
+        public boolean validarBono(double monto){
+            if(monto > Trabajador.BONUS_MAXIMO){
+                System.out.println("ALERTA DE FRAUDE: Intento de bono excesivo para " + getNombre());
+                return false;
+            } else return true;                
+        }
     }
 }

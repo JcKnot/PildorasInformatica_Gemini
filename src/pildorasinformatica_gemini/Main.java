@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         // 1. Creamos un Array de la Interfaz (Capacidad para 3 "filas")
         Persona[] listaPersonas = new Persona[5];
+        double totalNomina = 0;
 
         // 2. Llenamos el array con diferentes tipos (Polimorfismo puro)
         listaPersonas[0] = new Empleado("Luis", 30);
@@ -22,7 +23,8 @@ public class Main {
         // 3. Recorremos el array con un bucle "for-each"
         for (Persona p : listaPersonas) {
             if (p instanceof Empleado e){
-                double bonus = e.establecerBonus(500);                
+                double bonus = e.establecerBonus(3000); 
+                totalNomina += bonus;
 //                e.realizarFichaje();
                 System.out.println("ID: " + e.getId() + 
                                     " | Nombre: " + e.getNombre() + 
@@ -31,5 +33,7 @@ public class Main {
                                     " | Bonus: " + bonus);
             }
         }
+        
+        System.out.println("Gasto total de la empresa en bonos: " + totalNomina );
     }
 }

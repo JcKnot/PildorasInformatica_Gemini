@@ -13,6 +13,7 @@ public abstract class Persona {
     private int edad;
     private static int idSiguiente = 1;
     private int id;
+    private static double totalNominasRepartidas = 0;
     
     public Persona(String nombre, int edad){
         this.nombre = nombre;
@@ -21,7 +22,7 @@ public abstract class Persona {
         idSiguiente++;
     }
     
-    public int getId(){
+    public final int getId(){
         return this.id;
     }
     

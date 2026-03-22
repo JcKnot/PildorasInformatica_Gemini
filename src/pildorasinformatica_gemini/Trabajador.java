@@ -11,6 +11,7 @@ package pildorasinformatica_gemini;
 public interface Trabajador {
     // Esto es una constante (Bonus base para todos)
     double BONUS_BASE = 1500;
+    double BONUS_MAXIMO = 10000;
     
     // Este es el método que todos están obligados a tener
     double establecerBonus(double gratificacion);
