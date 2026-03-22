@@ -1,34 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pildorasinformatica_gemini;
 
-/**
- *
- * @author slipk
- */
-public class Empleado extends Persona implements Trabajador{
-    private double sueldoBase;
+import java.util.Date; // Para capturar la hora real
+
+public class Empleado extends Persona implements Trabajador {
     
-    public Empleado(String nombre, int edad, double sueldo){
-        super(nombre,edad);
-        this.sueldoBase = sueldo;
+    public Empleado(String nombre, int edad) {
+        super(nombre, edad);
+    }
+
+    // --- AQUÍ EMPIEZA LA CLASE INTERNA ---
+    private class RelojInterno {
+        public void emitirTicket() {
+            // Accedemos directamente a getNombre() de la clase padre (Empleado)
+            System.out.println("[TICKET] Entrada registrada para: " + getNombre());
+            System.out.println("[HORA]: " + new Date());
+        }
+    }
+    // --- AQUÍ TERMINA LA CLASE INTERNA ---
+
+    // Método de Empleado que usa su clase interna
+    public void realizarFichaje() {
+        RelojInterno miReloj = new RelojInterno();
+        miReloj.emitirTicket();
     }
 
     @Override
     public double establecerBonus(double gratificacion) {
         return Trabajador.BONUS_BASE + gratificacion;
-    }
-    
-    private class RelojInterno{
-        public void registrarEntrada(){
-            System.out.println(">>> [LOG]: El empleado " + getNombre() + " ha fichado su entrada.");
-        }
-    }
-    
-    public void iniciarJornada(){
-        RelojInterno miReloj = new RelojInterno();
-        miReloj.registrarEntrada();
     }
 }

@@ -8,10 +8,9 @@ package pildorasinformatica_gemini;
 public class Jefe extends Empleado {
     private final double BONUS_PRIMA = 2000;
     private String departamento;
-    private double sueldoBase;
     
-    public Jefe (String nombre, int edad, double sueldo){
-        super(nombre, edad, sueldo);
+    public Jefe (String nombre, int edad){
+        super(nombre, edad);
     }
     
     public void setDepartamento(String departamento){
