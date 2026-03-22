@@ -44,6 +44,8 @@ public class Empleado extends Persona implements Trabajador {
         double bonus = Trabajador.BONUS_BASE + gratificacion;
         if(audi.validarBono(bonus)){
             return bonus;
+        }else if (this instanceof Director){
+                return Trabajador.BONUS_MAXIMO;
         }else return 0;
     }
     
