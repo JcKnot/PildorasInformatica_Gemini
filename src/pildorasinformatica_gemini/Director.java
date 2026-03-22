@@ -17,7 +17,13 @@ public final class Director extends Jefe {
     
     @Override
     public double establecerBonus(double gratificacion) {
-        return super.establecerBonus(gratificacion + this.BONUS_DIRECTOR) ;
+        double bono = Trabajador.BONUS_BASE + this.BONUS_DIRECTOR + gratificacion;
+        
+        if(bono > Trabajador.BONUS_MAXIMO){
+            System.out.println("(!) Nota: Bono de Director ajustado al tope legal.");
+            bono = Trabajador.BONUS_MAXIMO;
+        }
+        return bono;
     }
     
 }
