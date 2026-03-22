@@ -10,9 +10,10 @@ package pildorasinformatica_gemini;
  */
 public class Director extends Jefe {
     private final double BONUS_DIRECTOR = 5000;
+    private double sueldoBase;
     
-    public Director(String nombre) {
-        super(nombre);
+    public Director(String nombre, int edad, double sueldo) {
+        super(nombre, edad, sueldo);
     }
     
     @Override

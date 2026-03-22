@@ -8,25 +8,26 @@ package pildorasinformatica_gemini;
 public class Main {
     public static void main(String[] args) {
         // 1. Creamos un Array de la Interfaz (Capacidad para 3 "filas")
-        Trabajador[] misTrabajadores = new Trabajador[4];
+        Persona[] listaPersonas = new Persona[4];
 
         // 2. Llenamos el array con diferentes tipos (Polimorfismo puro)
-        misTrabajadores[0] = new Empleado("Antonio");
-        misTrabajadores[1] = new Jefe("Jose");
-        misTrabajadores[2] = new Empleado("Ana");
-        misTrabajadores[3] = new Director("Santiago");
+        listaPersonas[0] = new Empleado("Antonio", 30, 1000);
+        listaPersonas[1] = new Jefe("Jose", 39, 1700);
+        listaPersonas[2] = new Empleado("Ana", 35, 900);
+        listaPersonas[3] = new Director("Santiago", 45, 2900);
 
         System.out.println("--- Reporte de Bonus Navideño ---");
 
         // 3. Recorremos el array con un bucle "for-each"
-        for (Trabajador t : misTrabajadores) {
-            /* Aquí ocurre la magia: Java sabe si "t" es Jefe o Empleado 
-               y llama al método correcto automáticamente.
-            */
-            double bonus = t.establecerBonus(500);
-
-            // Nota: Para imprimir el nombre, necesitamos un truco que te explicaré abajo
-            System.out.println("Trabajador " + t.getNombre() + " con bonus de: " + bonus);
+        for (Persona p : listaPersonas) {
+            String departamento = p.getClass().getSimpleName();
+            
+            if (p instanceof Empleado e){
+                double bonus = e.establecerBonus(500);
+                
+                e.iniciarJornada();
+                System.out.println("El " + departamento + " " + e.getNombre() + " tiene un bono de: " + bonus);
+            }
         }
     }
 }

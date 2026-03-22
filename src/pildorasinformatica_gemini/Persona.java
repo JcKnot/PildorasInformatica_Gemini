@@ -8,14 +8,20 @@ package pildorasinformatica_gemini;
  *
  * @author slipk
  */
-public class Persona {
+public abstract class Persona {
     private String nombre;
+    private int edad;
     
-    public Persona(String nombre){
+    public Persona(String nombre, int edad){
         this.nombre = nombre;
+        this.edad = edad;
     }
     
     public String getNombre(){
         return this.nombre;
+    }
+    
+    public int getEdad(){
+        return this.edad;
     }
 }
