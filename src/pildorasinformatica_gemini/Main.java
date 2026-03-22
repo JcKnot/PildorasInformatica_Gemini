@@ -23,7 +23,7 @@ public class Main {
         // 3. Recorremos el array con un bucle "for-each"
         for (Persona p : listaPersonas) {
             if (p instanceof Empleado e){
-                double bonus = e.establecerBonus(4000); 
+                double bonus = e.establecerBonus(500); 
                 totalNomina += bonus;
 //                e.realizarFichaje();
                 System.out.println("ID: " + e.getId() + 
