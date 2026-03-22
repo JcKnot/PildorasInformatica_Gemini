@@ -1,0 +1,19 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pildorasinformatica_gemini;
+
+/**
+ *
+ * @author slipk
+ */
+public interface Trabajador {
+    // Esto es una constante (Bonus base para todos)
+    double BONUS_BASE = 1500;
+    
+    // Este es el método que todos están obligados a tener
+    double establecerBonus(double gratificacion);
+    
+    String getNombre();
+}
