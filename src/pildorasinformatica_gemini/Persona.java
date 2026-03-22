@@ -11,10 +11,18 @@ package pildorasinformatica_gemini;
 public abstract class Persona {
     private String nombre;
     private int edad;
+    private static int idSiguiente = 1;
+    private int id;
     
     public Persona(String nombre, int edad){
         this.nombre = nombre;
         this.edad = edad;
+        this.id = idSiguiente;
+        idSiguiente++;
+    }
+    
+    public int getId(){
+        return this.id;
     }
     
     public String getNombre(){

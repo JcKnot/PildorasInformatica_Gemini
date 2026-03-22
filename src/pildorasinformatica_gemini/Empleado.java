@@ -3,9 +3,23 @@ package pildorasinformatica_gemini;
 import java.util.Date; // Para capturar la hora real
 
 public class Empleado extends Persona implements Trabajador {
+    private double sueldo;
     
     public Empleado(String nombre, int edad) {
         super(nombre, edad);
+    }
+    
+    public void setSueldo(double sueldo){
+        if(sueldo < 1000){
+            System.out.println("Erro el sueldo no puede ser menor a 1000");
+            this.sueldo = sueldo;
+        }else {
+            this.sueldo = sueldo;
+        }
+    }
+    
+    public double getSueldo(){
+        return this.sueldo;
     }
 
     // --- AQUÍ EMPIEZA LA CLASE INTERNA ---
