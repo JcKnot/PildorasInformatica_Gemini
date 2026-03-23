@@ -24,7 +24,8 @@ public class Main {
         for (Persona p : listaPersonas) {
             if (p instanceof Empleado e){
                 double bonus = e.establecerBonus(3000); 
-                totalNomina += bonus;
+                Persona.acumularNomina(bonus);
+//                totalNomina += bonus;
 //                e.realizarFichaje();
                 System.out.println("ID: " + e.getId() + 
                                     " | Nombre: " + e.getNombre() + 
@@ -34,6 +35,6 @@ public class Main {
             }
         }
         
-        System.out.println("Gasto total de la empresa en bonos: " + totalNomina );
+        System.out.println("Gasto total de la empresa en bonos: " + Persona.getTotalNominasRepartidas() );
     }
 }

@@ -33,4 +33,14 @@ public abstract class Persona {
     public int getEdad(){
         return this.edad;
     }
+    
+    public static void acumularNomina(double monto) {
+        if (monto > 0) { // Validación extra
+            totalNominasRepartidas += monto;
+        }
+    }
+    
+    public static double getTotalNominasRepartidas() {
+        return totalNominasRepartidas;
+    }
 }
