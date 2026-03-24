@@ -13,6 +13,11 @@ public interface Trabajador {
     double BONUS_BASE = 1500;
     double BONUS_MAXIMO = 10000;
     
+    // Nuestro "Diccionario" de tiempos (en milisegundos)
+    int TIEMPO_DIRECTOR = 1000;
+    int TIEMPO_JEFE = 2000;
+    int TIEMPO_EMPLEADO = 3000;
+    
     // Este es el método que todos están obligados a tener
     double establecerBonus(double gratificacion);
     
