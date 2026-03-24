@@ -1,6 +1,8 @@
 
 package pildorasinformatica_gemini;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author slipk
@@ -26,7 +28,7 @@ public class Main {
                 double bonus = e.establecerBonus(3000); 
                 Persona.acumularNomina(bonus);
 //                totalNomina += bonus;
-//                e.realizarFichaje();
+                e.comenzarJornada();
                 System.out.println("ID: " + e.getId() + 
                                     " | Nombre: " + e.getNombre() + 
                                     " | Edad: " + e.getEdad() + 
@@ -36,5 +38,6 @@ public class Main {
         }
         
         System.out.println("Gasto total de la empresa en bonos: " + Persona.getTotalNominasRepartidas() );
+        JOptionPane.showMessageDialog(null, "Pulsa Aceptar para detener el reloj");
     }
 }

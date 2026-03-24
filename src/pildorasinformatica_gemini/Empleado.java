@@ -2,7 +2,7 @@ package pildorasinformatica_gemini;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.util.Date; // Para capturar la hora real
+import java.util.Date; // Para capturar la hora real
 import javax.swing.Timer;
 
 public class Empleado extends Persona implements Trabajador {
@@ -65,8 +65,13 @@ public class Empleado extends Persona implements Trabajador {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            System.out.println("Empleado: " + getNombre() + " Marcaje: " + new Date());
         }
         
+    }
+    
+    public void comenzarJornada(){
+        Timer time = new Timer(3000, new RelojFichaje());
+        time.start();
     }
 }
