@@ -7,6 +7,7 @@ import javax.swing.Timer;
 
 public class Empleado extends Persona implements Trabajador {
     private double sueldo;
+    private Timer time;
     
     public Empleado(String nombre, int edad) {
         super(nombre, edad);
@@ -61,17 +62,21 @@ public class Empleado extends Persona implements Trabajador {
         }
     }
     
+    // --- AQUÍ EMPIEZA LA CLASE INTERNA ---
     private class RelojFichaje implements ActionListener{
-
+        private int contador = 0;
         @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("Empleado: " + getNombre() + " Marcaje: " + new Date());
-        }
-        
+        public void actionPerformed(ActionEvent e) {            
+            if(contador <= 5){
+                System.out.println("Empleado: " + getNombre() + " Marcaje: " + new Date());
+                contador++;
+            }else time.stop();            
+        }        
     }
+    // --- AQUÍ TERMINA LA CLASE INTERNA ---
     
-    public void comenzarJornada(){
-        Timer time = new Timer(3000, new RelojFichaje());
+    public void comenzarJornada(int segundos){
+        this.time = new Timer(segundos, new RelojFichaje());
         time.start();
     }
 }

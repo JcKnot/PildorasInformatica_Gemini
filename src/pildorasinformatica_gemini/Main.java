@@ -28,12 +28,17 @@ public class Main {
                 double bonus = e.establecerBonus(3000); 
                 Persona.acumularNomina(bonus);
 //                totalNomina += bonus;
-                e.comenzarJornada();
                 System.out.println("ID: " + e.getId() + 
                                     " | Nombre: " + e.getNombre() + 
                                     " | Edad: " + e.getEdad() + 
                                     " | Sueldo: " + e.getSueldo() +
                                     " | Bonus: " + bonus);
+                
+                if(e instanceof Director d){
+                    d.comenzarJornada(1000);
+                }else if (e instanceof Jefe j){
+                    j.comenzarJornada(2000);
+                }else e.comenzarJornada(3000);
             }
         }
         
