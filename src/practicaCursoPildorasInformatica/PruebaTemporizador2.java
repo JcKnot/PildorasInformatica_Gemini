@@ -16,8 +16,8 @@ public class PruebaTemporizador2 {
     
     public static void main(String[] args) {
         
-        Reloj miReloj = new Reloj(3000, true);
-        miReloj.enMarcha();
+        Reloj miReloj = new Reloj();
+        miReloj.enMarcha(3000, true);
         JOptionPane.showMessageDialog(null, "Pulsa OK para terminar");
         System.exit(0);
         
@@ -27,31 +27,25 @@ public class PruebaTemporizador2 {
 
 class Reloj{
     
-    private int intervalo;
-    private boolean sonido;
-    
-    public Reloj(int intervalo, boolean sonido){
-        this.intervalo = intervalo;
-        this.sonido = sonido;
-    }
-    
-    public void enMarcha(){
+    public void enMarcha(int intervalo, final boolean sonido ){
+        
+        class DameLaHora2 implements ActionListener{
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date ahora = new Date();
+                System.out.println("Te pongo la hora cada 3 sg " + ahora);
+
+                if(sonido){
+                    Toolkit.getDefaultToolkit().beep();
+                }
+            }
+        }
+        
         ActionListener oyente = new DameLaHora2();
         Timer miTemporizador = new Timer(intervalo, oyente);
         miTemporizador.start();
     }
     
-    class DameLaHora2 implements ActionListener{
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Date ahora = new Date();
-            System.out.println("Te pongo la hora cada 3 sg " + ahora);
-            
-            if(sonido){
-                Toolkit.getDefaultToolkit().beep();
-            }
-        }
-        
-    }
 }
