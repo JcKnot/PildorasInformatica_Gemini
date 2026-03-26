@@ -28,8 +28,8 @@ class MarcoCentrado extends JFrame{
         setSize(anchoScreen / 2, alturaScreen / 2);
         setLocation(anchoScreen / 4, alturaScreen / 4);
         setTitle("MarcoCentrado");
-//        Image icono = tool.getImage("src/practicaCursoPildorasInformatica/grafico/icono.png")
-//        setIconImage(icono);
+        Image icono = tool.getImage("src/practicaCursoPildorasInformatica/grafico/icono.png");
+        setIconImage(icono);
 
     }
 }
