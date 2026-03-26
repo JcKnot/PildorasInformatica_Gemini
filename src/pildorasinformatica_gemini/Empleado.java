@@ -72,12 +72,11 @@ public class Empleado extends Persona implements Trabajador {
             private int contador = 0;
             @Override
             public void actionPerformed(ActionEvent e) {
-                Toolkit sonidoMarcaje = Toolkit.getDefaultToolkit();
                 if(contador <= 5){
                     String msj = "Empleado: " + getNombre() + " Marcaje: " + new Date();
                     ventana.setTitle(msj);
                     System.out.println(msj);
-                    sonidoMarcaje.beep();
+                    Toolkit.getDefaultToolkit().beep();
                     contador++;
                 }else time.stop();            
             }        

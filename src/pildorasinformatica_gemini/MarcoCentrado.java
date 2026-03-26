@@ -22,6 +22,7 @@ public class MarcoCentrado extends JFrame {
         Image icono = screen.createImage("src/pildorasinformatica_gemini/icono_gestion.png");
         setIconImage(icono);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setResizable(EnumVariables.VENTANA_REDIMENSIONABLE.getValorBoolean());
     }
     
 }
