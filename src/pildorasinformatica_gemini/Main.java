@@ -37,10 +37,10 @@ public class Main {
                                     " | Bonus: " + bonus);
                 
                 if(e instanceof Director d){
-                    d.comenzarJornada(Trabajador.TIEMPO_DIRECTOR);
+                    d.comenzarJornada(Trabajador.TIEMPO_DIRECTOR,ventana);
                 }else if (e instanceof Jefe j){
-                    j.comenzarJornada(Trabajador.TIEMPO_JEFE);
-                }else e.comenzarJornada(Trabajador.TIEMPO_EMPLEADO);
+                    j.comenzarJornada(Trabajador.TIEMPO_JEFE,ventana);
+                }else e.comenzarJornada(Trabajador.TIEMPO_EMPLEADO,ventana);
             }
         }
         

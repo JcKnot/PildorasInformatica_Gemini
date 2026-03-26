@@ -8,7 +8,8 @@ package pildorasinformatica_gemini;
 public enum EnumVariables {
     // 1. Los "registros" de tu enum. Al terminar la lista, usa punto y coma (;)
     VERSION_COMPILACION("v1.0"),
-    TITULO_APP("Sistema de Gestión de Recursos Humanos");
+    TITULO_APP("Sistema de Gestión de Recursos Humanos"),
+    SUELDO_MINIMO("1000");
 
     // 2. El atributo (como la columna de una tabla). Lo ponemos 'final' porque es una constante.
     private final String valor;

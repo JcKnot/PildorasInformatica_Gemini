@@ -1,10 +1,11 @@
 package pildorasinformatica_gemini;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date; // Para capturar la hora real
+import javax.swing.JFrame;
 import javax.swing.Timer;
-import pildorasinformatica_gemini.Trabajador;
 
 public class Empleado extends Persona implements Trabajador {
     private double sueldo;
@@ -15,8 +16,8 @@ public class Empleado extends Persona implements Trabajador {
     }
     
     public void setSueldo(double sueldo){
-        if(sueldo < 1000){
-            System.out.println("Erro el sueldo no puede ser menor a 1000");
+        if(sueldo < Integer.parseInt(EnumVariables.SUELDO_MINIMO.getValor())){
+            System.out.println("Erro el sueldo no puede ser menor a "+EnumVariables.SUELDO_MINIMO.getValor());
             this.sueldo = sueldo;
         }else {
             this.sueldo = sueldo;
@@ -65,14 +66,18 @@ public class Empleado extends Persona implements Trabajador {
         
     }
     
-    public void comenzarJornada(int segundos){
+    public void comenzarJornada(int segundos, JFrame ventana){
         // --- AQUÍ EMPIEZA LA CLASE INTERNA ---
         class RelojFichaje implements ActionListener{
             private int contador = 0;
             @Override
-            public void actionPerformed(ActionEvent e) {            
+            public void actionPerformed(ActionEvent e) {
+                Toolkit sonidoMarcaje = Toolkit.getDefaultToolkit();
                 if(contador <= 5){
-                    System.out.println("Empleado: " + getNombre() + " Marcaje: " + new Date());
+                    String msj = "Empleado: " + getNombre() + " Marcaje: " + new Date();
+                    ventana.setTitle(msj);
+                    System.out.println(msj);
+                    sonidoMarcaje.beep();
                     contador++;
                 }else time.stop();            
             }        

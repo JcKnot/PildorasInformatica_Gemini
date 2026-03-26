@@ -4,7 +4,6 @@ package pildorasinformatica_gemini;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.Icon;
 import javax.swing.JFrame;
 
 /**
@@ -22,6 +21,7 @@ public class MarcoCentrado extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Image icono = screen.createImage("src/pildorasinformatica_gemini/icono_gestion.png");
         setIconImage(icono);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     
 }
