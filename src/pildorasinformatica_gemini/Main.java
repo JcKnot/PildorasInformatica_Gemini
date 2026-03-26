@@ -12,6 +12,8 @@ public class Main {
         // 1. Creamos un Array de la Interfaz (Capacidad para 3 "filas")
         Persona[] listaPersonas = new Persona[5];
         double totalNomina = 0;
+        MarcoCentrado ventana = new MarcoCentrado();
+        ventana.setVisible(true);
 
         // 2. Llenamos el array con diferentes tipos (Polimorfismo puro)
         listaPersonas[0] = new Empleado("Luis", 30);
