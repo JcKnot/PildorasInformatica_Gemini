@@ -2,9 +2,11 @@
 package pildorasinformatica_gemini;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,8 +23,20 @@ public class MarcoCentrado extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Image icono = screen.createImage("src/pildorasinformatica_gemini/icono_gestion.png");
         setIconImage(icono);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setExtendedState(JFrame.NORMAL); //MAXIMIZED_BOTH);
         setResizable(EnumVariables.VENTANA_REDIMENSIONABLE.getValorBoolean());
+        LaminaPrincipal miLamina = new LaminaPrincipal();
+        add(miLamina);
     }
     
+}
+
+class LaminaPrincipal extends JPanel{
+    
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawRect(50, 50, 300, 200);
+        g.drawString(EnumVariables.TITULO_APP.getValor(), 100, 100);
+    }
 }
