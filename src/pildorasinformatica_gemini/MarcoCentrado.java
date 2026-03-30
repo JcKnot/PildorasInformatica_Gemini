@@ -1,10 +1,16 @@
 
 package pildorasinformatica_gemini;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -36,7 +42,19 @@ class LaminaPrincipal extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawRect(50, 50, 300, 200);
-        g.drawString(EnumVariables.TITULO_APP.getValor(), 100, 100);
+        Graphics2D g2 = (Graphics2D) g;
+        Rectangle2D rectangulo = new Rectangle2D.Double(0, 0, this.getWidth(), 200);
+        g2.setPaint(new Color(0, 102, 204));
+        g2.fill(rectangulo);
+        
+        Ellipse2D elipse = new Ellipse2D.Double(20, 20, 160, 160);
+//        elipse.setFrame(rectangulo);
+        g2.setPaint(Color.yellow);
+        g2.fill(elipse);
+        
+//        g2.drawRect(50, 50, 300, 200);
+        g2.drawString(EnumVariables.TITULO_APP.getValor(), 200, 100);
+//        g2.setFont(Font.createFont(Font.BOLD, File.createTempFile(TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY)));
+
     }
 }
