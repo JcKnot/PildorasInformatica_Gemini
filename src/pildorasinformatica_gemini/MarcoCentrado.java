@@ -56,7 +56,8 @@ class LaminaPrincipal extends JPanel{
         Font fuente = new Font("Arial", Font.BOLD, 26);
         g2.setFont(fuente);
         g2.setColor(Color.WHITE);
-        g2.drawString(EnumVariables.TITULO_APP.getValor(), 200, 100);
+        int h = (int) rectangulo.getHeight() / 2;
+        g2.drawString(EnumVariables.TITULO_APP.getValor(), 200,  h );
 
     }
 }
