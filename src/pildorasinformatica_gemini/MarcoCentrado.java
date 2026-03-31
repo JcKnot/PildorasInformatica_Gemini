@@ -10,7 +10,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -53,8 +52,11 @@ class LaminaPrincipal extends JPanel{
         g2.fill(elipse);
         
 //        g2.drawRect(50, 50, 300, 200);
+        
+        Font fuente = new Font("Arial", Font.BOLD, 26);
+        g2.setFont(fuente);
+        g2.setColor(Color.WHITE);
         g2.drawString(EnumVariables.TITULO_APP.getValor(), 200, 100);
-//        g2.setFont(Font.createFont(Font.BOLD, File.createTempFile(TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY)));
 
     }
 }

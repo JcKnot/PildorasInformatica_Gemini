@@ -1,6 +1,8 @@
 package practicaCursoPildorasInformatica.grafico;
 
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -36,6 +38,10 @@ class Lamina extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        Font fuente = new Font("Arial", Font.BOLD, 26);
+        g2.setFont(fuente);
         g.drawString("Estamos aprendiendo swing", 100, 100);
+        
     }
 }
