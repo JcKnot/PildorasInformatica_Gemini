@@ -40,6 +40,6 @@ class LaminaImagen extends JPanel{
         catch(IOException e){
             System.out.println("Error: Imagen no encontrada");
         }
-        g.drawImage(imagen, 5, 5, null);
+        g.drawImage(imagen, 10, 10, null);
     }
 }
