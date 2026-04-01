@@ -1,6 +1,10 @@
 package practicaCursoPildorasInformatica.grafico;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -27,9 +31,15 @@ class MarcoImagen extends JFrame{
 }
 
 class LaminaImagen extends JPanel{
-    
+    private Image imagen;
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        
+        File miImagen = new File("src/practicaCursoPildorasInformatica/grafico/image.jpg");
+        try{
+        imagen = ImageIO.read(miImagen);}
+        catch(IOException e){
+            System.out.println("Error: Imagen no encontrada");
+        }
+        g.drawImage(imagen, 5, 5, null);
     }
 }
