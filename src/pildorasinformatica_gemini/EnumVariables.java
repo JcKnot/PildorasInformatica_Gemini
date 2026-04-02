@@ -10,6 +10,8 @@ public enum EnumVariables {
     VERSION_COMPILACION("v1.0"),
     TITULO_APP("Sistema de Gestión de Recursos Humanos"),
     SUELDO_MINIMO("1000"),
+    IMAGEN_USUARIO("src/pildorasinformatica_gemini/userimage.png"),
+    FONDO_CABECERA("src/pildorasinformatica_gemini/malla2.png"),
     VENTANA_REDIMENSIONABLE(true);
 
     // 2. El atributo (como la columna de una tabla). Lo ponemos 'final' porque es una constante.

@@ -8,8 +8,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.geom.Ellipse2D;
+//import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -37,6 +40,17 @@ public class MarcoCentrado extends JFrame {
 }
 
 class LaminaPrincipal extends JPanel{
+    private Image imageUser;
+    private Image imageFondo;
+    
+    public LaminaPrincipal(){
+        try{
+            imageUser = ImageIO.read(new File(EnumVariables.IMAGEN_USUARIO.getValor()));
+            imageFondo = ImageIO.read(new File(EnumVariables.FONDO_CABECERA.getValor()));
+        }catch(IOException e){
+            System.out.println("Imagen no encontrada");
+        }
+    }    
     
     @Override
     public void paintComponent(Graphics g){
@@ -45,13 +59,25 @@ class LaminaPrincipal extends JPanel{
         Rectangle2D rectangulo = new Rectangle2D.Double(0, 0, this.getWidth(), 200);
         g2.setPaint(new Color(0, 102, 204));
         g2.fill(rectangulo);
+
+//        Ellipse2D elipse = new Ellipse2D.Double(20, 20, 160, 160);
+////        elipse.setFrame(rectangulo);
+//        g2.setPaint(Color.WHITE);
+//        g2.fill(elipse);
         
-        Ellipse2D elipse = new Ellipse2D.Double(20, 20, 160, 160);
-//        elipse.setFrame(rectangulo);
-        g2.setPaint(Color.yellow);
-        g2.fill(elipse);
+        g2.drawImage(imageFondo, 0, 0, this);
+        int recAncho = (int)rectangulo.getWidth();
+        int recAlto = (int)rectangulo.getHeight();
+        int width = imageFondo.getWidth(this);
+        int height = imageFondo.getHeight(this);
         
-//        g2.drawRect(50, 50, 300, 200);
+        for(int i = 0; i < recAncho; i++){
+            for(int j = 0; j < recAlto; j+=height){
+                g2.copyArea(0, 0, width, height, width*i, j);  
+            }
+        }
+        
+        g2.drawImage(imageUser, 20, 20, 150, 150, this);        
         
         Font fuente = new Font("Arial", Font.BOLD, 26);
         g2.setFont(fuente);

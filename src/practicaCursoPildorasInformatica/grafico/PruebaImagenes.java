@@ -24,9 +24,10 @@ class MarcoImagen extends JFrame{
     
     public MarcoImagen(){
         setTitle("Marco con Imagen");
-        setBounds(750,300,300,200);
         LaminaImagen miLamina = new LaminaImagen();
+        setBounds(750,400,300,200);
         add(miLamina);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
 
@@ -34,12 +35,19 @@ class LaminaImagen extends JPanel{
     private Image imagen;
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        File miImagen = new File("src/practicaCursoPildorasInformatica/grafico/image.jpg");
+        File miImagen = new File("src/practicaCursoPildorasInformatica/grafico/icono.png");
         try{
         imagen = ImageIO.read(miImagen);}
         catch(IOException e){
             System.out.println("Error: Imagen no encontrada");
         }
-        g.drawImage(imagen, 10, 10, null);
+        g.drawImage(imagen, 0, 0, null);
+        
+        for(int i = 0; i<300; i++){
+            for(int j = 0; j <200; j++){
+                g.copyArea(0, 0, imagen.getWidth(this), imagen.getHeight(this),imagen.getWidth(this)* i, imagen.getHeight(this)* j);
+            }
+        }
+        
     }
 }

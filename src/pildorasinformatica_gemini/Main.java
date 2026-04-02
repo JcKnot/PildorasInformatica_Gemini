@@ -25,24 +25,24 @@ public class Main {
         System.out.println("--- Reporte de Bonus Navideño ---");
 
         // 3. Recorremos el array con un bucle "for-each"
-        for (Persona p : listaPersonas) {
-            if (p instanceof Empleado e){
-                double bonus = e.establecerBonus(3000); 
-                Persona.acumularNomina(bonus);
-//                totalNomina += bonus;
-                System.out.println("ID: " + e.getId() + 
-                                    " | Nombre: " + e.getNombre() + 
-                                    " | Edad: " + e.getEdad() + 
-                                    " | Sueldo: " + e.getSueldo() +
-                                    " | Bonus: " + bonus);
-                
-                if(e instanceof Director d){
-                    d.comenzarJornada(Trabajador.TIEMPO_DIRECTOR,ventana);
-                }else if (e instanceof Jefe j){
-                    j.comenzarJornada(Trabajador.TIEMPO_JEFE,ventana);
-                }else e.comenzarJornada(Trabajador.TIEMPO_EMPLEADO,ventana);
-            }
-        }
+//        for (Persona p : listaPersonas) {
+//            if (p instanceof Empleado e){
+//                double bonus = e.establecerBonus(3000); 
+//                Persona.acumularNomina(bonus);
+////                totalNomina += bonus;
+//                System.out.println("ID: " + e.getId() + 
+//                                    " | Nombre: " + e.getNombre() + 
+//                                    " | Edad: " + e.getEdad() + 
+//                                    " | Sueldo: " + e.getSueldo() +
+//                                    " | Bonus: " + bonus);
+//                
+//                if(e instanceof Director d){
+//                    d.comenzarJornada(Trabajador.TIEMPO_DIRECTOR,ventana);
+//                }else if (e instanceof Jefe j){
+//                    j.comenzarJornada(Trabajador.TIEMPO_JEFE,ventana);
+//                }else e.comenzarJornada(Trabajador.TIEMPO_EMPLEADO,ventana);
+//            }
+//        }
         
         System.out.println("Gasto total de la empresa en bonos: " + Persona.getTotalNominasRepartidas() );
         JOptionPane.showMessageDialog(null, "Pulsa Aceptar para detener el reloj");
