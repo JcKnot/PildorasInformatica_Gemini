@@ -59,11 +59,6 @@ class LaminaPrincipal extends JPanel{
         Rectangle2D rectangulo = new Rectangle2D.Double(0, 0, this.getWidth(), 200);
         g2.setPaint(new Color(0, 102, 204));
         g2.fill(rectangulo);
-
-//        Ellipse2D elipse = new Ellipse2D.Double(20, 20, 160, 160);
-////        elipse.setFrame(rectangulo);
-//        g2.setPaint(Color.WHITE);
-//        g2.fill(elipse);
         
         g2.drawImage(imageFondo, 0, 0, this);
         int recAncho = (int)rectangulo.getWidth();
@@ -71,9 +66,11 @@ class LaminaPrincipal extends JPanel{
         int width = imageFondo.getWidth(this);
         int height = imageFondo.getHeight(this);
         
-        for(int i = 0; i < recAncho; i++){
+        for(int i = 0; i < recAncho; i+=width){
             for(int j = 0; j < recAlto; j+=height){
-                g2.copyArea(0, 0, width, height, width*i, j);  
+                if(i+j > 0){
+                    g2.copyArea(0, 0, width, height, i, j); 
+                }
             }
         }
         
