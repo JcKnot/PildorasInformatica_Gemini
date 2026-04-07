@@ -15,6 +15,7 @@ import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.EnumControl;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -49,6 +50,9 @@ class LaminaPrincipal extends JPanel{
     private JButton btnDesarrollo = new JButton("Desarrollo");
     private ColorEntorno colorEntornoP = new ColorEntorno(Color.RED);
     private ColorEntorno colorEntornoD = new ColorEntorno(Color.LIGHT_GRAY);
+    private JButton btnCambiaModulo = new JButton("Cambiar Modulo");
+    private CambiaTituloModulo cambioTituloModulo = new CambiaTituloModulo();
+    private String tituloModulo = EnumVariables.TITULO_MODULO_GESTION.getValor();
     
     public LaminaPrincipal(){
         try{
@@ -60,8 +64,10 @@ class LaminaPrincipal extends JPanel{
         
         btnProduccion.addActionListener(colorEntornoP);
         btnDesarrollo.addActionListener(colorEntornoD);
+        btnCambiaModulo.addActionListener(cambioTituloModulo);
         add(btnProduccion);
         add(btnDesarrollo);
+        add(btnCambiaModulo);
     }    
     
     @Override
@@ -92,7 +98,7 @@ class LaminaPrincipal extends JPanel{
         g2.setFont(fuente);
         g2.setColor(Color.WHITE);
         int h = (int) rectangulo.getHeight() / 2;
-        g2.drawString(EnumVariables.TITULO_APP.getValor(), 200,  h );
+        g2.drawString(tituloModulo, 200,  h );
 
     }
     
@@ -109,5 +115,15 @@ class LaminaPrincipal extends JPanel{
             setBackground(color);
         }
         
+    }
+    
+    class CambiaTituloModulo implements ActionListener{
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            tituloModulo = (tituloModulo.equals(EnumVariables.TITULO_MODULO_GESTION.getValor())) 
+                            ? EnumVariables.TITULO_MODULO_AUDITORIA.getValor() : EnumVariables.TITULO_MODULO_GESTION.getValor();
+            repaint();
+        }
     }
 }

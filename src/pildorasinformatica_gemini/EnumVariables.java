@@ -9,6 +9,8 @@ public enum EnumVariables {
     // 1. Los "registros" de tu enum. Al terminar la lista, usa punto y coma (;)
     VERSION_COMPILACION("v1.0"),
     TITULO_APP("Sistema de Gestión de Recursos Humanos"),
+    TITULO_MODULO_GESTION("Gestión de Personal"),
+    TITULO_MODULO_AUDITORIA("Auditoría"),
     SUELDO_MINIMO("1000"),
     IMAGEN_USUARIO("src/pildorasinformatica_gemini/userimage.png"),
     FONDO_CABECERA("src/pildorasinformatica_gemini/malla2.png"),
