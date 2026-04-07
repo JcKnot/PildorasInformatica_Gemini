@@ -8,11 +8,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 //import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -42,6 +45,10 @@ public class MarcoCentrado extends JFrame {
 class LaminaPrincipal extends JPanel{
     private Image imageUser;
     private Image imageFondo;
+    private JButton btnProduccion = new JButton("Produccion");
+    private JButton btnDesarrollo = new JButton("Desarrollo");
+    private ColorEntorno colorEntornoP = new ColorEntorno(Color.RED);
+    private ColorEntorno colorEntornoD = new ColorEntorno(Color.LIGHT_GRAY);
     
     public LaminaPrincipal(){
         try{
@@ -50,6 +57,11 @@ class LaminaPrincipal extends JPanel{
         }catch(IOException e){
             System.out.println("Imagen no encontrada");
         }
+        
+        btnProduccion.addActionListener(colorEntornoP);
+        btnDesarrollo.addActionListener(colorEntornoD);
+        add(btnProduccion);
+        add(btnDesarrollo);
     }    
     
     @Override
@@ -82,5 +94,20 @@ class LaminaPrincipal extends JPanel{
         int h = (int) rectangulo.getHeight() / 2;
         g2.drawString(EnumVariables.TITULO_APP.getValor(), 200,  h );
 
+    }
+    
+    
+    class ColorEntorno implements ActionListener{
+        private Color color;
+        
+        public ColorEntorno(Color c){
+            this.color = c;
+        }        
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            setBackground(color);
+        }
+        
     }
 }
