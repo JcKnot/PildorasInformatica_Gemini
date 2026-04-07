@@ -1,7 +1,6 @@
 
 package pildorasinformatica_gemini;
 
-import com.sun.java.accessibility.util.AWTEventMonitor;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
