@@ -1,6 +1,7 @@
 
 package pildorasinformatica_gemini;
 
+import com.sun.java.accessibility.util.AWTEventMonitor;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -10,12 +11,13 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.awt.geom.Ellipse2D;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.sound.sampled.EnumControl;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,6 +27,8 @@ import javax.swing.JPanel;
  * @author slipk
  */
 public class MarcoCentrado extends JFrame {
+    private AuditoriaVentana auditoriaVentana = new AuditoriaVentana();
+    private InicioGrafico inicioGraf = new InicioGrafico();
     
     public MarcoCentrado(){
         Toolkit screen = Toolkit.getDefaultToolkit();
@@ -39,6 +43,30 @@ public class MarcoCentrado extends JFrame {
         setResizable(EnumVariables.VENTANA_REDIMENSIONABLE.getValorBoolean());
         LaminaPrincipal miLamina = new LaminaPrincipal();
         add(miLamina);
+        addWindowStateListener(auditoriaVentana);
+        addWindowListener(inicioGraf);
+    }
+    
+    class AuditoriaVentana implements WindowStateListener{
+
+        @Override
+        public void windowStateChanged(WindowEvent e) {
+            
+            if(e.getNewState() == JFrame.ICONIFIED){
+                System.out.println("[AUDITORÍA] El sistema ha sido minimizado. Ocultando datos...");    
+            }else if(e.getNewState() == JFrame.NORMAL){
+                System.out.println("[AUDITORÍA] Sistema restaurado a tamaño estándar.");
+            }
+        }
+        
+    }
+    
+    class InicioGrafico extends WindowAdapter {
+        
+        @Override
+        public void windowOpened(WindowEvent e){
+            System.out.println("Iniciando conexión con la base de datos gráfica...");
+        }
     }
     
 }
@@ -126,4 +154,6 @@ class LaminaPrincipal extends JPanel{
             repaint();
         }
     }
+    
+    
 }
