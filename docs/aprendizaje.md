@@ -4,6 +4,15 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 
 ## Notas y Conceptos Clave
 
+### 🧱 Fundamentos, Sintaxis y Memoria (Clases 4 - 13)
+- **Inmutabilidad de `String`:** Las cadenas no se pueden modificar en memoria (no aceptan `UPDATE`). Al concatenar en un bucle, se crean múltiples objetos nuevos en el **Heap** (`INSERT`), dejando los anteriores sin referencia para que el *Garbage Collector* los elimine.
+- **Inferencia de Tipos (`var`):** El compilador deduce el tipo de dato basándose en la inicialización. **Regla de Arquitectura:** No se recomienda su uso con el operador diamante (`<>`) en colecciones, ya que infiere el tipo genérico `Object` y rompe la seguridad de tipos.
+- **Casting de Datos:** - *Implícito (Widening):* Automático y seguro (ej. pasar de `int` a `double`).
+    - *Explícito (Narrowing):* Requiere forzarlo manualmente con `(tipo)` (ej. de `double` a `int`). Conlleva un alto riesgo de pérdida de precisión (truncamiento de decimales).
+- **Modificadores Clave (`final` y `static`):**
+    - `final`: Funciona como un constraint `READ ONLY`; garantiza que el valor de la variable no sea reasignado.
+    - `static`: Indica que un método (como los de la clase `Math`) pertenece a la **Clase** (la tabla general) y no a la **Instancia** (una fila específica), permitiendo su ejecución sin necesidad de instanciar un objeto con `new`.
+
 ### 🛠️ Arquitectura y Lógica (Clases 53 - 59)
 - **Clases Internas de Miembro:** Permiten que una clase secundaria acceda a los campos privados de la clase externa sin necesidad de métodos públicos.
 - **Clases Internas Locales:** Se declaran dentro de un método. Son ideales para tareas que solo tienen sentido durante la ejecución de ese método (ej. una auditoría rápida).
@@ -57,16 +66,27 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 
 ## Progreso
 
-- [x] **Módulo 1: Swing Básico y Configuración** (Clases 53-59)
-- [x] **Módulo 2: Gráficos y Geometría** (Clases 60-61)
-- [x] **Módulo 3: Imágenes e I/O Gráfico** (Clases 62-64)
-- [x] **Módulo 4: Eventos I - Botones, Ventanas y Estados** (Clases 65-70 completadas)
+- [x] **Bloque 1: Fundamentos, Sintaxis y Memoria** (Clases 4-13 completadas al 100%)
+- [x] **Módulo 1-3: Cimientos Swing, Gráficos y Recursos** (Clases 53-64)
+- [x] **Módulo 4: Eventos I - Botones y Ventanas** (Clases 65-70)
+- [ ] **Bloque 2: Control de Flujo e I/O** (Pendiente de examen en NotebookLM)
+- [ ] **Módulo 5: Eventos II - Teclado y Ratón** (Próximamente - Clase 71+)
 
 ---
 
 ## 🧠 Registro de Auto-Exámenes (Knowledge Checks)
 
 Esta sección documenta la validación de conceptos teóricos y técnicos más allá de la implementación del código.
+
+### 🧱 Bloque 1: Sintaxis, Memoria y API (Clases 4-13)
+* **Inmutabilidad de String:** Los `String` son inmutables. En un bucle de 10 concatenaciones, no se hace un `UPDATE` en memoria, sino que se generan 11 objetos distintos (10 `INSERT` nuevos). La variable original simplemente actualiza su puntero al último objeto creado.
+* **Inferencia de Tipos (`var`):** Java sigue siendo de tipado fuerte. Al usar `var`, el compilador determina el tipo basándose en el valor asignado en la inicialización (ej. `var cadena = "esto"` se compila estrictamente como `String`).
+* **Constantes (`final`):** Funciona como un constraint `READ ONLY`. Garantiza que una variable no pueda ser reasignada. Si se intenta alterar, el compilador bloquea la ejecución.
+* **Casting y Precisión:** * *Implícito (Widening):* De un tipo menor a uno mayor (ej. `int` a `double`), es seguro.
+    * *Explícito (Narrowing):* De un tipo mayor a uno menor (ej. `double` a `int`), obliga a usar el operador `(int)` y conlleva el riesgo de pérdida de datos (truncamiento de decimales).
+* **Comparación de Objetos (`==` vs `.equals`):** El operador `==` evalúa el `ROWID` (la dirección en memoria / referencia). Para los `String`, es un error lógico usarlo si queremos validar el contenido. Siempre se debe usar `.equals()` para comparar el valor real de los datos.
+* **Métodos Estáticos (Clase `Math`):** El modificador `static` permite que un método pertenezca a la "Tabla" (Clase) y no a la "Fila" (Instancia). Por lo tanto, se pueden invocar directamente (ej. `Math.PI`) sin necesidad de usar `new` para crear un objeto.
+*(Calificación Auto-Examen: 100% - 6/6)*
 
 ### 🏁 Módulo 0: Fundamentos y Gestión de Memoria
 * **Gestión de Memoria (Stack vs. Heap):** Comprendo que las variables locales y referencias viven en el **Stack**, mientras que todos los objetos nacen en el **Heap** [1, 2]. Las variables de instancia (atributos) residen dentro del objeto en el Heap, no en el Stack [3, 4].
@@ -83,6 +103,12 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 * **Metáfora de Optimización (Visión DBA):** * **Constructor:** Cargar recursos aquí actúa como una "caché" o `SELECT` único [19].
     * **PaintComponent:** Cargar recursos aquí es como un `SELECT` dentro de un cursor infinito, lo que satura la CPU innecesariamente [17, 21].
 * **Mosaicos Eficientes:** Uso de `copyArea()` con incrementos de bucle iguales al ancho de la imagen (`i += width`) para evitar redundancia de procesamiento píxel a píxel [19, 22].
+
+###⚡Módulo 4: Eventos y Arquitectura Reactiva (Clases 65-70)
+* **Delegación: ✅ Completado. Comprensión del trípode Fuente-Evento-Oyente
+.
+* **Auditoría de Estados: Uso de WindowStateListener y constantes de Frame (ej. ICONIFIED) para registrar comportamientos del sistema
+.
 
 ---
 
