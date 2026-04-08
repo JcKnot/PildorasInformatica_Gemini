@@ -13,6 +13,17 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
     - `final`: Funciona como un constraint `READ ONLY`; garantiza que el valor de la variable no sea reasignado.
     - `static`: Indica que un método (como los de la clase `Math`) pertenece a la **Clase** (la tabla general) y no a la **Instancia** (una fila específica), permitiendo su ejecución sin necesidad de instanciar un objeto con `new`.
 
+### 🚦 Control de Flujo e Interactividad (Clases 14 - 22)
+- **Estrategias de Entrada (I/O):** - `Scanner`: Lectura secuencial conectada al flujo `System.in` (ideal para *backend* o ingesta por consola).
+    - `JOptionPane`: Interacción mediante interfaces gráficas y ventanas emergentes como `showInputDialog` (ideal para *frontend* rápido).
+- **Parsing vs. Casting:** Diferencia arquitectónica vital. No se puede "castear" (copiar bits de un tipo a otro) de un objeto `String` a un primitivo numérico. Se requiere un proceso de "Parsing" (traducción de datos) usando métodos estáticos como `Integer.parseInt()`.
+- **Operador Ternario (`? :`):** Herramienta de *Clean Code* con sintaxis compacta (`condición ? valor_true : valor_false`) para simplificar y reemplazar estructuras `if-else` en asignaciones simples.
+- **Control con `switch` y *Fall-through*:** Uso crítico de la instrucción `break`. Omitirla provoca un efecto "fall-through" (ejecución en cascada), donde el flujo atraviesa los siguientes casos sin evaluar sus condiciones, generando bugs lógicos.
+- **Arquitectura de Iteradores (Bucles):**
+    - `while`: Evaluación en la cabecera (pre-condición). El bloque de código podría no ejecutarse jamás.
+    - `do-while`: Evaluación en la base (post-condición). Garantiza por diseño al menos una ejecución obligatoria.
+    - `for`: Estructura determinista. Uso obligatorio cuando el límite numérico, los pasos o el rango de iteraciones se conocen de antemano.
+
 ### 🛠️ Arquitectura y Lógica (Clases 53 - 59)
 - **Clases Internas de Miembro:** Permiten que una clase secundaria acceda a los campos privados de la clase externa sin necesidad de métodos públicos.
 - **Clases Internas Locales:** Se declaran dentro de un método. Son ideales para tareas que solo tienen sentido durante la ejecución de ese método (ej. una auditoría rápida).
@@ -67,6 +78,7 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 ## Progreso
 
 - [x] **Bloque 1: Fundamentos, Sintaxis y Memoria** (Clases 4-13 completadas al 100%)
+- [x] **Bloque 2: Control de Flujo e I/O** (Examen 95% completado) (Clases 14-22)
 - [x] **Módulo 1-3: Cimientos Swing, Gráficos y Recursos** (Clases 53-64)
 - [x] **Módulo 4: Eventos I - Botones y Ventanas** (Clases 65-70)
 - [ ] **Bloque 2: Control de Flujo e I/O** (Pendiente de examen en NotebookLM)
@@ -87,6 +99,15 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 * **Comparación de Objetos (`==` vs `.equals`):** El operador `==` evalúa el `ROWID` (la dirección en memoria / referencia). Para los `String`, es un error lógico usarlo si queremos validar el contenido. Siempre se debe usar `.equals()` para comparar el valor real de los datos.
 * **Métodos Estáticos (Clase `Math`):** El modificador `static` permite que un método pertenezca a la "Tabla" (Clase) y no a la "Fila" (Instancia). Por lo tanto, se pueden invocar directamente (ej. `Math.PI`) sin necesidad de usar `new` para crear un objeto.
 *(Calificación Auto-Examen: 100% - 6/6)*
+
+### 🔀 Bloque 2: Control de Flujo e I/O (Examen: 95%) (Clases 14-22)
+* **Interfaces de Entrada (`Scanner` vs `JOptionPane`):** Diferencia arquitectónica asimilada. `Scanner` lee secuencias planas de la consola (ideal para procesos batch/backend), mientras que `JOptionPane` dispara cuadros de diálogo gráficos para interacción visual (*frontend* rápido).
+* **Parsing vs. Casting (Lección Clave):** Comprendo la imposibilidad de "castear" un objeto `String` a un primitivo numérico. Para extraer un entero de un texto, es obligatorio usar un proceso de traducción (Parsing) invocando el método estático `Integer.parseInt(variableString)`.
+* **Operador Ternario (`? :`):** Asimilado como la herramienta de *Clean Code* óptima para asignaciones y retornos binarios en una sola línea (`condición ? valor_true : valor_false`), evitando la verbosidad de un `if-else`.
+* **Switch y el efecto *Fall-through*:** Entiendo el riesgo de omitir el `break`. Si no se detiene el flujo, el motor de Java "caerá" (*fall-through*) y ejecutará todo el código de los `case` posteriores sin evaluar sus condiciones, causando bugs lógicos.
+* **Estrategia de Bucles:**
+    * **Ejecución garantizada:** El bucle `do-while` ejecuta su bloque al menos una vez antes de evaluar la condición en la base. El `while` tradicional podría no ejecutarse nunca.
+    * **Iteraciones deterministas:** El bucle `for` es la elección lógica cuando el rango y el número exacto de ejecuciones a realizar son conocidos desde el principio.
 
 ### 🏁 Módulo 0: Fundamentos y Gestión de Memoria
 * **Gestión de Memoria (Stack vs. Heap):** Comprendo que las variables locales y referencias viven en el **Stack**, mientras que todos los objetos nacen en el **Heap** [1, 2]. Las variables de instancia (atributos) residen dentro del objeto en el Heap, no en el Stack [3, 4].
