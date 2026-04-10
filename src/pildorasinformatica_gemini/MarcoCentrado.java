@@ -10,6 +10,10 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
@@ -67,7 +71,7 @@ public class MarcoCentrado extends JFrame {
             System.out.println("Iniciando conexión con la base de datos gráfica...");
         }
     }
-    
+        
 }
 
 class LaminaPrincipal extends JPanel{
@@ -80,6 +84,8 @@ class LaminaPrincipal extends JPanel{
     private JButton btnCambiaModulo = new JButton("Cambiar Modulo");
     private CambiaTituloModulo cambioTituloModulo = new CambiaTituloModulo();
     private String tituloModulo = EnumVariables.TITULO_MODULO_GESTION.getValor();
+    private KeyEventos tecla = new KeyEventos();
+    private MouseEvento raton = new MouseEvento();
     
     public LaminaPrincipal(){
         try{
@@ -92,9 +98,12 @@ class LaminaPrincipal extends JPanel{
         btnProduccion.addActionListener(colorEntornoP);
         btnDesarrollo.addActionListener(colorEntornoD);
         btnCambiaModulo.addActionListener(cambioTituloModulo);
+        addKeyListener(tecla);
+        addMouseListener(raton);
         add(btnProduccion);
         add(btnDesarrollo);
         add(btnCambiaModulo);
+        setFocusable(true);
     }    
     
     @Override
@@ -154,5 +163,24 @@ class LaminaPrincipal extends JPanel{
         }
     }
     
+    class KeyEventos extends KeyAdapter {
+        
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_A){
+                System.out.println("[SISTEMA] Iniciando Modo Administrador...");
+                setBackground(Color.DARK_GRAY);
+                repaint();
+            }
+        }
+    }
+    
+    class MouseEvento extends MouseAdapter {
+        
+        public void mouseClicked(MouseEvent e) {
+            requestFocusInWindow(true);
+            System.out.println("Doble clic detectado en las coordenadas: X= " + e.getX() + " Y= " + e.getY());
+        }
+    }
     
 }
