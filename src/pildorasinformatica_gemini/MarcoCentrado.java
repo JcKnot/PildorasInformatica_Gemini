@@ -86,6 +86,7 @@ class LaminaPrincipal extends JPanel{
     private String tituloModulo = EnumVariables.TITULO_MODULO_GESTION.getValor();
     private KeyEventos tecla = new KeyEventos();
     private MouseEvento raton = new MouseEvento();
+    private boolean operadorEnZona = false;
     
     public LaminaPrincipal(){
         try{
@@ -135,6 +136,11 @@ class LaminaPrincipal extends JPanel{
         g2.setColor(Color.WHITE);
         int h = (int) rectangulo.getHeight() / 2;
         g2.drawString(tituloModulo, 200,  h );
+        
+        if(operadorEnZona){
+            setBackground(Color.GREEN);
+        }else setBackground(Color.ORANGE);        
+//        (operadorEnZona) ? setBackground(Color.GREEN) : setBackground(Color.ORANGE);
 
     }
     
@@ -172,6 +178,12 @@ class LaminaPrincipal extends JPanel{
                 setBackground(Color.DARK_GRAY);
                 repaint();
             }
+            
+            if(e.getKeyCode() == KeyEvent.VK_C){
+                if(operadorEnZona){
+                    System.out.println("Check-in del supervisor: Operador en posicion");
+                } System.out.println("ALERTA CRITICA: Operador fuera de zona");
+            }
         }
     }
     
@@ -180,6 +192,16 @@ class LaminaPrincipal extends JPanel{
         public void mouseClicked(MouseEvent e) {
             requestFocusInWindow(true);
             System.out.println("Doble clic detectado en las coordenadas: X= " + e.getX() + " Y= " + e.getY());
+        }
+        
+        public void mouseEntered(MouseEvent e){
+            operadorEnZona = true;
+            repaint();
+        }
+        
+        public void mouseExited(MouseEvent e) {
+            operadorEnZona = false;
+            repaint();
         }
     }
     
