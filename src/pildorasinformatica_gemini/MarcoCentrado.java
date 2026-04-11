@@ -182,23 +182,26 @@ class LaminaPrincipal extends JPanel{
             if(e.getKeyCode() == KeyEvent.VK_C){
                 if(operadorEnZona){
                     System.out.println("Check-in del supervisor: Operador en posicion");
-                } System.out.println("ALERTA CRITICA: Operador fuera de zona");
+                }else System.out.println("ALERTA CRITICA: Operador fuera de zona");
             }
         }
     }
     
     class MouseEvento extends MouseAdapter {
         
+        @Override
         public void mouseClicked(MouseEvent e) {
             requestFocusInWindow(true);
             System.out.println("Doble clic detectado en las coordenadas: X= " + e.getX() + " Y= " + e.getY());
         }
         
+        @Override
         public void mouseEntered(MouseEvent e){
             operadorEnZona = true;
             repaint();
         }
         
+        @Override
         public void mouseExited(MouseEvent e) {
             operadorEnZona = false;
             repaint();
