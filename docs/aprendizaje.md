@@ -24,7 +24,19 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
     - `do-while`: Evaluación en la base (post-condición). Garantiza por diseño al menos una ejecución obligatoria.
     - `for`: Estructura determinista. Uso obligatorio cuando el límite numérico, los pasos o el rango de iteraciones se conocen de antemano.
 
-### 🛠️ Módulo 3: Arquitectura, Gráficos y Optimización Swing (Clases 53 - 64)
+### 🧮 Módulo 3: Manejo de Arrays y Estructuras Indexadas (Clases 23 - 26)
+- **Instanciación y Heap:** Los arrays no son simples listas; son objetos de longitud inmutable que residen en el **Heap**. Declarar la variable (Stack) no reserva el espacio físico de los elementos; es necesario usar `new` para la reserva inicial y, en caso de arrays de objetos, instanciar cada posición individualmente para evitar una `NullPointerException`.
+- **Bucle for-each (Optimización):** Estándar de arquitectura para lectura. Mitiga errores "Off-by-one" al abstraer la gestión de índices y evitar desbordamientos accidentales.
+- **Arrays Bidimensionales (Matrix Logic):** Evolución de lógica lineal a matricial (tablas relacionales). Permite gestionar dimensiones complejas mediante punteros y offsets.
+
+### 🏗️ Módulo 4: Fundamentos de POO y Gestión de Memoria (Clases 27 - 39)
+- **Ciclo de Vida en el Heap:** Los objetos nacen en el Heap; las referencias (punteros) en el Stack. El *Paso por Valor* significa que copiamos la referencia, permitiendo modificar el objeto original pero no reasignarlo externamente.
+- **Relaciones de Arquitectura:** Uso riguroso de **IS-A** (Inheritance) y **HAS-A** (Composition). 
+- **Protocolo de Construcción (Hallazgo de Auditoría):** Se ha identificado la necesidad de migrar de la dependencia de *Setters* hacia **Constructores con Parámetros** para garantizar la integridad del objeto desde su nacimiento.
+- **Variables Locales vs Instancia:** Las variables de instancia reciben valores por defecto (0, null, false); las locales **obligan** a una inicialización manual antes de su uso.
+
+
+### 🛠️ Módulo 5: Arquitectura, Gráficos y Optimización Swing (Clases 53 - 64)
 - **Clases Internas de Miembro:** Permiten que una clase secundaria acceda a los campos privados de la clase externa sin necesidad de métodos públicos.
 - **Clases Internas Locales:** Se declaran dentro de un método. Son ideales para tareas que solo tienen sentido durante la ejecución de ese método (ej. una auditoría rápida).
 - **Enums con Tipado Fuerte:** Uso de constructores en Enums para almacenar diferentes tipos de datos (como el título de la app en `String` y si es redimensionable en `boolean`) en un solo lugar centralizado (`EnumVariables.java`).
@@ -33,13 +45,13 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 - **Figuras `geom`:** Uso de `Rectangle2D.Double` y `Ellipse2D.Double` para trabajar con coordenadas decimales (`double`), lo que evita errores de redondeo al escalar.
 - **Carga de Imágenes (`ImageIO`):** Uso de la clase `ImageIO` para leer archivos. Requiere obligatoriamente un bloque `try-catch` para manejar la excepción `IOException`.
 
-### ⚡ Módulo 4: Programación Dirigida por Eventos I (Clases 65 - 70)
+### ⚡ Módulo 6: Programación Dirigida por Eventos I (Clases 65 - 70)
 - **Modelo de Delegación:** El flujo interactivo requiere tres piezas: Fuente (`JButton`), Evento (`ActionEvent`) y Oyente (`ActionListener`).
 - **Interfaces Listener:** Un oyente DEBE implementar el método obligatorio `actionPerformed(ActionEvent e)` marcado con `@Override`.
 - **Arquitectura de Oyentes (Best Practice):** Usar **Clases Internas Privadas** para que el oyente pueda manipular la interfaz (ej. `setBackground`) sin romper el encapsulamiento.
 - **El Ciclo Gráfico y los Eventos (`repaint()`):** Cuando un evento modifica una variable (estado) que es utilizada para dibujar figuras o textos en el `paintComponent`, se debe invocar explícitamente al método `repaint()`.
 
-### ⌨️ Módulo 5: Eventos de Periféricos II (Clases 71 - 73)
+### ⌨️ Módulo 7: Eventos de Periféricos II (Clases 71 - 73)
 - **Teclado (`KeyListener` y `KeyAdapter`):**
     - Genera un flujo de tres fases: `keyPressed` (tecla baja), `keyReleased` (tecla sube) y `keyTyped` (generación de carácter imprimible).
     - **Primary Key:** Identificamos teclas con `e.getKeyCode()` y constantes (`KeyEvent.VK_A`).
@@ -47,6 +59,12 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
     - Triggers espaciales: `mousePressed`, `mouseReleased`, `mouseClicked`, `mouseEntered` y `mouseExited`.
     - **Extracción de Métricas:** Coordenadas con `e.getX()` / `e.getY()` y agresividad con `e.getClickCount()`.
 - **Sincronización Híbrida (Reto Boss):** Coordinación de múltiples periféricos a través de una variable de estado booleana que condiciona el redibujado de la interfaz.
+
+### 🎯 Módulo 8: Foco, Múltiples Fuentes y Seguridad (Clases 74 - 76)
+- **Foco de Componente (`FocusListener`):** Gestión de la atención del teclado entre `JTextField`. El método `focusLost` es el lugar crítico para realizar validaciones en tiempo real (ej. comprobar si un campo está vacío o cumple un formato).
+- **Identificación de Origen (`getSource()`):** Técnica para centralizar la lógica. Un solo objeto oyente puede vigilar múltiples componentes; usamos `e.getSource() == variable` para determinar qué campo disparó el evento.
+- **Foco de Ventana (`WindowFocusListener`):** Supervisión a nivel de aplicación. Detecta cuándo el usuario "entra" o "sale" de la ventana (`windowGainedFocus` / `windowLostFocus`), permitiendo implementar protocolos de seguridad o pausa automática.
+
 
 ---
 
@@ -93,7 +111,14 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
     * **Ejecución garantizada:** El bucle `do-while` ejecuta su bloque al menos una vez antes de evaluar la condición en la base. El `while` tradicional podría no ejecutarse nunca.
     * **Iteraciones deterministas:** El bucle `for` es la elección lógica cuando el rango y el número exacto de ejecuciones a realizar son conocidos desde el principio.
 
-### 🖼️ Módulo 3: Swing, Gráficos y Optimización (Clases 53-64)
+### 🧮 Módulo 3: Arrays y Estructuras Estáticas (Certificado 100%) (Clases 23-26)
+* **Control de Límites:** Dominio de la propiedad `.length`. Comprendo que cualquier acceso fuera del rango [0, length-1] dispara una `IndexOutOfBoundsException` (una violación crítica de arquitectura).
+* **Stack vs. Heap (Referencias):** Entiendo que la variable del array es un **Reference Type** (dirección de memoria en el Stack) y el contenido real vive en el Heap.
+* **Prevención de NullPointerException:** He validado que instanciar el contenedor (el "estacionamiento") no instanciar de forma automática los objetos que contiene. Se requiere un bucle de instanciación específico.
+*(Calificación: 100% - APROBADO Y SELLADO)*
+
+
+### 🖼️ Módulo 4: Swing, Gráficos y Optimización (Clases 53-64)
 * **Encapsulamiento de Lógica:** Implementación de **Clases Internas Locales** dentro de métodos para blindar procesos que no deben ser accesibles desde fuera del alcance del método (ej. Auditoría en `Empleado.java`) [4, 16].
 * **Evolución Gráfica (Graphics2D):** Dominio del **Casting de Objetos** de `Graphics` a `Graphics2D` para acceder a la API de geometría avanzada (`java.awt.geom`) y precisión con tipos `double` [17, 18].
 * **Integridad y Excepciones:** Aplicación obligatoria de bloques **try-catch** al usar `ImageIO.read()`. Comprendo que sin este manejo, una `IOException` (archivo faltante) detendría la ejecución del hilo de renderizado [19, 20].
@@ -101,14 +126,17 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
     * **PaintComponent:** Cargar recursos aquí es como un `SELECT` dentro de un cursor infinito, lo que satura la CPU innecesariamente [17, 21].
 * **Mosaicos Eficientes:** Uso de `copyArea()` con incrementos de bucle iguales al ancho de la imagen (`i += width`) para evitar redundancia de procesamiento píxel a píxel [19, 22].
 
-### ⚡ Módulo 4: Eventos y Arquitectura Reactiva (Clases 65-70)
+### ⚡ Módulo 5: Eventos y Arquitectura Reactiva (Clases 65-70)
 * **Delegación:** ✅ Completado. Comprensión del trípode Fuente-Evento-Oyente.
 * **Auditoría de Estados:** Uso de `WindowStateListener` y constantes de `Frame` (ej. `ICONIFIED`) para registrar comportamientos del sistema.
 * **Acceso VIP:** Las clases internas permiten al oyente alterar el back-end gráfico sin exponer variables públicas.
 
-### 🎯 Módulo 5: Periféricos y Retos Boss (Clases 71-73)
+### 🎯 Módulo 6: Periféricos y Retos Boss (Clases 71-76)
 * **Limpieza Estructural:** Entiendo por qué extender de Clases Adaptadoras (`KeyAdapter`, `MouseAdapter`) es superior a implementar interfaces completas cuando solo necesito auditar un evento.
 * **Sincronización Híbrida:** Capacidad validada para construir sistemas reactivos complejos leyendo múltiples estados de periféricos (Ratón + Teclado) simultáneamente.
+* **Gestión de Foco:** Dominio de la delegación de eventos. Comprendo la importancia de no instanciar componentes ni oyentes en el `paintComponent` para preservar la integridad de la memoria.
+* **Protocolos de Seguridad:** Uso de `WindowFocusListener` para proteger la privacidad de los datos al detectar la pérdida de foco global de la aplicación.
+
 
 ---
 
@@ -131,14 +159,18 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Clase 65-67:** Selector interactivo de Entornos y Título Dinámico (`repaint()`).
 - [x] **Clase 68-70:** Auditoría de seguridad con `WindowStateListener` y optimización de código con `WindowAdapter`.
 - [x] **Clase 71-73:** Modo Administrador (Teclado) y Rastreador de Coordenadas (Ratón) mediante Adaptadores.
-- [x] **Reto Boss Módulo 5:** Sistema Anti-AFK con lógica coordinada de periféricos, variables de estado y geo-fencing.
+- [x] **Reto Boss Módulo 8:** Sistema Anti-AFK con lógica coordinada de periféricos, variables de estado y geo-fencing.
+- [x] **Clase 74-76:** Terminal de Registro Corporativo (`MarcoRegistro.java`) con validación de focos en tiempo real, `getSource()` y protocolos de seguridad de ventana.
 
 ---
 
 ## Progreso
 - [x] **Módulo 1:** Fundamentos, Sintaxis y Memoria (Clases 4-13)
 - [x] **Módulo 2:** Control de Flujo e I/O (Examen 95% completado)
-- [x] **Módulo 3:** Cimientos Swing, Gráficos y Recursos (Clases 53-64)
-- [x] **Módulo 4:** Eventos I - Botones y Ventanas (Clases 65-70)
-- [x] **Módulo 5:** Eventos II - Teclado y Ratón (Clases 71-73 y Retos completados)
-- [ ] **Módulo 6:** Eventos de Foco y Múltiples Fuentes (Siguiente: Clase 74+)
+- [x] **Módulo 3:** Manejo de Estructuras Indexadas (Clases 23-26) - **APROBADO**
+- [x] **Módulo 4:** Fundamentos de POO (Clases 27-39) - **CERTIFICADO**
+- [ ] **Módulo 5:** POO Avanzada e Interfaces (Clases 40-52) - **PENDIENTE EXAMEN**
+- [x] **Módulo 6:** Cimientos Swing, Gráficos y Recursos (Clases 53-64)
+- [x] **Módulo 7:** Eventos I - Botones y Ventanas (Clases 65-70)
+- [x] **Módulo 8:** Eventos II - Teclado y Ratón (Clases 71-73 y Retos completados)
+- [x] **Módulo 9:** Eventos III - Foco y Múltiples Fuentes (Clases 74-76) - **APROBADO**
