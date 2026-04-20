@@ -117,8 +117,17 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 * **Prevención de NullPointerException:** He validado que instanciar el contenedor (el "estacionamiento") no instanciar de forma automática los objetos que contiene. Se requiere un bucle de instanciación específico.
 *(Calificación: 100% - APROBADO Y SELLADO)*
 
+### 🏗️ Módulo 4: Fundamentos de POO (Clases 27-39)
+* **Status Auditoría:** ✅ Validado el dominio del control de memoria (Stack/Heap) y evaluación del Paso por Valor en Objetos.
+* **Vacío Técnico Detectado:** Riesgo en la inicialización de estado por exceso de uso de "Setters". Se debe priorizar el **Encadenamiento de Constructores** y el uso de constructores con parámetros obligatorios.
 
-### 🖼️ Módulo 4: Swing, Gráficos y Optimización (Clases 53-64)
+### 🧬 Módulo 5: POO Avanzada e Interfaces (Pendiente de Examen Práctico) (Clases 40-54)
+* **Status Auditoría:** Conceptos teóricos validados; examen de código pendiente.
+* **Polimorfismo:** Entiendo que el objeto (su tipo en el Heap) determina *qué* código se ejecuta realmente en tiempo de ejecución, mientras que la variable (su tipo en el Stack) dicta *qué* métodos son visibles o permitidos por el compilador.
+* **Interfaces y Diamante de la Muerte:** Comprendo que las interfaces evitan colisiones de métodos entre herencias y permiten que las clases adopten "múltiples roles".
+* **Vacío Técnico Detectado:** Riesgo documentado en la falta de uso de `super()` como la primera instrucción en el constructor, lo que podría hacer que clases "hijas" intenten nacer antes de que los campos de sus clases "padre" se inicialicen en la memoria.
+
+### 🖼️ Módulo 6: Swing, Gráficos y Optimización (Clases 53-64)
 * **Encapsulamiento de Lógica:** Implementación de **Clases Internas Locales** dentro de métodos para blindar procesos que no deben ser accesibles desde fuera del alcance del método (ej. Auditoría en `Empleado.java`) [4, 16].
 * **Evolución Gráfica (Graphics2D):** Dominio del **Casting de Objetos** de `Graphics` a `Graphics2D` para acceder a la API de geometría avanzada (`java.awt.geom`) y precisión con tipos `double` [17, 18].
 * **Integridad y Excepciones:** Aplicación obligatoria de bloques **try-catch** al usar `ImageIO.read()`. Comprendo que sin este manejo, una `IOException` (archivo faltante) detendría la ejecución del hilo de renderizado [19, 20].
@@ -126,15 +135,15 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
     * **PaintComponent:** Cargar recursos aquí es como un `SELECT` dentro de un cursor infinito, lo que satura la CPU innecesariamente [17, 21].
 * **Mosaicos Eficientes:** Uso de `copyArea()` con incrementos de bucle iguales al ancho de la imagen (`i += width`) para evitar redundancia de procesamiento píxel a píxel [19, 22].
 
-### ⚡ Módulo 5: Eventos y Arquitectura Reactiva (Clases 65-70)
+### ⚡ Módulo 7: Eventos y Arquitectura Reactiva (Clases 65-70)
 * **Delegación:** ✅ Completado. Comprensión del trípode Fuente-Evento-Oyente.
 * **Auditoría de Estados:** Uso de `WindowStateListener` y constantes de `Frame` (ej. `ICONIFIED`) para registrar comportamientos del sistema.
 * **Acceso VIP:** Las clases internas permiten al oyente alterar el back-end gráfico sin exponer variables públicas.
 
-### 🎯 Módulo 6: Periféricos y Retos Boss (Clases 71-76)
+### 🎯 Módulos 8 y 9: Periféricos y Foco (Clases 71-76)
 * **Limpieza Estructural:** Entiendo por qué extender de Clases Adaptadoras (`KeyAdapter`, `MouseAdapter`) es superior a implementar interfaces completas cuando solo necesito auditar un evento.
 * **Sincronización Híbrida:** Capacidad validada para construir sistemas reactivos complejos leyendo múltiples estados de periféricos (Ratón + Teclado) simultáneamente.
-* **Gestión de Foco:** Dominio de la delegación de eventos. Comprendo la importancia de no instanciar componentes ni oyentes en el `paintComponent` para preservar la integridad de la memoria.
+* **Gestión de Foco:** Dominio de la delegación de eventos y uso de métodos de enrutamiento (`getSource()`). Comprendo la importancia de no instanciar componentes ni oyentes en el `paintComponent` para preservar la integridad de la memoria.
 * **Protocolos de Seguridad:** Uso de `WindowFocusListener` para proteger la privacidad de los datos al detectar la pérdida de foco global de la aplicación.
 
 

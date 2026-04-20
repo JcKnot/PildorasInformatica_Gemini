@@ -1,18 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
+
 package practicaCursoPildorasInformatica.grafico;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
+import javax.swing.Action;
+import static javax.swing.Action.NAME;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
  *
- * @author slipk
+ * @author Jose Castillo
  */
 public class PruebaAcciones {
     
@@ -28,7 +31,7 @@ class MarcoAccion extends JFrame{
     
     public MarcoAccion(){
         setTitle("Prueba Acciones");
-        setBounds(600, 300, 600, 300);
+        setBounds(600, 300, 700, 350);
         PanelAccion lamina = new PanelAccion();
         add(lamina);
     }
@@ -36,28 +39,43 @@ class MarcoAccion extends JFrame{
 
 class PanelAccion extends JPanel{
     
-    public PanelAccion(){        
-        JButton btnAmarillo = new JButton("Amarillo");
-        JButton btnAzul = new JButton("Azul");
-        JButton btnRojo = new JButton("Rojo");
-        
-        add(btnAmarillo);
-        add(btnAzul);
-        add(btnRojo);
-        
-    }
-    
-}
+    public PanelAccion(){       
+        AccionColor accionAmarillo = new AccionColor("Amarillo", new ImageIcon("src/practicaCursoPildorasInformatica/grafico/clipboard-inventory.png")
+                                                    ,Color.YELLOW);
+        AccionColor accionAzul = new AccionColor("Azul", new ImageIcon("src/practicaCursoPildorasInformatica/grafico/clipboard-tasks.png")
+                                                    ,Color.BLUE);
+        AccionColor accionRojo = new AccionColor("Rojo", new ImageIcon("src/practicaCursoPildorasInformatica/grafico/clipboardplan.png")
+                                                    ,Color.RED);
+//        JButton btnAmarillo = new JButton(accionAmarillo);
+//        JButton btnAzul = new JButton(accionAzul);
+//        JButton btnVerde = new JButton(accionVerde);         
+        add(new JButton(accionAmarillo));
+        add(new JButton(accionAzul));
+        add(new JButton(accionRojo));
 
-class AccionColor extends AbstractAction{
-    
-    public AccionColor(){
+//        JButton btnAmarillo = new JButton("Amarillo");
+//        JButton btnAzul = new JButton("Azul");
+//        JButton btnRojo = new JButton("Rojo");        
+//        add(btnAmarillo);
+//        add(btnAzul);
+//        add(btnRojo);
         
     }
+    
+    private class AccionColor extends AbstractAction{
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
+        public AccionColor(String nombre, Icon icono, Color colorBoton){
+            putValue(Action.NAME, nombre);
+            putValue(Action.SMALL_ICON, icono);
+            putValue(Action.SHORT_DESCRIPTION, "Poner la lamina de color " + nombre);
+            putValue("colorBoton", colorBoton);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Color c = (Color) getValue("colorBoton");
+            setBackground(c);
+        }
+
     }
-    
 }
