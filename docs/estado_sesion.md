@@ -9,22 +9,22 @@ Si estás leyendo esto recién iniciada la conversación, por favor asimila este
 
 ## Estado Actual del Proyecto
 * **Proyecto:** `PildorasInformatica_Gemini` (Java en entorno NetBeans / Windows).
-* **Diario de Aprendizaje:** El repositorio cuenta con el archivo `docs/aprendizaje.md` que detalla minuciosamente el avance del usuario en el curso de Java de "Píldoras Informáticas". 
-* **Progreso del Curso:** El usuario ha completado exitosamente hasta los módulos de Eventos de Periféricos. Recientemente completó las **Clases 74-76 (Eventos de Foco y Múltiples Fuentes)** mediante la creación de un sistema de registro corporativo (`MarcoRegistro.java`) funcional con validación y protocolos de seguridad de ventana.
-* **Auditoría POO:** Se integró la auditoría de NotebookLM para los **Fundamentos de POO (Clases 27-39)**, certificando el entendimiento de memoria (Stack/Heap) y detectando un área de mejora en el uso de Constructores con Parámetros vs Setters.
+* **Diario de Aprendizaje:** El repositorio cuenta con el archivo `docs/aprendizaje.md` que detalla minuciosamente el avance del usuario.
+* **Progreso del Curso:** El usuario ha completado exitosamente hasta la **Clase 76**. Se ha implementado un sistema de registro (`MarcoRegistro.java`) con lógica de focos y seguridad.
+* **Auditoría POO Completa:** Se han integrado en `aprendizaje.md` los informes de **Fundamentos de POO (27-39)** y **POO Avanzada e Interfaces (40-54)**. La teoría (Polimorfismo, Interfaces, Memoria) está validada, pero existen "vacíos de arquitectura" pendientes de práctica en código.
 
 ## Temas Recientes Hablados
-* Hemos establecido la metodología de trabajo: El usuario utilizará este asistente integrado en su entorno de desarrollo como "Pair Programmer" primario, **PERO EN MODO TUTOR**.
-* Anteriormente, se resolvieron problemas de compatibilidad de sintaxis de Java modernas y dudas sobre la integración de la IA en NetBeans.
-* **Arquitectura Interna:** Tratamos el concepto de inicialización de componentes (dentro del constructor) frente a los métodos de dibujo continuo (`paintComponent`) para evitar saturación de memoria.
-* **Refactorización Clean Code:** Aplicamos métodos auxiliares de delegación para reducir la complejidad ciclomática (`if` anidados) en métodos de eventos.
+* **Gestión de Memoria:** Sincronización sobre Stack vs Heap.
+* **Deuda Técnica Identificada:** Necesidad de practicar el **Encadenamiento de Constructores (`super()`)** y la inicialización obligatoria de estado (evitar dependencia absoluta de Setters).
+* **Metodología:** El asistente funciona en **Modo Tutor Socrático**, guiando paso a paso sin dar la solución directa.
 
 ## 🛑 Reglas Estrictas de Interacción (Modo Tutor Activo)
 **¡IMPORTANTE PARA LA IA QUE LEA ESTO!** 
 El usuario está aquí para **APRENDER A PROGRAMAR**, no para que le escriban el código. Tu comportamiento debe ser el siguiente:
-1. **Cero código resuelto por defecto:** NO debes escribir ni modificar el proyecto para resolverle los ejercicios a menos que el usuario lo solicite explícitamente (ej: "escribe el código" o "dame la solución exacta").
+1. **Cero código resuelto por defecto:** NO debes escribir ni modificar el proyecto para resolverle los ejercicios a menos que el usuario lo solicite explícitamente.
 2. **Método Socrático:** Si se encuentra un bug o bloqueo, da pistas, señala la línea sospechosa o explica la teoría que falla, pero fomenta que el usuario teclee la solución.
-3. **Ejemplos análogos:** Para explicar nuevas funcionalidades de Java, muéstrale sintaxis usando ejemplos aislados y genéricos (ej. objetos genéricos como "Coche" o "Puerta"). El usuario es quien debe entender el ejemplo y aplicarlo a la lógica real de su proyecto en NetBeans.
+3. **Sincronización:** Cada hito de aprendizaje debe registrarse en `aprendizaje.md` y este archivo de sesión.
 
 ## Siguiente Acción Pendiente (Next Action)
-* Comenzar con la **Clase 77 (Eventos de Estado de Ventana)** o realizar una práctica puntual sobre el uso de Constructores con Parámetros para fortalecer los Cimientos de POO.
+* El usuario regresará tras ver las **Clases 77 y siguientes**.
+* **Reto Estratégico:** Ejecutar un **Desafío de Integración** que combine la nueva lógica de Window State Events con la refactorización de las clases de Backend (`Empleado`, `Jefe`) para cerrar definitivamente los vacíos de POO (Constructores y `super()`).

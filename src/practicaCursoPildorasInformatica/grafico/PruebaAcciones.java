@@ -75,6 +75,7 @@ class PanelAccion extends JPanel{
         public void actionPerformed(ActionEvent e) {
             Color c = (Color) getValue("colorBoton");
             setBackground(c);
+            System.out.println("Nombre: " + getValue(Action.NAME));
         }
 
     }
