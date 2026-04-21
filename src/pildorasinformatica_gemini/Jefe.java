@@ -10,7 +10,11 @@ public class Jefe extends Empleado {
     private String departamento;
     
     public Jefe (String nombre, int edad){
-        super(nombre, edad);
+        super(nombre, edad, 0);
+    }
+    
+    public Jefe (String nombre, int edad, double sueldo){
+        super(nombre, edad, sueldo);
     }
     
     public void setDepartamento(String departamento){

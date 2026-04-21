@@ -15,6 +15,11 @@ public class Empleado extends Persona implements Trabajador {
         super(nombre, edad);
     }
     
+    public Empleado(String nombre, int edad, double sueldo) {
+        this(nombre, edad);
+        this.sueldo = sueldo;
+    }
+    
     public void setSueldo(double sueldo){
         if(sueldo < Integer.parseInt(EnumVariables.SUELDO_MINIMO.getValor())){
             System.out.println("Erro el sueldo no puede ser menor a "+EnumVariables.SUELDO_MINIMO.getValor());

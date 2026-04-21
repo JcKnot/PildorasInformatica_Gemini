@@ -14,6 +14,9 @@ public enum EnumVariables {
     SUELDO_MINIMO("1000"),
     IMAGEN_USUARIO("src/pildorasinformatica_gemini/userimage.png"),
     FONDO_CABECERA("src/pildorasinformatica_gemini/malla2.png"),
+    ICONO_AMARILLO("src/pildorasinformatica_gemini/clipboard-inventory.png"),
+    ICONO_AZUL("src/pildorasinformatica_gemini/clipboard-tasks.png"),
+    ICONO_ROJO("src/pildorasinformatica_gemini/clipboardplan.png"),
     VENTANA_REDIMENSIONABLE(true);
 
     // 2. El atributo (como la columna de una tabla). Lo ponemos 'final' porque es una constante.

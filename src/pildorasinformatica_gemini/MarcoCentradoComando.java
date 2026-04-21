@@ -1,0 +1,62 @@
+
+package pildorasinformatica_gemini;
+
+import java.awt.Color;
+import javax.swing.ActionMap;
+import javax.swing.ImageIcon;
+import javax.swing.InputMap;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+
+/**
+ *
+ * @author Jose Castillo
+ */
+public class MarcoCentradoComando extends JFrame {
+    
+    public static void main(String[] args) {
+        MarcoCentradoComando marco = new MarcoCentradoComando();
+        marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        marco.setVisible(true);
+    }
+    
+    public MarcoCentradoComando(){
+        setTitle("Comando");
+        setBounds(600, 300, 600, 300);
+        Lamina lamina = new Lamina();
+        add(lamina);
+    }
+    
+    class Lamina extends JPanel{
+        
+        public Lamina(){
+            AccionColor amarillo = new AccionColor("Amarillo",new ImageIcon(EnumVariables.ICONO_AMARILLO.getValor()), Color.YELLOW, this);
+            AccionColor azul = new AccionColor("Azul",new ImageIcon(EnumVariables.ICONO_AZUL.getValor()), Color.BLUE, this);
+            AccionColor rojo = new AccionColor("Rojo", new ImageIcon(EnumVariables.ICONO_ROJO.getValor()), Color.RED, this);
+
+            JButton botonAmarillo = new JButton(amarillo);
+            JButton botonAzul = new JButton(azul);
+            JButton botonRojo = new JButton(rojo);
+
+            add(botonAmarillo);
+            add(botonAzul);
+            add(botonRojo);
+
+            InputMap mapa = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+            KeyStroke teclaAmarillo = KeyStroke.getKeyStroke("ctrl A");
+            KeyStroke teclaAzul = KeyStroke.getKeyStroke("ctrl B");
+            KeyStroke teclaRojo = KeyStroke.getKeyStroke("ctrl R");
+            mapa.put(teclaAmarillo, "fondoAmarillo");
+            mapa.put(teclaAzul, "fondoAzul");
+            mapa.put(teclaRojo, "fondoRojo");
+            ActionMap mapaAccion = getActionMap();
+            mapaAccion.put("fondoAmarillo", amarillo);
+            mapaAccion.put("fondoAzul", azul);
+            mapaAccion.put("fondoRojo", rojo);
+        }
+    }
+    
+}

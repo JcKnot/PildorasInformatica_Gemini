@@ -7,11 +7,15 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import static javax.swing.Action.NAME;
+import javax.swing.ActionMap;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -59,6 +63,18 @@ class PanelAccion extends JPanel{
 //        add(btnAmarillo);
 //        add(btnAzul);
 //        add(btnRojo);
+        
+        InputMap mapa = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        KeyStroke teclaAmarillo = KeyStroke.getKeyStroke("ctrl A");
+        KeyStroke teclaAzul = KeyStroke.getKeyStroke("ctrl B");
+        KeyStroke teclaRojo = KeyStroke.getKeyStroke("ctrl R");
+        mapa.put(teclaAmarillo, "fondoAmarillo");
+        mapa.put(teclaAzul, "fondoAzul");
+        mapa.put(teclaRojo, "fondoRojo");
+        ActionMap mapaAccion = getActionMap();
+        mapaAccion.put("fondoAmarillo", accionAmarillo);
+        mapaAccion.put("fondoAzul", accionAzul);
+        mapaAccion.put("fondoRojo", accionRojo);
         
     }
     

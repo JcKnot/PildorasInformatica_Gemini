@@ -65,6 +65,14 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 - **Identificación de Origen (`getSource()`):** Técnica para centralizar la lógica. Un solo objeto oyente puede vigilar múltiples componentes; usamos `e.getSource() == variable` para determinar qué campo disparó el evento.
 - **Foco de Ventana (`WindowFocusListener`):** Supervisión a nivel de aplicación. Detecta cuándo el usuario "entra" o "sale" de la ventana (`windowGainedFocus` / `windowLostFocus`), permitiendo implementar protocolos de seguridad o pausa automática.
 
+### 🛰️ Módulo 9: Arquitectura de Eventos y Patrones de Difusión (Clases 77 - 80)
+- **Interfaz `Action` y `AbstractAction`:** Evolución profesional de los oyentes. Permite encapsular la lógica (cambio de color, borrado) junto con sus atributos (nombre, icono, tooltip) en un solo objeto.
+- **Múltiples Fuentes (Binding):** Técnica para que un botón y un atajo de teclado (`KeyStroke`) disparen la misma acción sin duplicar código.
+- **Estructura de Mapas Swing:** 
+    - `InputMap`: Relaciona la entrada física (tecla) con un ID simbólico.
+    - `ActionMap`: Relaciona ese ID simbólico con el objeto `Action` real.
+- **Difusión (Single Source -> Multiple Listeners):** Arquitectura donde un solo componente (ej: Botón "Cerrar Todo" o "Alerta General") notifica a una colección de objetos independientes para que reaccionen simultáneamente.
+
 
 ---
 
@@ -145,6 +153,8 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 * **Sincronización Híbrida:** Capacidad validada para construir sistemas reactivos complejos leyendo múltiples estados de periféricos (Ratón + Teclado) simultáneamente.
 * **Gestión de Foco:** Dominio de la delegación de eventos y uso de métodos de enrutamiento (`getSource()`). Comprendo la importancia de no instanciar componentes ni oyentes en el `paintComponent` para preservar la integridad de la memoria.
 * **Protocolos de Seguridad:** Uso de `WindowFocusListener` para proteger la privacidad de los datos al detectar la pérdida de foco global de la aplicación.
+* **Múltiples Fuentes y Acciones:** Capacidad para centralizar lógica interactiva mediante `AbstractAction`, abstrayendo la fuente (Botón vs Teclado) del proceso.
+* **Patrón de Difusión:** Implementación de sistemas de notificación masiva donde un emisor (`JButton`) controla múltiples receptores (`JFrame.dispose()`).
 
 
 ---
@@ -170,6 +180,8 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Clase 71-73:** Modo Administrador (Teclado) y Rastreador de Coordenadas (Ratón) mediante Adaptadores.
 - [x] **Reto Boss Módulo 8:** Sistema Anti-AFK con lógica coordinada de periféricos, variables de estado y geo-fencing.
 - [x] **Clase 74-76:** Terminal de Registro Corporativo (`MarcoRegistro.java`) con validación de focos en tiempo real, `getSource()` y protocolos de seguridad de ventana.
+- [x] **Refactorización POO Senior:** Implementación de encadenamiento de constructores (`this()`) y uso correcto de `super()` en jerarquías `Empleado/Jefe`.
+- [ ] **Reto Broadcast Corporativo (Clases 77-80):** Sistema de alertas globales y gestión de ventanas emergentes mediante `Action` e `InputMap`.
 
 ---
 
@@ -183,3 +195,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 7:** Eventos I - Botones y Ventanas (Clases 65-70)
 - [x] **Módulo 8:** Eventos II - Teclado y Ratón (Clases 71-73 y Retos completados)
 - [x] **Módulo 9:** Eventos III - Foco y Múltiples Fuentes (Clases 74-76) - **APROBADO**
+- [/] **Módulo 10:** Arquitectura de Difusión y Acciones (Clases 77-80) - **EN CURSO**

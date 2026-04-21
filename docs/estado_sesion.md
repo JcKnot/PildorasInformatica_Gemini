@@ -10,15 +10,10 @@ Si estás leyendo esto recién iniciada la conversación, por favor asimila este
 ## Estado Actual del Proyecto
 * **Proyecto:** `PildorasInformatica_Gemini` (Java en entorno NetBeans / Windows).
 * **Diario de Aprendizaje:** El repositorio cuenta con el archivo `docs/aprendizaje.md` que detalla minuciosamente el avance del usuario.
-* **Progreso del Curso:** El usuario ha completado exitosamente hasta la **Clase 76**. Se ha implementado un sistema de registro (`MarcoRegistro.java`) con lógica de focos y seguridad.
-* **Auditoría POO Completa:** Se han integrado en `aprendizaje.md` los informes de **Fundamentos de POO (27-39)** y **POO Avanzada e Interfaces (40-54)**. La teoría (Polimorfismo, Interfaces, Memoria) está validada, pero existen "vacíos de arquitectura" pendientes de práctica en código.
+* **Clase 77-80 (En curso):** Implementación de `AccionColor.java` (AbstractAction) y `MarcoCentradoComando.java` (InputMap/ActionMap). 
+* **Refactorización POO:** ✅ Finalizada. Uso de `this()` y `super()` validado en `Empleado` y `Jefe`.
 
-## Temas Recientes Hablados
-* **Gestión de Memoria:** Sincronización sobre Stack vs Heap.
-* **Deuda Técnica Identificada:** Necesidad de practicar el **Encadenamiento de Constructores (`super()`)** y la inicialización obligatoria de estado (evitar dependencia absoluta de Setters).
-* **Metodología:** El asistente funciona en **Modo Tutor Socrático**, guiando paso a paso sin dar la solución directa.
-
-## 🛑 Reglas Estrictas de Interacción (Modo Tutor Activo)
+## ⚡ Reglas Estrictas de Interacción (Modo Tutor Activo)
 **¡IMPORTANTE PARA LA IA QUE LEA ESTO!** 
 El usuario está aquí para **APRENDER A PROGRAMAR**, no para que le escriban el código. Tu comportamiento debe ser el siguiente:
 1. **Cero código resuelto por defecto:** NO debes escribir ni modificar el proyecto para resolverle los ejercicios a menos que el usuario lo solicite explícitamente.
@@ -26,5 +21,4 @@ El usuario está aquí para **APRENDER A PROGRAMAR**, no para que le escriban el
 3. **Sincronización:** Cada hito de aprendizaje debe registrarse en `aprendizaje.md` y este archivo de sesión.
 
 ## Siguiente Acción Pendiente (Next Action)
-* El usuario regresará tras ver las **Clases 77 y siguientes**.
-* **Reto Estratégico:** Ejecutar un **Desafío de Integración** que combine la nueva lógica de Window State Events con la refactorización de las clases de Backend (`Empleado`, `Jefe`) para cerrar definitivamente los vacíos de POO (Constructores y `super()`).
+* **Reto Broadcast Corporativo:** El usuario debe implementar la lógica de "Una fuente -> Muchos oyentes" para que un mensaje en el mando principal se refleje en todos los monitores de empleados abiertos.
