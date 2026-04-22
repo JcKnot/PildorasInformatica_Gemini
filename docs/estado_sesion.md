@@ -10,7 +10,7 @@ Si estás leyendo esto recién iniciada la conversación, por favor asimila este
 ## Estado Actual del Proyecto
 * **Proyecto:** `PildorasInformatica_Gemini` (Java en entorno NetBeans / Windows).
 * **Diario de Aprendizaje:** El repositorio cuenta con el archivo `docs/aprendizaje.md` que detalla minuciosamente el avance del usuario.
-* **Clase 77-80 (En curso):** Implementación de `AccionColor.java` (AbstractAction) y `MarcoCentradoComando.java` (InputMap/ActionMap). 
+* **Clase 77-80:** ✅ Finalizada. Implementación de `AccionColor.java` y `MarcoCentradoComando.java`. Dominio del Patrón Observador para resolver el secuestro de eventos del teclado.
 * **Refactorización POO:** ✅ Finalizada. Uso de `this()` y `super()` validado en `Empleado` y `Jefe`.
 
 ## ⚡ Reglas Estrictas de Interacción (Modo Tutor Activo)
@@ -21,4 +21,4 @@ El usuario está aquí para **APRENDER A PROGRAMAR**, no para que le escriban el
 3. **Sincronización:** Cada hito de aprendizaje debe registrarse en `aprendizaje.md` y este archivo de sesión.
 
 ## Siguiente Acción Pendiente (Next Action)
-* **Reto Broadcast Corporativo:** El usuario debe implementar la lógica de "Una fuente -> Muchos oyentes" para que un mensaje en el mando principal se refleje en todos los monitores de empleados abiertos.
+* El usuario regresará para iniciar la **Clase 81** y el siguiente módulo del curso de Java de Píldoras Informáticas.

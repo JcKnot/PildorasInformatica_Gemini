@@ -2,13 +2,20 @@
 package pildorasinformatica_gemini;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.ActionMap;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 /**
@@ -30,7 +37,11 @@ public class MarcoCentradoComando extends JFrame {
         add(lamina);
     }
     
-    class Lamina extends JPanel{
+    class Lamina extends JPanel implements ActionListener{
+        private JButton botonComunicado;
+        private JButton btnMonitor;
+        private JTextField cajaMensaje;
+        private ArrayList<TerminalEmpleado> terminalesAbiertas = new ArrayList();
         
         public Lamina(){
             AccionColor amarillo = new AccionColor("Amarillo",new ImageIcon(EnumVariables.ICONO_AMARILLO.getValor()), Color.YELLOW, this);
@@ -56,7 +67,57 @@ public class MarcoCentradoComando extends JFrame {
             mapaAccion.put("fondoAmarillo", amarillo);
             mapaAccion.put("fondoAzul", azul);
             mapaAccion.put("fondoRojo", rojo);
+            
+            
+            cajaMensaje = new JTextField(20);
+            AccionComunicado textCominicado = new AccionComunicado("Emitir Comunicado",null,"Envia Comunicado", Color.ORANGE,this,cajaMensaje,terminalesAbiertas);
+            InputMap mapaCaja = cajaMensaje.getInputMap(JComponent.WHEN_FOCUSED);
+            mapaCaja.put(KeyStroke.getKeyStroke("ENTER"), "enviar_comunicado");
+            ActionMap mapaAccionCaja = cajaMensaje.getActionMap();
+            mapaAccionCaja.put("enviar_comunicado", textCominicado);
+            add(cajaMensaje);
+            
+            botonComunicado = new JButton(textCominicado);
+            add(botonComunicado);            
+            
+            btnMonitor = new JButton("Nuevo Monitor");
+            btnMonitor.addActionListener(this);            
+            add(btnMonitor);
         }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            TerminalEmpleado newTerminal = new TerminalEmpleado(botonComunicado, cajaMensaje);
+            terminalesAbiertas.add(newTerminal);
+            newTerminal.setVisible(true);            
+        }
+    }
+    
+    class AccionComunicado extends AbstractAction{
+        private JPanel panel;
+        private JTextField comunicado;
+        private ArrayList<TerminalEmpleado> lista;
+        
+        public AccionComunicado(String nombre, Icon icono, String descrip, Color c, JPanel lamina, JTextField comunicado, ArrayList<TerminalEmpleado> list){
+            this.panel = lamina;
+            this.lista = list;
+            this.comunicado = comunicado;
+            putValue(Action.NAME, nombre);
+            putValue(Action.SMALL_ICON, icono);
+            putValue(Action.SHORT_DESCRIPTION, descrip);
+            putValue("color_fondo", c);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String mensaje = comunicado.getText();
+            System.out.println("Enviendo:" + mensaje);
+            
+            for (TerminalEmpleado t : lista){
+                t.recibirMensaje(mensaje);
+            }
+        }
+        
     }
     
 }

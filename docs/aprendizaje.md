@@ -181,7 +181,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Reto Boss Módulo 8:** Sistema Anti-AFK con lógica coordinada de periféricos, variables de estado y geo-fencing.
 - [x] **Clase 74-76:** Terminal de Registro Corporativo (`MarcoRegistro.java`) con validación de focos en tiempo real, `getSource()` y protocolos de seguridad de ventana.
 - [x] **Refactorización POO Senior:** Implementación de encadenamiento de constructores (`this()`) y uso correcto de `super()` en jerarquías `Empleado/Jefe`.
-- [ ] **Reto Broadcast Corporativo (Clases 77-80):** Sistema de alertas globales y gestión de ventanas emergentes mediante `Action` e `InputMap`.
+- [x] **Reto Broadcast Corporativo (Clases 77-80):** Sistema de alertas globales implementando el Patrón Observador con `Action` e `InputMap`, resolviendo el problema de "Cerebro Dividido" o secuestro de eventos.
 
 ---
 
@@ -195,4 +195,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 7:** Eventos I - Botones y Ventanas (Clases 65-70)
 - [x] **Módulo 8:** Eventos II - Teclado y Ratón (Clases 71-73 y Retos completados)
 - [x] **Módulo 9:** Eventos III - Foco y Múltiples Fuentes (Clases 74-76) - **APROBADO**
-- [/] **Módulo 10:** Arquitectura de Difusión y Acciones (Clases 77-80) - **EN CURSO**
+- [x] **Módulo 10:** Arquitectura de Difusión y Acciones (Clases 77-80) - **APROBADO**
