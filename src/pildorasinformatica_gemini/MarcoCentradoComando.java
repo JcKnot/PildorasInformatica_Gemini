@@ -21,32 +21,36 @@ import javax.swing.KeyStroke;
 /**
  *
  * @author Jose Castillo
+ * 
  */
 public class MarcoCentradoComando extends JFrame {
-    
+
     public static void main(String[] args) {
         MarcoCentradoComando marco = new MarcoCentradoComando();
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         marco.setVisible(true);
     }
-    
-    public MarcoCentradoComando(){
+
+    public MarcoCentradoComando() {
         setTitle("Comando");
         setBounds(600, 300, 600, 300);
         Lamina lamina = new Lamina();
         add(lamina);
     }
-    
-    class Lamina extends JPanel implements ActionListener{
+
+    class Lamina extends JPanel implements ActionListener {
         private JButton botonComunicado;
         private JButton btnMonitor;
         private JTextField cajaMensaje;
-        private ArrayList<TerminalEmpleado> terminalesAbiertas = new ArrayList();
-        
-        public Lamina(){
-            AccionColor amarillo = new AccionColor("Amarillo",new ImageIcon(EnumVariables.ICONO_AMARILLO.getValor()), Color.YELLOW, this);
-            AccionColor azul = new AccionColor("Azul",new ImageIcon(EnumVariables.ICONO_AZUL.getValor()), Color.BLUE, this);
-            AccionColor rojo = new AccionColor("Rojo", new ImageIcon(EnumVariables.ICONO_ROJO.getValor()), Color.RED, this);
+        private ArrayList<TerminalEmpleado> terminalesAbiertas = new ArrayList<>();
+
+        public Lamina() {
+            AccionColor amarillo = new AccionColor("Amarillo", new ImageIcon(EnumVariables.ICONO_AMARILLO.getValor()),
+                    Color.YELLOW, this);
+            AccionColor azul = new AccionColor("Azul", new ImageIcon(EnumVariables.ICONO_AZUL.getValor()), Color.BLUE,
+                    this);
+            AccionColor rojo = new AccionColor("Rojo", new ImageIcon(EnumVariables.ICONO_ROJO.getValor()), Color.RED,
+                    this);
 
             JButton botonAmarillo = new JButton(amarillo);
             JButton botonAzul = new JButton(azul);
@@ -67,21 +71,21 @@ public class MarcoCentradoComando extends JFrame {
             mapaAccion.put("fondoAmarillo", amarillo);
             mapaAccion.put("fondoAzul", azul);
             mapaAccion.put("fondoRojo", rojo);
-            
-            
+
             cajaMensaje = new JTextField(20);
-            AccionComunicado textCominicado = new AccionComunicado("Emitir Comunicado",null,"Envia Comunicado", Color.ORANGE,this,cajaMensaje,terminalesAbiertas);
+            AccionComunicado textCominicado = new AccionComunicado("Emitir Comunicado", null, "Envia Comunicado",
+                    Color.ORANGE, cajaMensaje, terminalesAbiertas);
             InputMap mapaCaja = cajaMensaje.getInputMap(JComponent.WHEN_FOCUSED);
             mapaCaja.put(KeyStroke.getKeyStroke("ENTER"), "enviar_comunicado");
             ActionMap mapaAccionCaja = cajaMensaje.getActionMap();
             mapaAccionCaja.put("enviar_comunicado", textCominicado);
             add(cajaMensaje);
-            
+
             botonComunicado = new JButton(textCominicado);
-            add(botonComunicado);            
-            
+            add(botonComunicado);
+
             btnMonitor = new JButton("Nuevo Monitor");
-            btnMonitor.addActionListener(this);            
+            btnMonitor.addActionListener(this);
             add(btnMonitor);
         }
 
@@ -89,17 +93,16 @@ public class MarcoCentradoComando extends JFrame {
         public void actionPerformed(ActionEvent e) {
             TerminalEmpleado newTerminal = new TerminalEmpleado(botonComunicado, cajaMensaje);
             terminalesAbiertas.add(newTerminal);
-            newTerminal.setVisible(true);            
+            newTerminal.setVisible(true);
         }
     }
-    
-    class AccionComunicado extends AbstractAction{
-        private JPanel panel;
+
+    class AccionComunicado extends AbstractAction {
         private JTextField comunicado;
         private ArrayList<TerminalEmpleado> lista;
-        
-        public AccionComunicado(String nombre, Icon icono, String descrip, Color c, JPanel lamina, JTextField comunicado, ArrayList<TerminalEmpleado> list){
-            this.panel = lamina;
+
+        public AccionComunicado(String nombre, Icon icono, String descrip, Color c,
+                JTextField comunicado, ArrayList<TerminalEmpleado> list) {
             this.lista = list;
             this.comunicado = comunicado;
             putValue(Action.NAME, nombre);
@@ -112,12 +115,12 @@ public class MarcoCentradoComando extends JFrame {
         public void actionPerformed(ActionEvent e) {
             String mensaje = comunicado.getText();
             System.out.println("Enviendo:" + mensaje);
-            
-            for (TerminalEmpleado t : lista){
+
+            for (TerminalEmpleado t : lista) {
                 t.recibirMensaje(mensaje);
             }
         }
-        
+
     }
-    
+
 }

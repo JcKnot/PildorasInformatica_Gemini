@@ -16,15 +16,13 @@ import javax.swing.JTextField;
 public class TerminalEmpleado extends JFrame {
     private static int nroVentana;
     private JPanel miLamina;
-    private JTextField cajaCentral;
     private JLabel msj;
-        
-    public TerminalEmpleado(JButton boton, JTextField cajaTexto){
-        this.cajaCentral = cajaTexto;
+
+    public TerminalEmpleado(JButton boton, JTextField cajaTexto) {
         nroVentana++;
         msj = new JLabel(cajaTexto.getText());
         setTitle("Terminal " + nroVentana);
-        setBounds((200*nroVentana), (100*nroVentana), 300, 200);
+        setBounds((200 * nroVentana), (100 * nroVentana), 300, 200);
         miLamina = new Lamina();
         add(miLamina);
     }
@@ -37,12 +35,12 @@ public class TerminalEmpleado extends JFrame {
         miLamina.revalidate();
         miLamina.repaint();
     }
-    
-    class Lamina extends JPanel{
-        
-        public Lamina(){
-            
+
+    class Lamina extends JPanel {
+
+        public Lamina() {
+
         }
     }
-    
+
 }
