@@ -12,6 +12,6 @@ Instrucciones del flujo:
 
 2. Esperar la respuesta del usuario.
 
-3. Generar una analogía técnica para explicar el concepto y plantear un escenario de debate corto.
+3. Importante!! Generar una analogía técnica para explicar el concepto y plantear un escenario de debate corto.
 
 4. Formular 2 preguntas de validación teórica antes de pasar al código.

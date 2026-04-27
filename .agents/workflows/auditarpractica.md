@@ -4,7 +4,7 @@ description: Revisar el código que copiaste/adaptaste de la clase sin que te d�
 
 Objetivo: Revisar el código que copiaste/adaptaste de la clase sin que te dé las soluciones.
 
-Descripción: Escaneo de calidad y estándares.
+Descripción: Ejecuta la fase 2 del Bucle Pedagógico. Escaneo de calidad y estándares.
 
 Instrucciones del flujo:
 

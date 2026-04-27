@@ -4,7 +4,7 @@ description: Dejar constancia del progreso una vez que el código funciona.
 
 Objetivo: Dejar constancia del progreso una vez que el código funciona.
 
-Descripción: Automatiza la escritura en tu bitácora.
+Descripción: Ejecuta la fase 4 del Bucle Pedagógico. Automatiza la escritura en tu bitácora.
 
 Instrucciones del flujo:
 

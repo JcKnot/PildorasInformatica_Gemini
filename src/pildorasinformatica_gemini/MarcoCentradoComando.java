@@ -72,7 +72,7 @@ public class MarcoCentradoComando extends JFrame {
             mapaAccion.put("fondoAzul", azul);
             mapaAccion.put("fondoRojo", rojo);
 
-            cajaMensaje = new JTextField(20);
+            cajaMensaje = new JTextField("Esperando órdenes...",20);
             AccionComunicado textCominicado = new AccionComunicado("Emitir Comunicado", null, "Envia Comunicado",
                     Color.ORANGE, cajaMensaje, terminalesAbiertas);
             InputMap mapaCaja = cajaMensaje.getInputMap(JComponent.WHEN_FOCUSED);

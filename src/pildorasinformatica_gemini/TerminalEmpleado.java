@@ -1,6 +1,7 @@
 
 package pildorasinformatica_gemini;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,13 +25,14 @@ public class TerminalEmpleado extends JFrame {
         setTitle("Terminal " + nroVentana);
         setBounds((200 * nroVentana), (100 * nroVentana), 300, 200);
         miLamina = new Lamina();
+        miLamina.add(msj, BorderLayout.NORTH);
         add(miLamina);
     }
 
     public void recibirMensaje(String textoAlerta) {
         msj.setText(textoAlerta);
-        msj.setBounds(100, 50, 100, 50);
-        miLamina.add(msj);
+//        msj.setBounds(100, 50, 100, 50);
+//        miLamina.add(msj);
         miLamina.setBackground(Color.ORANGE);
         miLamina.revalidate();
         miLamina.repaint();
@@ -39,7 +41,9 @@ public class TerminalEmpleado extends JFrame {
     class Lamina extends JPanel {
 
         public Lamina() {
-
+            setLayout(new BorderLayout());
+            LaminaSeguridad panelSeguridad = new LaminaSeguridad();
+            add(panelSeguridad, BorderLayout.CENTER);
         }
     }
 

@@ -4,7 +4,7 @@ description: Crear un ejercicio a medida para poner a prueba lo aprendido.
 
 Objetivo: Crear un ejercicio a medida para poner a prueba lo aprendido.
 
-Descripción: Diseña el desafío para tu proyecto personal.
+Descripción: Ejecuta la fase 3 del Bucle Pedagógico. Diseña el desafío para tu proyecto personal.
 
 Instrucciones del flujo:
 
