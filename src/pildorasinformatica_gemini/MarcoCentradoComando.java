@@ -43,6 +43,7 @@ public class MarcoCentradoComando extends JFrame {
         private JButton btnMonitor;
         private JTextField cajaMensaje;
         private ArrayList<TerminalEmpleado> terminalesAbiertas = new ArrayList<>();
+        private JButton btnVerPerfiles;
 
         public Lamina() {
             AccionColor amarillo = new AccionColor("Amarillo", new ImageIcon(EnumVariables.ICONO_AMARILLO.getValor()),
@@ -87,6 +88,11 @@ public class MarcoCentradoComando extends JFrame {
             btnMonitor = new JButton("Nuevo Monitor");
             btnMonitor.addActionListener(this);
             add(btnMonitor);
+            
+            btnVerPerfiles = new JButton("Ver Perfiles");
+            AccionPerfiles verPerfiles = new AccionPerfiles();
+            btnVerPerfiles.addActionListener(verPerfiles);
+            add(btnVerPerfiles);
         }
 
         @Override
@@ -122,5 +128,16 @@ public class MarcoCentradoComando extends JFrame {
         }
 
     }
+    
+    class AccionPerfiles implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            MarcoPerfilEmpleado perfil = new MarcoPerfilEmpleado();
+            perfil.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            perfil.setVisible(true);
+        }
+        
+    } 
 
 }

@@ -73,6 +73,9 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
     - `ActionMap`: Relaciona ese ID simbólico con el objeto `Action` real.
 - **Difusión (Single Source -> Multiple Listeners):** Arquitectura donde un solo componente (ej: Botón "Cerrar Todo" o "Alerta General") notifica a una colección de objetos independientes para que reaccionen simultáneamente.
 
+### 🧩 Módulo 10: Gestores de Diseño y Layouts Avanzados (Clases 81 - 85)
+- **Anidamiento Espacial:** Dominio de la arquitectura visual estructurada. Comprendo cómo construir interfaces complejas dividiéndolas en sub-paneles independientes (`BorderLayout` raíz, `FlowLayout` cabecera, `GridLayout` centro).
+- **Anti-Patrón Erradicado:** Instanciar ventanas (`JFrame`) dentro de ventanas corrompe la UI. La solución es extraer la lógica a clases que hereden de `JPanel` e inyectarlas.
 
 ---
 
@@ -157,6 +160,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 * **Patrón de Difusión:** Implementación de sistemas de notificación masiva donde un emisor (`JButton`) controla múltiples receptores (`JFrame.dispose()`).
 
 
+
 ---
 
 ## Errores Comunes y Soluciones 💡
@@ -167,6 +171,8 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 | Ventana lenta o "congelada". | Bucle de mosaico `i++` o lecturas a disco en el Paint. | Cargar recursos en el constructor y usar incremento `i += width`. |
 | El botón no reacciona. | La fuente es "sorda". | Olvido de conectar el botón mediante `addActionListener()`. |
 | La variable cambia pero el dibujo no. | El método de dibujo no se volvió a ejecutar automáticamente. | Llamar a `repaint()` justo después de cambiar la variable. |
+| Matrioska de Marcos | Instanciar un `JFrame` dentro de otro `JFrame` corrompe la UI. | Extraer la lógica a clases que hereden de `JPanel` e inyectarlas. |
+| Componentes Fantasmas | Asignar un Layout al contenedor pero olvidar hacer el `.add(componente)`. | Validar visualmente y mapear cada `.add()` con su contenedor lógico. |
 
 ---
 
@@ -182,6 +188,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Clase 74-76:** Terminal de Registro Corporativo (`MarcoRegistro.java`) con validación de focos en tiempo real, `getSource()` y protocolos de seguridad de ventana.
 - [x] **Refactorización POO Senior:** Implementación de encadenamiento de constructores (`this()`) y uso correcto de `super()` en jerarquías `Empleado/Jefe`.
 - [x] **Reto Broadcast Corporativo (Clases 77-80):** Sistema de alertas globales implementando el Patrón Observador con `Action` e `InputMap`, resolviendo el problema de "Cerebro Dividido" o secuestro de eventos.
+- [x] **Reto Gestores de Diseño (Clases 81-85):** Construcción del Módulo de RRHH (`MarcoPerfilEmpleado`) y Teclado de Seguridad dominando el anidamiento complejo de Layouts (`BorderLayout`, `FlowLayout`, `GridLayout`).
 
 ---
 
@@ -196,3 +203,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 8:** Eventos II - Teclado y Ratón (Clases 71-73 y Retos completados)
 - [x] **Módulo 9:** Eventos III - Foco y Múltiples Fuentes (Clases 74-76) - **APROBADO**
 - [x] **Módulo 10:** Arquitectura de Difusión y Acciones (Clases 77-80) - **APROBADO**
+- [x] **Módulo 11:** Gestores de Diseño / Layouts (Clases 81-85) - **APROBADO**
