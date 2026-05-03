@@ -14,4 +14,8 @@ Instrucciones del flujo:
 
 3. Sugerir la actualización exacta para anexar al archivo aprendizaje.md.
 
-4. Preguntar al usuario si desea que el agente aplique los cambios al archivo.
+4. Manter la estructura del archivo aprendizaje.md y reodenar lo que se vea desordenado.
+
+5. Marcar el archivo reto_pendiente.md como completado y cerrado el reto.
+
+6. Preguntar al usuario si desea que el agente aplique los cambios al archivo.

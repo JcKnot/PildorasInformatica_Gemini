@@ -14,4 +14,6 @@ Instrucciones del flujo:
 
 3. Importante!! Generar una analogía técnica para explicar el concepto y plantear un escenario de debate corto.
 
-4. Formular 2 preguntas de validación teórica antes de pasar al código.
+4. Genera el debate para persivibir posibles lagunas del estudiante y reforzar esos puntos
+
+5. Formular 5 preguntas de validación teórica antes de pasar al código.
