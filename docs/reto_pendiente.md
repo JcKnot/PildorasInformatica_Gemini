@@ -10,9 +10,9 @@ Debes crear un nuevo módulo (ventana) que se lance desde el Mando de Control Ce
 
 ### 📋 Checklist de Criterios de Aceptación
 
-- [ ] **Arquitectura Base:** Crea dos clases nuevas (`MarcoCredenciales` y `LaminaCredenciales`). Mantén el estándar: el marco solo envuelve a la lámina, y la lámina (JPanel) contiene toda la lógica.
-- [ ] **Integración:** Añade un nuevo botón en el `MarcoCentradoComando` que instancie y muestre el `MarcoCredenciales`. (Usa `DISPOSE_ON_CLOSE` para no matar la app principal).
-- [ ] **Diseño Visual:** La `LaminaCredenciales` debe contener:
+- [x] **Arquitectura Base:** Crea dos clases nuevas (`MarcoCredenciales` y `LaminaCredenciales`). Mantén el estándar: el marco solo envuelve a la lámina, y la lámina (JPanel) contiene toda la lógica.
+- [] **Integración:** Añade un nuevo botón en el `MarcoCentradoComando` que instancie y muestre el `MarcoCredenciales`. (Usa `DISPOSE_ON_CLOSE` para no matar la app principal).
+- [x] **Diseño Visual:** La `LaminaCredenciales` debe contener:
   - Un `JLabel` y un `JTextField` para el "Email Corporativo".
   - Dos `JLabel` y dos `JPasswordField` (uno para "Clave Segura" y otro para "Confirmar Clave").
   - Anida Layouts (ej. un GridLayout para los campos, envuelto en un BorderLayout) para que se vea ordenado.
