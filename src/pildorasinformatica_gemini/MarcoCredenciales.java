@@ -10,11 +10,11 @@ import javax.swing.JFrame;
  */
 public class MarcoCredenciales extends JFrame{
     
-    public static void main(String[] args) {
-        MarcoCredenciales miMarco = new MarcoCredenciales();
-        miMarco.setVisible(true);
-        
-    }
+//    public static void main(String[] args) {
+//        MarcoCredenciales miMarco = new MarcoCredenciales();
+//        miMarco.setVisible(true);
+//        
+//    }
     
     public MarcoCredenciales(){
         setTitle("Terminal Credenciales");

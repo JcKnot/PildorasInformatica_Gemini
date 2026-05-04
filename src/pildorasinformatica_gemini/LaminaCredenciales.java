@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.util.Arrays;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -23,9 +24,11 @@ public class LaminaCredenciales extends JPanel{
     private JTextField txtEmail;
     private JPasswordField txtPassword;
     private JPasswordField txtConfPassword;
+    private JLabel jbMensaje = new JLabel("");
     
     public LaminaCredenciales(){
         setLayout(new BorderLayout());
+        add(jbMensaje, BorderLayout.SOUTH);
         
         pnlTitulo = new JPanel();
         pnlTitulo.setLayout(new FlowLayout());
@@ -47,6 +50,10 @@ public class LaminaCredenciales extends JPanel{
         
         CompruebaEmail compruebaEmail = new CompruebaEmail();
         txtEmail.getDocument().addDocumentListener(compruebaEmail);
+        
+        CompruebaPassword compruebaPassword = new CompruebaPassword();
+        txtPassword.getDocument().addDocumentListener(compruebaPassword);
+        txtConfPassword.getDocument().addDocumentListener(compruebaPassword);
                 
         grid.add(lbEmail);
         grid.add(txtEmail);
@@ -59,7 +66,7 @@ public class LaminaCredenciales extends JPanel{
     private class CompruebaEmail implements DocumentListener{
         @Override
         public void insertUpdate(DocumentEvent e) {
-            if(validaEmail(txtEmail.getText().endsWith("@corporativo.com"))){
+            if(validaEmail(txtEmail.getText())){
                 txtEmail.setBackground(Color.GREEN);
             }else {
                 txtEmail.setBackground(Color.red);
@@ -68,7 +75,11 @@ public class LaminaCredenciales extends JPanel{
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-                       
+            if(validaEmail(txtEmail.getText())){
+                txtEmail.setBackground(Color.GREEN);
+            }else {
+                txtEmail.setBackground(Color.red);
+            }
         }
 
         @Override
@@ -89,31 +100,49 @@ public class LaminaCredenciales extends JPanel{
 
         @Override
         public void insertUpdate(DocumentEvent e) {
-            char[] contrasena;
-            contrasena = txtPassword.getPassword();
-            
-            if(contrasena.length < 8 || contrasena.length > 12){
-                txtPassword.setBackground(Color.red);
+            char[] pass1 = txtPassword. getPassword();
+            char[] pass2 = txtConfPassword. getPassword();
+                        
+            if(validaPassword(pass1, pass2)){
+                jbMensaje.setForeground(Color.GREEN);
+                jbMensaje.setText("Credenciales Válidas");
             }else {
-                txtPassword.setBackground(Color.white);
+                jbMensaje.setForeground(Color.RED);
+                jbMensaje.setText("Error de seguridad");            
             }
+            
+            Arrays.fill(pass1, 'a');
+            Arrays.fill(pass2, 'a');            
         }
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-            char[] contrasena;
-            contrasena = txtPassword.getPassword();
-            
-            if(contrasena.length < 8 || contrasena.length > 12){
-                txtPassword.setBackground(Color.red);
+            char[] pass1 = txtPassword. getPassword();
+            char[] pass2 = txtConfPassword. getPassword();
+                        
+            if(validaPassword(pass1, pass2)){
+                jbMensaje.setForeground(Color.GREEN);
+                jbMensaje.setText("Credenciales Válidas");
             }else {
-                txtPassword.setBackground(Color.white);
-            }            
+                jbMensaje.setForeground(Color.RED);
+                jbMensaje.setText("Error de seguridad");            
+            }
+            
+            Arrays.fill(pass1, 'a');
+            Arrays.fill(pass2, 'a');           
         }
 
         @Override
         public void changedUpdate(DocumentEvent e) {
             
+        }
+        
+        private boolean validaPassword(char[] pass1, char[] pass2){
+            if(pass1.length >= 8 && Arrays.equals(pass1, pass2)){
+                return true;
+            }else {
+                return false;
+            }
         }
         
     }

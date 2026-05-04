@@ -77,6 +77,12 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 - **Anidamiento Espacial:** Dominio de la arquitectura visual estructurada. Comprendo cómo construir interfaces complejas dividiéndolas en sub-paneles independientes (`BorderLayout` raíz, `FlowLayout` cabecera, `GridLayout` centro).
 - **Anti-Patrón Erradicado:** Instanciar ventanas (`JFrame`) dentro de ventanas corrompe la UI. La solución es extraer la lógica a clases que hereden de `JPanel` e inyectarlas.
 
+### 🔒 Módulo 12: Componentes de Texto y Reactividad (Clases 86 - 89)
+- **Componentes de Seguridad:** Uso estricto de `JPasswordField` para censurar visualmente las contraseñas.
+- **Gestión Segura en RAM:** Para evitar volcados de memoria (Memory Dumps) maliciosos, se extraen contraseñas usando `.getPassword()` que retorna un `char[]` en lugar de un inmutable `String`. Una vez validado, se destruye la copia en memoria aplicando `Arrays.fill(array, '0')`.
+- **Validación en Tiempo Real (`DocumentListener`):** Escucha directa sobre el "modelo de datos" (el texto interno) en lugar de la tecla física. Los métodos obligatorios `insertUpdate` y `removeUpdate` permiten alterar dinámicamente la UI sin obligar al usuario a presionar "Aceptar".
+- **Refactorización Lógica:** Sustitución de bloques `if(condicion){return true;}else{return false;}` por el estándar senior: `return condicion;`.
+
 ---
 
 ## 🛠️ Notas Técnicas Avanzadas (Best Practices)
@@ -189,6 +195,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Refactorización POO Senior:** Implementación de encadenamiento de constructores (`this()`) y uso correcto de `super()` en jerarquías `Empleado/Jefe`.
 - [x] **Reto Broadcast Corporativo (Clases 77-80):** Sistema de alertas globales implementando el Patrón Observador con `Action` e `InputMap`, resolviendo el problema de "Cerebro Dividido" o secuestro de eventos.
 - [x] **Reto Gestores de Diseño (Clases 81-85):** Construcción del Módulo de RRHH (`MarcoPerfilEmpleado`) y Teclado de Seguridad dominando el anidamiento complejo de Layouts (`BorderLayout`, `FlowLayout`, `GridLayout`).
+- [x] **Reto Terminal de Credenciales (Clases 86-89):** Módulo reactivo visual con validación de sufijos de email en tiempo real, emparejamiento de contraseñas y blindaje de RAM.
 
 ---
 
@@ -204,3 +211,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 9:** Eventos III - Foco y Múltiples Fuentes (Clases 74-76) - **APROBADO**
 - [x] **Módulo 10:** Arquitectura de Difusión y Acciones (Clases 77-80) - **APROBADO**
 - [x] **Módulo 11:** Gestores de Diseño / Layouts (Clases 81-85) - **APROBADO**
+- [x] **Módulo 12:** Componentes Interactivos y DocumentListener (Clases 86-89) - **APROBADO**

@@ -18,7 +18,7 @@ public class Prueba {
     public static void main(String[] args) {
         
         MarcoPrueba miMarco = new MarcoPrueba();        
-        miMarco.setVisible(true);
+        miMarco.setVisible(true);                
     }
 }
 

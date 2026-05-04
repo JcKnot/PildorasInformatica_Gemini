@@ -44,6 +44,7 @@ public class MarcoCentradoComando extends JFrame {
         private JTextField cajaMensaje;
         private ArrayList<TerminalEmpleado> terminalesAbiertas = new ArrayList<>();
         private JButton btnVerPerfiles;
+        private JButton btnCredenciales;
 
         public Lamina() {
             AccionColor amarillo = new AccionColor("Amarillo", new ImageIcon(EnumVariables.ICONO_AMARILLO.getValor()),
@@ -93,6 +94,11 @@ public class MarcoCentradoComando extends JFrame {
             AccionPerfiles verPerfiles = new AccionPerfiles();
             btnVerPerfiles.addActionListener(verPerfiles);
             add(btnVerPerfiles);
+            
+            btnCredenciales = new JButton("Terminal Credenciales");
+            AccionCredenciales verCredenciales = new AccionCredenciales();
+            btnCredenciales.addActionListener(verCredenciales);
+            add(btnCredenciales);
         }
 
         @Override
@@ -139,5 +145,15 @@ public class MarcoCentradoComando extends JFrame {
         }
         
     } 
+    
+    class AccionCredenciales implements ActionListener{
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            MarcoCredenciales credenciales = new MarcoCredenciales();
+            credenciales.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            credenciales.setVisible(true);
+        }
+        
+    }
 }
