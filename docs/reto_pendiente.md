@@ -1,21 +1,22 @@
-# Estado: CERRADO Y APROBADO
+# Estado: PENDIENTE DE IMPLEMENTACIÓN Y EVALUACIÓN
 
-### 🛡️ Reto Integrador: Terminal de Credenciales Reactivo
+### 📜 Reto Integrador: Terminal de Biografía y Formato Avanzado (Clases 90-92)
 
 **Contexto del Negocio:**
-El departamento de TI necesita un módulo para asignar correos electrónicos y contraseñas a los nuevos empleados. Para evitar errores tipográficos y filtraciones, el formulario debe reaccionar en tiempo real e implementar limpieza automática de RAM.
+Para mejorar la presencia digital de los empleados en la intranet corporativa, se requiere un módulo que permita redactar una biografía profesional y personalizar su formato visual de manera interactiva.
 
 **Tu Misión:**
-Debes crear un nuevo módulo (ventana) que se lance desde el Mando de Control Central y que valide los datos a medida que el usuario los teclea.
+Implementar un editor de biografía reactivo que utilice áreas de texto con desplazamiento y controles de estilo dinámico mediante casillas de verificación.
 
 ### 📋 Checklist de Criterios de Aceptación
 
-- [x] **Arquitectura Base:** Crea dos clases nuevas (`MarcoCredenciales` y `LaminaCredenciales`). Mantén el estándar: el marco solo envuelve a la lámina, y la lámina (JPanel) contiene toda la lógica.
-- [x] **Integración:** Añade un nuevo botón en el `MarcoCentradoComando` que instancie y muestre el `MarcoCredenciales`. (Usa `DISPOSE_ON_CLOSE` para no matar la app principal).
-- [x] **Diseño Visual:** La `LaminaCredenciales` debe contener:
-  - Un `JLabel` y un `JTextField` para el "Email Corporativo".
-  - Dos `JLabel` y dos `JPasswordField` (uno para "Clave Segura" y otro para "Confirmar Clave").
-  - Anida Layouts (ej. un GridLayout para los campos, envuelto en un BorderLayout) para que se vea ordenado.
-- [x] **Reactividad Nivel 1 (Email):** Conecta un `DocumentListener` al campo de Email. En tiempo real, si el texto contiene el sufijo **`@corporativo.com`**, el fondo del campo debe ponerse Verde. Si no, debe ser Rojo o Blanco.
-- [x] **Reactividad Nivel 2 (Match de Contraseñas):** Conecta un `DocumentListener` a los campos de contraseña. En tiempo real, si **ambas contraseñas coinciden exactamente** y tienen al menos 8 caracteres, un `JLabel` inferior debe mostrar el mensaje "Credenciales Válidas" en verde. De lo contrario, debe decir "Error de seguridad" en rojo.
-- [x] **Requisito Senior (Blindaje de RAM):** En la lógica de tus `insertUpdate` y `removeUpdate` de las contraseñas, extrae los `char[]`, compáralos, y justo antes de que termine el método, **obliga a vaciarlos** (ej. usando `Arrays.fill(array, '0')`) para no dejar basura en la memoria.
+- [ ] **Arquitectura y Limpieza:** Crear las clases `MarcoConfigPerfil` y `LaminaConfigPerfil` en el paquete `pildorasinformatica_gemini`. Seguir el patrón de diseño donde el `JFrame` solo hospeda al `JPanel` principal.
+- [ ] **Integración en Sistema:** Añadir un botón funcional en el `MarcoCentradoComando` para abrir este nuevo módulo sin cerrar la aplicación principal (`DISPOSE_ON_CLOSE`).
+- [ ] **Componente de Texto Pro:** Implementar un `JTextArea` (8 filas x 20 columnas) para la biografía.
+- [ ] **Desplazamiento Dinámico:** El `JTextArea` **debe** estar encapsulado dentro de un `JScrollPane`. No se aceptarán áreas de texto que se desborden sin barras de scroll.
+- [ ] **Panel de Preferencias:** Crear un panel de control con tres `JCheckBox`: "Ajuste de Línea", "Negrita" y "Cursiva".
+- [ ] **Funcionalidad de Ajuste:** Al accionar "Ajuste de Línea", el texto debe saltar automáticamente al borde del área (`setLineWrap`).
+- [ ] **Lógica de Estilo Senior:** 
+    - Al marcar/desmarcar los checkboxes de Negrita y Cursiva, la fuente del `JTextArea` debe cambiar en tiempo real.
+    - **REQUISITO TÉCNICO:** El cálculo del valor del estilo (Plain, Bold, Italic o Bold+Italic) debe realizarse obligatoriamente mediante el **operador ternario** dentro del evento.
+- [ ] **Estándares Profesionales:** Validar el uso de modificadores `private`, anotaciones `@Override` y convenciones de nombres (*camelCase* para variables/métodos y *PascalCase* para clases).

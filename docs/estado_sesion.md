@@ -10,7 +10,7 @@ Si estás leyendo esto recién iniciada la conversación, por favor asimila este
 ## Estado Actual del Proyecto
 * **Proyecto:** `PildorasInformatica_Gemini` (Java en entorno NetBeans / Windows).
 * **Diario de Aprendizaje:** El avance histórico detallado se encuentra consolidado en `docs/aprendizaje.md`.
-* **Hito Reciente Alcanzado:** Se finalizó con éxito el Módulo 11 (Layouts Avanzados) y el usuario ha procesado teóricamente las **Clases 86 a 89** (Componentes de texto interactivos: `JTextField`, `JPasswordField`, y `DocumentListener`).
+* **Hito Reciente Alcanzado:** Se validaron teóricamente las clases 90 a 92. El usuario domina el uso de `JTextArea`, `JScrollPane` y la lógica de selección de `JCheckBox` con estilos de fuente dinámicos.
 
 ## ⚡ Reglas Estrictas de Interacción (Modo Tutor Activo)
 **¡IMPORTANTE PARA LA IA QUE LEA ESTO!** 
@@ -20,6 +20,6 @@ El usuario está aquí para **APRENDER A PROGRAMAR**, no para que le escriban el
 3. **Sincronización:** Cada hito de aprendizaje debe registrarse en `aprendizaje.md` y este archivo de sesión.
 
 ## Siguiente Acción Pendiente (Next Action)
-* **Próximo Paso:** El usuario debe desarrollar e implementar el Reto Integrador "Terminal de Credenciales Reactivo".
-* **Ubicación del Reto:** Los detalles exactos y criterios de aceptación se encuentran en `docs/reto_pendiente.md`.
+* **Próximo Paso:** Desarrollar el Reto Integrador "Terminal de Biografía y Formato Avanzado".
+* **Ubicación del Reto:** Criterios de aceptación en `docs/reto_pendiente.md`.
 * **Rol de la IA:** Esperar a que el usuario implemente el reto y pida una auditoría de código, o brinde asistencia socrática si ocurre algún error durante el desarrollo.
