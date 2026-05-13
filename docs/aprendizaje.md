@@ -165,6 +165,11 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 * **Múltiples Fuentes y Acciones:** Capacidad para centralizar lógica interactiva mediante `AbstractAction`, abstrayendo la fuente (Botón vs Teclado) del proceso.
 * **Patrón de Difusión:** Implementación de sistemas de notificación masiva donde un emisor (`JButton`) controla múltiples receptores (`JFrame.dispose()`).
 
+### 🖋️ Módulo 13: Áreas de Texto y Selección (Clases 90-92)
+* **Visualización:** ✅ Implementación exitosa de `JTextArea` dentro de `JScrollPane`. Comprendo que el área de texto no gestiona el scroll por sí misma, sino que delega esa responsabilidad al contenedor.
+* **Interactividad de Selección:** Dominio de `JCheckBox` para el control de estados. 
+* **Lógica Atómica:** Uso del operador ternario para la asignación de estilos de fuente, permitiendo que la interfaz reaccione instantáneamente a los cambios del usuario.
+
 
 
 ---
@@ -196,6 +201,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Reto Broadcast Corporativo (Clases 77-80):** Sistema de alertas globales implementando el Patrón Observador con `Action` e `InputMap`, resolviendo el problema de "Cerebro Dividido" o secuestro de eventos.
 - [x] **Reto Gestores de Diseño (Clases 81-85):** Construcción del Módulo de RRHH (`MarcoPerfilEmpleado`) y Teclado de Seguridad dominando el anidamiento complejo de Layouts (`BorderLayout`, `FlowLayout`, `GridLayout`).
 - [x] **Reto Terminal de Credenciales (Clases 86-89):** Módulo reactivo visual con validación de sufijos de email en tiempo real, emparejamiento de contraseñas y blindaje de RAM.
+- [x] **Reto Terminal de Biografía (Clases 90-92):** Implementación de un editor profesional con scroll y control de estilos acumulativos (Bold/Italic).
 
 ---
 
@@ -212,3 +218,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 10:** Arquitectura de Difusión y Acciones (Clases 77-80) - **APROBADO**
 - [x] **Módulo 11:** Gestores de Diseño / Layouts (Clases 81-85) - **APROBADO**
 - [x] **Módulo 12:** Componentes Interactivos y DocumentListener (Clases 86-89) - **APROBADO**
+- [x] **Módulo 13:** Áreas de Texto y Selección (Clases 90-92) - **APROBADO**

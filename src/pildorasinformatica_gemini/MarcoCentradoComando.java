@@ -45,6 +45,7 @@ public class MarcoCentradoComando extends JFrame {
         private ArrayList<TerminalEmpleado> terminalesAbiertas = new ArrayList<>();
         private JButton btnVerPerfiles;
         private JButton btnCredenciales;
+        private JButton btnBiografia;
 
         public Lamina() {
             AccionColor amarillo = new AccionColor("Amarillo", new ImageIcon(EnumVariables.ICONO_AMARILLO.getValor()),
@@ -99,6 +100,18 @@ public class MarcoCentradoComando extends JFrame {
             AccionCredenciales verCredenciales = new AccionCredenciales();
             btnCredenciales.addActionListener(verCredenciales);
             add(btnCredenciales);
+            
+            btnBiografia = new JButton("Configurar Biografía");
+            btnBiografia.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    MarcoConfigPerfil marcoPerfil = new MarcoConfigPerfil();                    
+                    marcoPerfil.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    marcoPerfil.setVisible(true);
+                }
+            }            
+            );
+            add(btnBiografia);
         }
 
         @Override
