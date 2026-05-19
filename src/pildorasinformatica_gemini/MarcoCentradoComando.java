@@ -46,6 +46,7 @@ public class MarcoCentradoComando extends JFrame {
         private JButton btnVerPerfiles;
         private JButton btnCredenciales;
         private JButton btnBiografia;
+        private JButton btnGestionContrato;
 
         public Lamina() {
             AccionColor amarillo = new AccionColor("Amarillo", new ImageIcon(EnumVariables.ICONO_AMARILLO.getValor()),
@@ -112,6 +113,16 @@ public class MarcoCentradoComando extends JFrame {
             }            
             );
             add(btnBiografia);
+            
+            btnGestionContrato = new JButton("Gestión de Contratos");
+            btnGestionContrato.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    MarcoContrato marcoContrato = new MarcoContrato();
+                    marcoContrato.setVisible(true);
+                }                
+            });
+            add(btnGestionContrato);
         }
 
         @Override
