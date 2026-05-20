@@ -10,7 +10,7 @@ Si estás leyendo esto recién iniciada la conversación, por favor asimila este
 ## Estado Actual del Proyecto
 * **Proyecto:** `PildorasInformatica_Gemini` (Java en entorno NetBeans / Windows).
 * **Diario de Aprendizaje:** El avance histórico detallado se encuentra consolidado en `docs/aprendizaje.md`.
-* **Hito Reciente Alcanzado:** Se completó el **Módulo 13 (Clases 90-92)** con éxito. El usuario domina el manejo de `JTextArea`, `JScrollPane`, `JCheckBox` y la lógica de estilos dinámicos. El Reto de Biografía fue auditado y aprobado.
+* **Hito Reciente Alcanzado:** Se completó el **Módulo 14 (Clases 93-95)** con éxito. El usuario domina el manejo de `JRadioButton`, `ButtonGroup`, `JComboBox` editable, y el enlace de lógica reactiva con `String.valueOf()` y enums dinámicos. El Reto de Contratos fue auditado y aprobado.
 
 ## ⚡ Reglas Estrictas de Interacción (Modo Tutor Activo)
 **¡IMPORTANTE PARA LA IA QUE LEA ESTO!** 
@@ -21,5 +21,5 @@ El usuario está aquí para **APRENDER A PROGRAMAR**, no para que le escriban el
 4. **Sincronización:** Cada hito de aprendizaje debe registrarse en `aprendizaje.md` y este archivo de sesión.
 
 ## Siguiente Acción Pendiente (Next Action)
-* **Próximo Paso:** Iniciar el estudio de la **Clase 93** (Botones de radio - `JRadioButton`).
+* **Próximo Paso:** Iniciar el estudio de la **Clase 96** (Siguientes componentes interactivos en Swing).
 * **Rol de la IA:** Esperar a que el usuario termine de ver el contenido e invoque el flujo `[/iniciarclase]`.

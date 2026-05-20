@@ -164,13 +164,16 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 * **Protocolos de Seguridad:** Uso de `WindowFocusListener` para proteger la privacidad de los datos al detectar la pérdida de foco global de la aplicación.
 * **Múltiples Fuentes y Acciones:** Capacidad para centralizar lógica interactiva mediante `AbstractAction`, abstrayendo la fuente (Botón vs Teclado) del proceso.
 * **Patrón de Difusión:** Implementación de sistemas de notificación masiva donde un emisor (`JButton`) controla múltiples receptores (`JFrame.dispose()`).
-
 ### 🖋️ Módulo 13: Áreas de Texto y Selección (Clases 90-92)
-* **Visualización:** ✅ Implementación exitosa de `JTextArea` dentro de `JScrollPane`. Comprendo que el área de texto no gestiona el scroll por sí misma, sino que delega esa responsabilidad al contenedor.
-* **Interactividad de Selección:** Dominio de `JCheckBox` para el control de estados. 
-* **Lógica Atómica:** Uso del operador ternario para la asignación de estilos de fuente, permitiendo que la interfaz reaccione instantáneamente a los cambios del usuario.
+- **Visualización:** ✅ Implementación exitosa de `JTextArea` dentro de `JScrollPane`. Comprendo que el área de texto no gestiona el scroll por sí misma, sino que delega esa responsabilidad al contenedor.
+- **Interactividad de Selección:** Dominio de `JCheckBox` para el control de estados. 
+- **Lógica Atómica:** Uso del operador ternario para la asignación de estilos de fuente, permitiendo que la interfaz reaccione instantáneamente a los cambios del usuario.
 
-
+### 🏢 Módulo 14: Botones de Selección y Menús Desplegables (Clases 93-95)
+- **Selección Excluyente (JRadioButton y ButtonGroup):** Los `JRadioButton` se agrupan con un `ButtonGroup` para forzar la exclusión mutua. **Regla de Oro:** `ButtonGroup` es un contenedor lógico de selección, NO un contenedor visual de interfaz. Se deben crear múltiples instancias de `ButtonGroup` si se requieren varias categorías independientes de selección (ej: Jornada y Ubicación).
+- **Abstracción del Estado con actionCommand:** En lugar de crear oyentes individuales y complejos por botón, se puede asignar un identificador con `.setActionCommand(texto)` a cada botón de radio y recuperarlo desde el grupo mediante `grupo.getSelection().getActionCommand()`, desacoplando la UI de la lógica del evento.
+- **Menús Desplegables Editables (JComboBox):** Al activar `.setEditable(true)`, el usuario puede registrar valores personalizados.
+- **Limitación de Genéricos en JComboBox:** Aunque parametricemos un `JComboBox<String>`, el método `getSelectedItem()` continúa retornando un tipo `Object` por motivos de diseño del JDK (soporte para editabilidad y retrocompatibilidad). La manera profesional de procesarlo de forma segura y unificada es mediante `String.valueOf(combo.getSelectedItem())`.
 
 ---
 
@@ -184,6 +187,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 | La variable cambia pero el dibujo no. | El método de dibujo no se volvió a ejecutar automáticamente. | Llamar a `repaint()` justo después de cambiar la variable. |
 | Matrioska de Marcos | Instanciar un `JFrame` dentro de otro `JFrame` corrompe la UI. | Extraer la lógica a clases que hereden de `JPanel` e inyectarlas. |
 | Componentes Fantasmas | Asignar un Layout al contenedor pero olvidar hacer el `.add(componente)`. | Validar visualmente y mapear cada `.add()` con su contenedor lógico. |
+| Incompatibilidad de tipos en `JComboBox<E>` | El método `getSelectedItem()` de `JComboBox<E>` retorna `Object` (no `E`) por razones de retrocompatibilidad y editabilidad. | Usar `String.valueOf(combo.getSelectedItem())` o un cast explícito `(String)`. |
 
 ---
 
@@ -202,6 +206,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Reto Gestores de Diseño (Clases 81-85):** Construcción del Módulo de RRHH (`MarcoPerfilEmpleado`) y Teclado de Seguridad dominando el anidamiento complejo de Layouts (`BorderLayout`, `FlowLayout`, `GridLayout`).
 - [x] **Reto Terminal de Credenciales (Clases 86-89):** Módulo reactivo visual con validación de sufijos de email en tiempo real, emparejamiento de contraseñas y blindaje de RAM.
 - [x] **Reto Terminal de Biografía (Clases 90-92):** Implementación de un editor profesional con scroll y control de estilos acumulativos (Bold/Italic).
+- [x] **Reto Terminal de Gestión de Contratos (Clases 93-95):** Módulo reactivo con JComboBox editable, JRadioButton con ButtonGroups separados y carga de datos dinámica usando enums.
 
 ---
 
@@ -219,3 +224,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 11:** Gestores de Diseño / Layouts (Clases 81-85) - **APROBADO**
 - [x] **Módulo 12:** Componentes Interactivos y DocumentListener (Clases 86-89) - **APROBADO**
 - [x] **Módulo 13:** Áreas de Texto y Selección (Clases 90-92) - **APROBADO**
+- [x] **Módulo 14:** Botones de Selección y Menús Desplegables (Clases 93-95) - **APROBADO**

@@ -17,23 +17,34 @@ public enum EnumVariables {
     ICONO_AMARILLO("src/pildorasinformatica_gemini/clipboard-inventory.png"),
     ICONO_AZUL("src/pildorasinformatica_gemini/clipboard-tasks.png"),
     ICONO_ROJO("src/pildorasinformatica_gemini/clipboardplan.png"),
+    UBICACIONES(new String[]{"Remoto","Híbrido","Oficina"}),
+    JORNADAS(new String[]{"Tiempo Completo","Medio Tiempo"}),
     VENTANA_REDIMENSIONABLE(true);
 
     // 2. El atributo (como la columna de una tabla). Lo ponemos 'final' porque es una constante.
     private final String valor;
     private final boolean valorBoolean;
+    private final String[] valorArray;
 
     // 3. El constructor (Privado por defecto). Es lo que recibe el "v1.0".
     private EnumVariables(String valor) {
         this.valor = valor;
         this.valorBoolean = false;
+        this.valorArray = null;
     }
     
     private EnumVariables(boolean valorBoolean) {
         this.valorBoolean = valorBoolean;
         this.valor = null;
+        this.valorArray = null;
     }
-
+    
+    private EnumVariables(String[] valorArray) {
+        this.valorArray = valorArray;
+        this.valor = null;
+        this.valorBoolean = false;
+    }
+    
     // 4. El método Getter (Para extraer el dato)
     public String getValor() {
         return valor;
@@ -41,5 +52,9 @@ public enum EnumVariables {
     
     public boolean getValorBoolean() {
         return this.valorBoolean;
+    }
+    
+    public String[] getValorArray() {
+        return this.valorArray;
     }
 }

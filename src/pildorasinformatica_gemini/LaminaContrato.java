@@ -18,12 +18,12 @@ import javax.swing.JRadioButton;
  */
 public class LaminaContrato extends JPanel{
     private JLabel resumenContrato;
-    private JComboBox jboxCargo;
+    private JComboBox<String> jboxCargo;
     private ButtonGroup grupoJornada = new ButtonGroup();
     private ButtonGroup grupoUbicacion = new ButtonGroup();
-    private final JLabel TITULO_JORNADA = new JLabel("Jornada: ");
-    private final JLabel TITULO_UBICACION = new JLabel("Ubicación: ");
-    private final JLabel TITULO_CARGO = new JLabel("Cargo: ");
+    private static final JLabel TITULO_JORNADA = new JLabel("Jornada: ");
+    private static final JLabel TITULO_UBICACION = new JLabel("Ubicación: ");
+    private static final JLabel TITULO_CARGO = new JLabel("Cargo: ");
     
     public LaminaContrato(){
         setLayout(new BorderLayout());
@@ -34,15 +34,20 @@ public class LaminaContrato extends JPanel{
         add(laminaResumen, BorderLayout.SOUTH);
         
         JPanel laminaJornada = new JPanel();
-        agregarBotonRadio("Tiempo Completo", true, grupoJornada, laminaJornada);
-        agregarBotonRadio("Medio Tiempo", false, grupoJornada, laminaJornada);
+        boolean esPrimeroJornada = true;
+        for (String ubi : EnumVariables.JORNADAS.getValorArray()) {
+            agregarBotonRadio(ubi, esPrimeroJornada, grupoJornada, laminaJornada);
+            esPrimeroJornada = false; 
+        }
         
         JPanel laminaUbicacion = new JPanel();
-        agregarBotonRadio("Remoto", true, grupoUbicacion, laminaUbicacion);
-        agregarBotonRadio("Híbrido", false, grupoUbicacion, laminaUbicacion);
-        agregarBotonRadio("Oficina", false, grupoUbicacion, laminaUbicacion);
+        boolean esPrimero = true;
+        for (String ubi : EnumVariables.UBICACIONES.getValorArray()) {
+            agregarBotonRadio(ubi, esPrimero, grupoUbicacion, laminaUbicacion);
+            esPrimero = false; 
+        }
         
-        jboxCargo = new JComboBox();
+        jboxCargo = new JComboBox<>();
         jboxCargo.setEditable(true);
         EventoJBoxCargo eventoCargo = new EventoJBoxCargo();
         jboxCargo.addActionListener(eventoCargo);
@@ -80,7 +85,7 @@ public class LaminaContrato extends JPanel{
     }
     
     private void actualizaResumen(){
-        String cargo = (String) jboxCargo.getSelectedItem();
+        String cargo = String.valueOf(jboxCargo. getSelectedItem());
         String jornada = grupoJornada.getSelection().getActionCommand();
         String ubicacion = grupoUbicacion.getSelection().getActionCommand();
         
