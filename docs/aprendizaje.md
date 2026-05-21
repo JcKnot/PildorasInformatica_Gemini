@@ -175,6 +175,21 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - **Menús Desplegables Editables (JComboBox):** Al activar `.setEditable(true)`, el usuario puede registrar valores personalizados.
 - **Limitación de Genéricos en JComboBox:** Aunque parametricemos un `JComboBox<String>`, el método `getSelectedItem()` continúa retornando un tipo `Object` por motivos de diseño del JDK (soporte para editabilidad y retrocompatibilidad). La manera profesional de procesarlo de forma segura y unificada es mediante `String.valueOf(combo.getSelectedItem())`.
 
+### 🎛️ Módulo 15: Sliders, Spinners y Menús Swing (Clases 96-100)
+- **`JSlider` - El Deslizador:** Componente de rango numérico continuo. Sus propiedades clave son:
+    - `setMinorTickSpacing` / `setMajorTickSpacing`: Gradación visual de la escala.
+    - `setPaintTicks(true)` / `setPaintLabels(true)`: Activa la visualización de marcas y etiquetas numéricas.
+    - `setSnapToTicks(true)`: **Modo Magnético** — fuerza al selector a encajar en valores enteros al soltarlo, garantizando que nunca se reciba un valor entre marcas (dato sucio).
+- **`JSpinner` - El Selector por Pasos:** Componente de entrada numérica restringida. Se controla a través de un modelo: `SpinnerNumberModel(valorInicial, min, max, paso)`. Garantiza que el usuario no pueda ingresar un valor fuera del rango definido.
+- **`ChangeListener` y `ChangeEvent`:** El contrato de escucha para ambos componentes. El método `stateChanged(ChangeEvent e)` se dispara en *cada* movimiento del slider o incremento del spinner.
+- **Patrón UX Real-Time vs. Heavy Logic:** Decisión arquitectónica crítica:
+    - **Actualización visual (JLabel):** Debe ejecutarse *siempre* dentro del `stateChanged` sin ningún guardián, para fluidez visual en tiempo real.
+    - **Lógica pesada (I/O a BD o disco):** Debe protegerse con `!slider.getValueIsAdjusting()` para dispararse **solo una vez**, cuando el usuario finaliza el arrastre.
+- **`JMenuBar` en Swing - Jerarquía y Posicionamiento:**
+    - La jerarquía es estrictamente: `JMenuBar` → `JMenu` → `JMenuItem`.
+    - **Regla de Arquitectura:** La barra de menú se asocia al `JFrame` con `setJMenuBar(barra)`, **NO** con `add()` al `JPanel`. Esto garantiza: (1) independencia del `LayoutManager`, (2) comportamiento nativo del teclado (tecla `Alt`), (3) soporte multiplataforma (ej: macOS mueve la barra a la barra global del sistema) y (4) correcta gestión de la capa Z-Order para que los menús desplegables siempre se pinten por encima del contenido.
+- **Opacidad de Paneles (`setOpaque`):** Por defecto todos los `JPanel` son opacos (pintan su propio fondo gris). Al anidar paneles con `setOpaque(false)`, estos se vuelven transparentes y dejan ver el fondo del panel padre, evitando tener que propagar cambios de color a todos los hijos de forma explícita.
+
 ---
 
 ## Errores Comunes y Soluciones 💡
@@ -188,6 +203,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 | Matrioska de Marcos | Instanciar un `JFrame` dentro de otro `JFrame` corrompe la UI. | Extraer la lógica a clases que hereden de `JPanel` e inyectarlas. |
 | Componentes Fantasmas | Asignar un Layout al contenedor pero olvidar hacer el `.add(componente)`. | Validar visualmente y mapear cada `.add()` con su contenedor lógico. |
 | Incompatibilidad de tipos en `JComboBox<E>` | El método `getSelectedItem()` de `JComboBox<E>` retorna `Object` (no `E`) por razones de retrocompatibilidad y editabilidad. | Usar `String.valueOf(combo.getSelectedItem())` o un cast explícito `(String)`. |
+| Los botones de color dejaron de pintar el fondo. | Al anidar el panel de botones en un sub-panel opaco, el sub-panel cubre visualmente al panel principal cuyo color se modifica. | Aplicar `setOpaque(false)` a todos los sub-paneles intermedios para que el color del panel raíz sea visible a través de ellos. |
 
 ---
 
@@ -207,6 +223,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Reto Terminal de Credenciales (Clases 86-89):** Módulo reactivo visual con validación de sufijos de email en tiempo real, emparejamiento de contraseñas y blindaje de RAM.
 - [x] **Reto Terminal de Biografía (Clases 90-92):** Implementación de un editor profesional con scroll y control de estilos acumulativos (Bold/Italic).
 - [x] **Reto Terminal de Gestión de Contratos (Clases 93-95):** Módulo reactivo con JComboBox editable, JRadioButton con ButtonGroups separados y carga de datos dinámica usando enums.
+- [x] **Reto Integrador Clases 96-100:** Configurador de Compensación y Antigüedad (`JSlider` magnético + `JSpinner` restringido con reactividad en tiempo real) y refactorización de ventana principal (`MarcoCentradoComando`) migrando botones de navegación a un sistema de `JMenuBar` con `setJMenuBar()`.
 
 ---
 
@@ -225,3 +242,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 12:** Componentes Interactivos y DocumentListener (Clases 86-89) - **APROBADO**
 - [x] **Módulo 13:** Áreas de Texto y Selección (Clases 90-92) - **APROBADO**
 - [x] **Módulo 14:** Botones de Selección y Menús Desplegables (Clases 93-95) - **APROBADO**
+- [x] **Módulo 15:** JSlider, JSpinner y Menús Swing (Clases 96-100) - **APROBADO**
