@@ -18,7 +18,6 @@ public class MarcoCompensacion extends JFrame {
         
         miLamina = new LaminaCompensacion();
         add(miLamina);
-        setVisible(true);
     }
 
 }

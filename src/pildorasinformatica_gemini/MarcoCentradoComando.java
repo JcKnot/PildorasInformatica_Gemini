@@ -58,6 +58,7 @@ public class MarcoCentradoComando extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     MarcoCompensacion marcoCompensacion = new MarcoCompensacion();
+                    marcoCompensacion.setVisible(true);
                 }
                 
             });
@@ -85,6 +86,16 @@ public class MarcoCentradoComando extends JFrame {
             
         });
         menuGestion.add(itemContrato);
+        
+        JMenuItem itemAbrirEditor = new JMenuItem("Abrir Editor");
+        itemAbrirEditor.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MarcoEditor miMarco =  new MarcoEditor();
+                miMarco.setVisible(true);
+            }
+        });
+        menuGestion.add(itemAbrirEditor);
         
         add(lamina, BorderLayout.CENTER);
         setJMenuBar(barraMenu);
