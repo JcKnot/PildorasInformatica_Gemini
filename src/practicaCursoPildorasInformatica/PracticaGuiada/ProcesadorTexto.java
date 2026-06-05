@@ -5,11 +5,16 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextPane;
 import javax.swing.text.StyledEditorKit;
 
@@ -55,17 +60,45 @@ class LaminaProcesador extends JPanel{
         menuTamano = new JMenu("Tamaño");
         
         // Item Fuente //
-        configuraItemMenu("Arial", menuFuente, "Arial",9,12);
-        configuraItemMenu("Courier", menuFuente, "Courier",9,12);
-        configuraItemMenu("Verdana", menuFuente, "Verdana",9,12);
+        configuraItemMenu("Arial", menuFuente, "Arial",9,12,"");
+        configuraItemMenu("Courier", menuFuente, "Courier",9,12,"");
+        configuraItemMenu("Verdana", menuFuente, "Verdana",9,12,"");
         // Item Estilo //
-        configuraItemMenu("Negrita", menuEstilo, "",Font.BOLD,12);
-        configuraItemMenu("Cursiva", menuEstilo, "",Font.ITALIC,12);
+        JCheckBoxMenuItem jMenuNegrita = new JCheckBoxMenuItem("Negrita",new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png"));
+        JCheckBoxMenuItem jMenuItalic = new JCheckBoxMenuItem("Cursiva",new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png"));
+        jMenuNegrita.addActionListener(new StyledEditorKit.BoldAction());
+        jMenuItalic.addActionListener(new StyledEditorKit.ItalicAction());
+        menuEstilo.add(jMenuNegrita);
+        menuEstilo.add(jMenuItalic);
+//        configuraItemMenu("Negrita", menuEstilo, "",Font.BOLD,12,"src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png");
+//        configuraItemMenu("Cursiva", menuEstilo, "",Font.ITALIC,12,"src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_ital_32px.png");
         // Item Tamaño //
-        configuraItemMenu("12", menuTamano, "",9,12);
-        configuraItemMenu("16", menuTamano, "",9,16);
-        configuraItemMenu("20", menuTamano, "",9,20);
-        configuraItemMenu("24", menuTamano, "",9,24);
+        ButtonGroup grupoMenu = new ButtonGroup();
+        
+        JRadioButtonMenuItem doce = new JRadioButtonMenuItem("12");
+        JRadioButtonMenuItem dieci = new JRadioButtonMenuItem("16");
+        JRadioButtonMenuItem veinte = new JRadioButtonMenuItem("20");
+        JRadioButtonMenuItem veintiCuatro = new JRadioButtonMenuItem("24");
+        
+        doce.addActionListener(new StyledEditorKit.FontSizeAction("Cambia tamaño", 12));
+        dieci.addActionListener(new StyledEditorKit.FontSizeAction("Cambia tamaño", 16));
+        veinte.addActionListener(new StyledEditorKit.FontSizeAction("Cambia tamaño", 20));
+        veintiCuatro.addActionListener(new StyledEditorKit.FontSizeAction("Cambia tamaño", 24));
+        
+        grupoMenu.add(doce);
+        grupoMenu.add(dieci);
+        grupoMenu.add(veinte);
+        grupoMenu.add(veintiCuatro);
+        
+        menuTamano.add(doce);
+        menuTamano.add(dieci);
+        menuTamano.add(veinte);
+        menuTamano.add(veintiCuatro);
+        
+//        configuraItemMenu("12", menuTamano, "",9,12,"");
+//        configuraItemMenu("16", menuTamano, "",9,16,"");
+//        configuraItemMenu("20", menuTamano, "",9,20,"");
+//        configuraItemMenu("24", menuTamano, "",9,24,"");
         
         miBarra.add(menuFuente);
         miBarra.add(menuEstilo);
@@ -79,8 +112,8 @@ class LaminaProcesador extends JPanel{
         add(areaTexto, BorderLayout.CENTER);
     }
     
-    private void configuraItemMenu(String rotulo, JMenu menu, String tipo, int stilo, int tamano){
-        JMenuItem itemMenu = new JMenuItem(rotulo);
+    private void configuraItemMenu(String rotulo, JMenu menu, String tipo, int stilo, int tamano, String ruta){
+        JMenuItem itemMenu = new JMenuItem(rotulo, new ImageIcon(ruta));
         menu.add(itemMenu);
         
         if(menu == menuTamano){

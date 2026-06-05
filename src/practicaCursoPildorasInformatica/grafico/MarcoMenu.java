@@ -1,11 +1,13 @@
 
 package practicaCursoPildorasInformatica.grafico;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -42,9 +44,12 @@ class MenuLamina extends JPanel{
         
         JMenuItem itemGuardar = new JMenuItem("Guardar");
         JMenuItem itemGuardarComo = new JMenuItem("Guardar Como");
-        JMenuItem itemCopiar = new JMenuItem("Copiar");
-        JMenuItem itemCortar = new JMenuItem("Cortar");
-        JMenuItem itemPegar = new JMenuItem("Pegar");
+        
+        JMenuItem itemCopiar = new JMenuItem("Copiar", new ImageIcon("src/practicaCursoPildorasInformatica/grafico/clipboard-inventory.png"));
+        itemCopiar.setHorizontalTextPosition(SwingConstants.LEFT);
+        JMenuItem itemCortar = new JMenuItem("Cortar", new ImageIcon("src/practicaCursoPildorasInformatica/grafico/clipboard-tasks.png"));
+        JMenuItem itemPegar = new JMenuItem("Pegar", new ImageIcon("src/practicaCursoPildorasInformatica/grafico/clipboardplan.png"));
+        
         JMenuItem itemGenerales = new JMenuItem("Generales");
         JMenuItem itemOpcion1 = new JMenuItem("Opcion 1");
         JMenuItem itemOpcion2 = new JMenuItem("Opcion 1");
