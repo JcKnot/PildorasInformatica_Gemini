@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
@@ -13,9 +15,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextPane;
+import javax.swing.KeyStroke;
 import javax.swing.text.StyledEditorKit;
 
 /**
@@ -64,14 +68,14 @@ class LaminaProcesador extends JPanel{
         configuraItemMenu("Courier", menuFuente, "Courier",9,12,"");
         configuraItemMenu("Verdana", menuFuente, "Verdana",9,12,"");
         // Item Estilo //
-        JCheckBoxMenuItem jMenuNegrita = new JCheckBoxMenuItem("Negrita",new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png"));
-        JCheckBoxMenuItem jMenuItalic = new JCheckBoxMenuItem("Cursiva",new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png"));
-        jMenuNegrita.addActionListener(new StyledEditorKit.BoldAction());
-        jMenuItalic.addActionListener(new StyledEditorKit.ItalicAction());
-        menuEstilo.add(jMenuNegrita);
-        menuEstilo.add(jMenuItalic);
-//        configuraItemMenu("Negrita", menuEstilo, "",Font.BOLD,12,"src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png");
-//        configuraItemMenu("Cursiva", menuEstilo, "",Font.ITALIC,12,"src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_ital_32px.png");
+//        JCheckBoxMenuItem jMenuNegrita = new JCheckBoxMenuItem("Negrita",new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png"));
+//        JCheckBoxMenuItem jMenuItalic = new JCheckBoxMenuItem("Cursiva",new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png"));
+//        jMenuNegrita.addActionListener(new StyledEditorKit.BoldAction());
+//        jMenuItalic.addActionListener(new StyledEditorKit.ItalicAction());
+//        menuEstilo.add(jMenuNegrita);
+//        menuEstilo.add(jMenuItalic);
+        configuraItemMenu("Negrita", menuEstilo, "",Font.BOLD,12,"src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png");
+        configuraItemMenu("Cursiva", menuEstilo, "",Font.ITALIC,12,"src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_ital_32px.png");
         // Item Tamaño //
         ButtonGroup grupoMenu = new ButtonGroup();
         
@@ -84,6 +88,8 @@ class LaminaProcesador extends JPanel{
         dieci.addActionListener(new StyledEditorKit.FontSizeAction("Cambia tamaño", 16));
         veinte.addActionListener(new StyledEditorKit.FontSizeAction("Cambia tamaño", 20));
         veintiCuatro.addActionListener(new StyledEditorKit.FontSizeAction("Cambia tamaño", 24));
+        
+        veintiCuatro.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_DOWN_MASK));
         
         grupoMenu.add(doce);
         grupoMenu.add(dieci);
@@ -110,6 +116,15 @@ class LaminaProcesador extends JPanel{
         // Area de Texto //
         areaTexto = new JTextPane();
         add(areaTexto, BorderLayout.CENTER);
+        
+        JPopupMenu emergente = new JPopupMenu();
+        JMenuItem negritaE = new JMenuItem("Negrita");
+        JMenuItem cursivaE = new JMenuItem("Cursiva");
+        negritaE.addActionListener(new StyledEditorKit.BoldAction());
+        cursivaE.addActionListener(new StyledEditorKit.ItalicAction());
+        emergente.add(negritaE);
+        emergente.add(cursivaE);
+        areaTexto.setComponentPopupMenu(emergente);
     }
     
     private void configuraItemMenu(String rotulo, JMenu menu, String tipo, int stilo, int tamano, String ruta){
@@ -119,8 +134,14 @@ class LaminaProcesador extends JPanel{
         if(menu == menuTamano){
             itemMenu.addActionListener(new StyledEditorKit.FontSizeAction("Cambia tamaño", tamano));
         }else if(menu == menuEstilo){
-            if(stilo == Font.BOLD){itemMenu.addActionListener(new StyledEditorKit.BoldAction());}
-            if(stilo == Font.ITALIC){itemMenu.addActionListener(new StyledEditorKit.ItalicAction());}
+            if(stilo == Font.BOLD){
+                itemMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
+                itemMenu.addActionListener(new StyledEditorKit.BoldAction());
+            }
+            if(stilo == Font.ITALIC){
+                itemMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, InputEvent.CTRL_DOWN_MASK));
+                itemMenu.addActionListener(new StyledEditorKit.ItalicAction());
+            }
         }else if(menu == menuFuente){
             itemMenu.addActionListener(new StyledEditorKit.FontFamilyAction("Tipo", tipo));
         }
