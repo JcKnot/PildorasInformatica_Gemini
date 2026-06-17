@@ -221,6 +221,16 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - **Acumulación de Estilos (OR Binario):** A nivel subyacente, los estilos (`Font.BOLD`, `Font.ITALIC`) son flags enteros. Para combinarlos sin perder el estado anterior de forma manual, se usa el operador OR a nivel de bits (`|`), ej. `getStyle() | Font.ITALIC`.
 - **Z-Order de `JMenuBar`:** Mantener el menú fuertemente acoplado al `JFrame` con `setJMenuBar()` asegura que el submenú flotante (`JPopupMenu`) se renderice siempre en la capa más alta de la UI (LayeredPane), impidiendo ser solapado por paneles del contenido.
 
+### 📋 Módulo 17: Menús Avanzados, Estado y Anidamiento (Clases 107-110)
+
+- **Menús con Estado Independiente (`JCheckBoxMenuItem`):** Componente ideal para opciones acumulativas o de alternancia (*toggle*), como efectos de texto (Negrita + Cursiva). Su estado `checked/unchecked` no afecta a otros elementos de su entorno.
+- **Menús de Exclusión Mutua (`JRadioButtonMenuItem`):** Se utiliza cuando varias opciones son estrictamente incompatibles entre sí (ej. alinear a la Izquierda vs Derecha). **Regla de Oro:** Deben agruparse lógicamente añadiéndolos a un `ButtonGroup` instanciado; de lo contrario, no sabrán "desmarcar" a sus hermanos al ser seleccionados.
+- **Jerarquía y Anidamiento Espacial:** Para crear submenús (menús desplegables en cascada), simplemente se debe instanciar un objeto `JMenu` (la "carpeta") y añadirlo a otro `JMenu` padre utilizando el método `.add()`.
+- **Mnemónicos vs Aceleradores:**
+  - `setMnemonic(KeyEvent.VK_A)`: Subraya una letra. Requiere presionar `Alt + Letra` y **solo** funciona si la barra de menú tiene el foco del sistema.
+  - `setAccelerator(KeyStroke.getKeyStroke(...))`: Define un atajo de teclado global (ej. `Ctrl + G`). Se ejecuta instantáneamente desde cualquier parte de la aplicación, sin importar el estado del menú.
+- **Eficiencia en Instanciación (Anti-patrón):** Se debe evitar instanciar componentes con la palabra reservada `new` fuera de bloques de control (`if`/`else`) si estos podrían no ser utilizados. Retrasar la creación del objeto al bloque específico (Lazy instantiation en constructores) previene objetos huérfanos y aligera el *Garbage Collector*.
+
 ---
 
 ## Errores Comunes y Soluciones 💡
@@ -257,6 +267,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Reto Terminal de Gestión de Contratos (Clases 93-95):** Módulo reactivo con JComboBox editable, JRadioButton con ButtonGroups separados y carga de datos dinámica usando enums.
 - [x] **Reto Integrador Clases 96-100:** Configurador de Compensación y Antigüedad (`JSlider` magnético + `JSpinner` restringido con reactividad en tiempo real) y refactorización de ventana principal (`MarcoCentradoComando`) migrando botones de navegación a un sistema de `JMenuBar` con `setJMenuBar()`.
 - [x] **Reto Editor de Borradores Corporativos (Clases 101-106):** Módulo de procesamiento de texto (Rich Text) basado en `JTextPane`, refactorización dinámica de ítems con `StyledEditorKit` y correcta orquestación arquitectónica en la barra de menú global del `MarcoCentradoComando`.
+- [x] **Reto Editor Corporativo Avanzado (Clases 107-110):** Refactorización dinámica de ítems con `JCheckBoxMenuItem` (efectos), exclusión mutua de fuentes mediante `JRadioButtonMenuItem` acoplados a un `ButtonGroup`, separación visual y menús anidados.
 
 ---
 
@@ -278,3 +289,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 14:** Botones de Selección y Menús Desplegables (Clases 93-95) - **APROBADO**
 - [x] **Módulo 15:** JSlider, JSpinner y Menús Swing (Clases 96-100) - **APROBADO**
 - [x] **Módulo 16:** Eventos Avanzados en Menús y JTextPane (Clases 101-106) - **APROBADO**
+- [x] **Módulo 17:** Menús Avanzados, Estado y Anidamiento (Clases 107-110) - **APROBADO**
