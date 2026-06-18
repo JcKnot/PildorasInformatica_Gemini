@@ -2,6 +2,7 @@
 package practicaCursoPildorasInformatica.PracticaGuiada;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -19,6 +21,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextPane;
+import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.text.StyledEditorKit;
 
@@ -39,7 +42,7 @@ public class ProcesadorTexto {
 class MenuProcesadorTexto extends JFrame{
     
     public MenuProcesadorTexto(){
-        setSize(500, 350);
+        setSize(800, 460);
         setLocationRelativeTo(null);
         LaminaProcesador miLamina = new LaminaProcesador();
         add(miLamina);
@@ -51,6 +54,9 @@ class LaminaProcesador extends JPanel{
     private JTextPane areaTexto;
     private JMenu menuFuente, menuEstilo, menuTamano;
     private Font fuente;
+    private JButton btnNegrita, btnCursiva, btnUnderline, btnAzul,
+            btnAmarillo, btnRojo, btnIzq, btnDer, btnCentro, btnJust;
+    private JToolBar barra;
     
     public LaminaProcesador(){
         setLayout(new BorderLayout());
@@ -125,6 +131,70 @@ class LaminaProcesador extends JPanel{
         emergente.add(negritaE);
         emergente.add(cursivaE);
         areaTexto.setComponentPopupMenu(emergente);
+        
+        //--------------------------------------------------------------------//
+        // Barra de herramienta
+        /*
+        JToolBar barra = new JToolBar();
+        //Estilo
+        JButton btnNegrita = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png"));
+        btnNegrita.addActionListener(new StyledEditorKit.BoldAction());
+        JButton btnCursiva = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_ital_32px.png"));
+        btnCursiva.addActionListener(new StyledEditorKit.ItalicAction());
+        JButton btnUnderline = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Under.png"));
+        btnUnderline.addActionListener(new StyledEditorKit.UnderlineAction());
+        //Color
+        JButton btnAzul = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/IconoAzul.png"));
+        btnAzul.addActionListener(new StyledEditorKit.ForegroundAction("Azul", Color.BLUE));
+        JButton btnAmarillo = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/IconoAmarillo.png"));
+        btnAmarillo.addActionListener(new StyledEditorKit.ForegroundAction("Amarillo", Color.YELLOW));
+        JButton btnRojo = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/IconoRojo.png"));
+        btnRojo.addActionListener(new StyledEditorKit.ForegroundAction("Rojo", Color.RED));
+        //Alineacion
+        JButton btnIzq = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/alineacion-izquierda.png"));
+        btnIzq.addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 0));
+        JButton btnDer = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/alineacion-derecha.png"));
+        btnDer.addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 2));
+        JButton btnCentro = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/alineacion-centro.png"));
+        btnCentro.addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 1));
+        JButton btnJust = new JButton(new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/justificar.png"));
+        btnJust.addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 3));
+        
+        barra.add(btnNegrita);
+        barra.add(btnCursiva);
+        barra.add(btnUnderline);
+        barra.add(btnAzul);
+        barra.add(btnAmarillo);
+        barra.add(btnRojo);
+        barra.add(btnIzq);
+        barra.add(btnDer);
+        barra.add(btnCentro);
+        barra.add(btnJust);
+        */
+        barra = new JToolBar();
+        //Estilo
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Bold_32px.png").addActionListener(new StyledEditorKit.BoldAction());
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_ital_32px.png").addActionListener(new StyledEditorKit.ItalicAction());
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/Icono_Under.png").addActionListener(new StyledEditorKit.UnderlineAction());
+        barra.addSeparator();
+        //Color
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/IconoAzul.png").addActionListener(new StyledEditorKit.ForegroundAction("Azul", Color.BLUE));
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/IconoAmarillo.png").addActionListener(new StyledEditorKit.ForegroundAction("Amarillo", Color.YELLOW));
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/IconoRojo.png").addActionListener(new StyledEditorKit.ForegroundAction("Rojo", Color.RED));
+        barra.addSeparator();
+        //Alineacion
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/alineacion-izquierda.png").addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 0));
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/alineacion-derecha.png").addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 2));
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/alineacion-centro.png").addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 1));
+        configuraBarra("src/practicaCursoPildorasInformatica/PracticaGuiada/justificar.png").addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 3));
+        barra.setOrientation(1);
+        add(barra, BorderLayout.WEST);
+    }
+    
+    public JButton configuraBarra(String ruta){
+        JButton btn = new JButton(new ImageIcon(ruta));
+        barra.add(btn);
+        return btn;
     }
     
     private void configuraItemMenu(String rotulo, JMenu menu, String tipo, int stilo, int tamano, String ruta){
