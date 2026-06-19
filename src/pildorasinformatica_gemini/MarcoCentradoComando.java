@@ -20,6 +20,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
 /**
@@ -28,7 +29,8 @@ import javax.swing.KeyStroke;
  * 
  */
 public class MarcoCentradoComando extends JFrame {
-
+    private JToolBar barraHerramienta;
+    
     public static void main(String[] args) {
         MarcoCentradoComando marco = new MarcoCentradoComando();
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,31 +39,44 @@ public class MarcoCentradoComando extends JFrame {
 
     public MarcoCentradoComando() {
         setTitle("Comando");
-        setBounds(600, 300, 600, 300);
+        setBounds(800, 300, 600, 300);
         setLayout(new BorderLayout());
         Lamina lamina = new Lamina();
         
         JMenuBar barraMenu = new JMenuBar();
         JMenu menuGestion = new JMenu("Gestión");
         barraMenu.add(menuGestion);
+        barraHerramienta = new JToolBar();
+        /* Se desahabilita la opcion de mover la barra de herramientas para mantener
+        la interfas intacta */
+        barraHerramienta.setFloatable(false);
         
-        JMenuItem itemPerfiles = new JMenuItem("Ver Perfiles");
-        itemPerfiles.addActionListener(new AccionPerfiles());
+        AccionPerfiles itemPerfiles = new AccionPerfiles("Ver Perfiles","Abrir Perfiles");
         menuGestion.add(itemPerfiles);
+        JButton btnPerfiles = barraHerramienta.add(itemPerfiles);
+        btnPerfiles.setText("Perfiles");
         
         JMenuItem itemCredenciales = new JMenuItem("Credenciales");
-        itemCredenciales.addActionListener(new AccionCredenciales());
+        itemCredenciales.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MarcoCredenciales credenciales = new MarcoCredenciales();
+                credenciales.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                credenciales.setVisible(true);
+            }
+            
+        });
         menuGestion.add(itemCredenciales);
         
         JMenuItem itemCompensacion = new JMenuItem("Configurar Compensación");
         itemCompensacion.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    MarcoCompensacion marcoCompensacion = new MarcoCompensacion();
-                    marcoCompensacion.setVisible(true);
-                }
-                
-            });
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MarcoCompensacion marcoCompensacion = new MarcoCompensacion();
+                marcoCompensacion.setVisible(true);
+            }
+            
+        });
         menuGestion.add(itemCompensacion);
         
         JMenuItem itemBiografia = new JMenuItem("Biografia");
@@ -76,29 +91,21 @@ public class MarcoCentradoComando extends JFrame {
         });
         menuGestion.add(itemBiografia);
         
-        JMenuItem itemContrato = new JMenuItem("Gestión de Contratos");
-        itemContrato.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MarcoContrato marcoContrato = new MarcoContrato();
-                marcoContrato.setVisible(true);               
-            }
-            
-        });
+        AccionContrato itemContrato = new AccionContrato("Gestión de Contratos","Abrir Contratos");
         menuGestion.add(itemContrato);
+        JButton btnContrato = barraHerramienta.add(itemContrato);
+        btnContrato.setText("Contratos");
+        barraHerramienta.addSeparator();
+        barraHerramienta.addSeparator();
         
-        JMenuItem itemAbrirEditor = new JMenuItem("Abrir Editor");
-        itemAbrirEditor.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MarcoEditor miMarco =  new MarcoEditor();
-                miMarco.setVisible(true);
-            }
-        });
+        AccionEditor itemAbrirEditor = new AccionEditor("Editor Texto","Abrir Editor Texto");
         menuGestion.add(itemAbrirEditor);
+        JButton btnAbrirEditor = barraHerramienta.add(itemAbrirEditor);
+        btnAbrirEditor.setText("Editor");
         
         add(lamina, BorderLayout.CENTER);
         setJMenuBar(barraMenu);
+        add(barraHerramienta, BorderLayout.NORTH);
         
     }
 
@@ -174,7 +181,7 @@ public class MarcoCentradoComando extends JFrame {
         }
     }
 
-    class AccionComunicado extends AbstractAction {
+    private class AccionComunicado extends AbstractAction {
         private JTextField comunicado;
         private ArrayList<TerminalEmpleado> lista;
 
@@ -200,7 +207,12 @@ public class MarcoCentradoComando extends JFrame {
 
     }
     
-    class AccionPerfiles implements ActionListener{
+    private class AccionPerfiles extends AbstractAction {
+        
+        public AccionPerfiles(String name, String tooltip){
+            putValue(Action.NAME, name);
+            putValue(Action.SHORT_DESCRIPTION, tooltip);
+        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -211,14 +223,34 @@ public class MarcoCentradoComando extends JFrame {
         
     } 
     
-    class AccionCredenciales implements ActionListener{
+    private class AccionContrato extends AbstractAction {
+        
+        public AccionContrato(String name, String tooltip){
+            putValue(Action.NAME, name);
+            putValue(Action.SHORT_DESCRIPTION, tooltip);
+        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            MarcoCredenciales credenciales = new MarcoCredenciales();
-            credenciales.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            credenciales.setVisible(true);
+            MarcoContrato marcoContrato = new MarcoContrato();
+            marcoContrato.setVisible(true); 
         }
         
     }
+    
+    private class AccionEditor extends AbstractAction {
+        
+        public AccionEditor(String name, String tooltip){
+            putValue(Action.NAME, name);
+            putValue(Action.SHORT_DESCRIPTION, tooltip);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            MarcoEditor miMarco =  new MarcoEditor();
+            miMarco.setVisible(true);
+        }
+        
+    }
+
 }
