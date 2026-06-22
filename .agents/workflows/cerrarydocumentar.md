@@ -18,4 +18,6 @@ Instrucciones del flujo:
 
 5. Marcar el archivo reto_pendiente.md como completado y cerrado el reto.
 
-6. Preguntar al usuario si desea que el agente aplique los cambios al archivo.
+6. Sugerir y realizar la actualización exacta del archivo estado_sesion.md para reflejar el estado actual y el próximo paso a seguir.
+
+7. Preguntar al usuario si desea que el agente aplique los cambios a los archivos.

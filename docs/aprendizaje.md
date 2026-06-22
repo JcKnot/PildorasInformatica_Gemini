@@ -231,6 +231,14 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
   - `setAccelerator(KeyStroke.getKeyStroke(...))`: Define un atajo de teclado global (ej. `Ctrl + G`). Se ejecuta instantáneamente desde cualquier parte de la aplicación, sin importar el estado del menú.
 - **Eficiencia en Instanciación (Anti-patrón):** Se debe evitar instanciar componentes con la palabra reservada `new` fuera de bloques de control (`if`/`else`) si estos podrían no ser utilizados. Retrasar la creación del objeto al bloque específico (Lazy instantiation en constructores) previene objetos huérfanos y aligera el *Garbage Collector*.
 
+### 🛠️ Módulo 18: Barras de Herramientas y Patrón Action (Clases 111-114)
+
+- **Desacoplamiento Gráfico con Action:** El uso de `AbstractAction` permite desacoplar por completo la lógica de negocio de los componentes gráficos. Un único objeto `Action` actúa como la **Fuente de la Verdad** y puede alimentar simultáneamente a un `JMenuItem` de la barra de menús y a un `JButton` del `JToolBar`.
+- **`JToolBar` y BorderLayout:** Para que un `JToolBar` sea móvil o arrastrable, es fundamental que el contenedor principal use `BorderLayout`. Swing utiliza los puntos cardinales (NORTH, SOUTH, EAST, WEST) para re-acoplar la barra dinámicamente cuando el usuario la arrastra.
+- **Configuración de Acciones Centralizada:** Propiedades estéticas y de usabilidad como el Tooltip se definen en el constructor de la acción mediante `putValue(Action.SHORT_DESCRIPTION, tooltip)` en lugar de configurarse por separado en cada componente de la interfaz, lo cual evita duplicidad de código.
+- **Separadores Lógicos:** El método `.addSeparator()` divide la barra de herramientas en secciones organizadas lógicamente, separando los comandos de naturaleza distinta (ej. seguridad, administración, utilidades).
+*(Calificación Auto-Examen: 100% - APROBADO)*
+
 ---
 
 ## Errores Comunes y Soluciones 💡
@@ -268,6 +276,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Reto Integrador Clases 96-100:** Configurador de Compensación y Antigüedad (`JSlider` magnético + `JSpinner` restringido con reactividad en tiempo real) y refactorización de ventana principal (`MarcoCentradoComando`) migrando botones de navegación a un sistema de `JMenuBar` con `setJMenuBar()`.
 - [x] **Reto Editor de Borradores Corporativos (Clases 101-106):** Módulo de procesamiento de texto (Rich Text) basado en `JTextPane`, refactorización dinámica de ítems con `StyledEditorKit` y correcta orquestación arquitectónica en la barra de menú global del `MarcoCentradoComando`.
 - [x] **Reto Editor Corporativo Avanzado (Clases 107-110):** Refactorización dinámica de ítems con `JCheckBoxMenuItem` (efectos), exclusión mutua de fuentes mediante `JRadioButtonMenuItem` acoplados a un `ButtonGroup`, separación visual y menús anidados.
+- [x] **Reto Barra de Herramientas Dinámica (Clases 111-114):** Refactorización del Centro de Comando (`MarcoCentradoComando.java`) implementando un `JToolBar` no flotante en la región norte, integrando acciones desacopladas a través de `AbstractAction` compartidas con el menú "Gestión".
 
 ---
 
@@ -290,3 +299,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 15:** JSlider, JSpinner y Menús Swing (Clases 96-100) - **APROBADO**
 - [x] **Módulo 16:** Eventos Avanzados en Menús y JTextPane (Clases 101-106) - **APROBADO**
 - [x] **Módulo 17:** Menús Avanzados, Estado y Anidamiento (Clases 107-110) - **APROBADO**
+- [x] **Módulo 18:** Barras de Herramientas y Patrón Action (Clases 111-114) - **APROBADO**
