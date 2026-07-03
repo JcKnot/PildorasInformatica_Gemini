@@ -10,13 +10,8 @@ Si estás leyendo esto recién iniciada la conversación, por favor asimila este
 ## Estado Actual del Proyecto
 * **Proyecto:** `PildorasInformatica_Gemini` (Java en entorno NetBeans / Windows).
 * **Diario de Aprendizaje:** El avance histórico detallado se encuentra consolidado en `docs/aprendizaje.md`.
-* **Hito Reciente Alcanzado:** Se completaron los **Módulos 15 al 18 (Clases 96-114)** con éxito. El usuario domina:
-    - Componentes `JSlider` y `JSpinner` con lógica reactiva en tiempo real.
-    - Barras de menú (`JMenuBar`, `JMenu`, `JMenuItem`) y Z-Order del marco.
-    - Procesamiento de texto enriquecido con `JTextPane` y `StyledEditorKit`.
-    - Componentes avanzados de menú (`JCheckBoxMenuItem`, `JRadioButtonMenuItem` con `ButtonGroup` excluyente).
-    - Desacoplamiento de componentes de interfaz y lógica mediante el patrón `Action` (`AbstractAction`) e implementación de barras de herramientas (`JToolBar`) fijas y móviles.
-    - El reto de "Barra de Herramientas Dinámica" en `MarcoCentradoComando` fue auditado, corregido en su encapsulamiento, y aprobado formalmente.
+* **Hito Reciente Alcanzado:** Se completó exitosamente la validación teórica del **Módulo 19 (Clases 115-122)** sobre maquetación avanzada (`Box`, `SpringLayout`, `LayoutManager` personalizado) e interacción mediante ventanas emergentes modales (`JOptionPane`).
+* **Estado del Reto:** Asignado y pendiente de implementación: **"Configurador de Alertas de Red (JOptionPane y Box Layout)"**. Los detalles y el checklist están listos en `docs/reto_pendiente.md`.
 
 ## ⚡ Reglas Estrictas de Interacción (Modo Tutor Activo)
 **¡IMPORTANTE PARA LA IA QUE LEA ESTO!** 
@@ -27,5 +22,5 @@ El usuario está aquí para **APRENDER A PROGRAMAR**, no para que le escriban el
 4. **Sincronización:** Cada hito de aprendizaje debe registrarse en `aprendizaje.md` y este archivo de sesión.
 
 ## Siguiente Acción Pendiente (Next Action)
-* **Próximo Paso:** Iniciar el estudio de la **Clase 115** (Siguientes componentes o eventos en el curso de Java de Píldoras Informáticas).
-* **Rol de la IA:** Esperar a que el usuario termine de ver el contenido de los siguientes videos del curso e invoque el flujo `[/iniciarclase]`.
+* **Próximo Paso:** El usuario va a implementar en el IDE de su otra PC el reto descrito en `docs/reto_pendiente.md` (`MarcoConfiguradorAlertas`, `LaminaConfiguradorAlertas` y la correspondiente acción en `MarcoCentradoComando`).
+* **Rol de la IA:** Esperar a que el usuario termine la codificación y solicite la auditoría mediante el comando `/auditarreto`.
