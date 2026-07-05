@@ -103,6 +103,11 @@ public class MarcoCentradoComando extends JFrame {
         JButton btnAbrirEditor = barraHerramienta.add(itemAbrirEditor);
         btnAbrirEditor.setText("Editor");
         
+        AccionAlertas itemAlerta = new AccionAlertas("Alerta","Envia Alerta");
+        menuGestion.add(itemAlerta);
+        JButton btnAlerta = barraHerramienta.add(itemAlerta);
+        btnAlerta.setText("Alerta");
+        
         add(lamina, BorderLayout.CENTER);
         setJMenuBar(barraMenu);
         add(barraHerramienta, BorderLayout.NORTH);
@@ -249,6 +254,21 @@ public class MarcoCentradoComando extends JFrame {
         public void actionPerformed(ActionEvent e) {
             MarcoEditor miMarco =  new MarcoEditor();
             miMarco.setVisible(true);
+        }
+        
+    }
+    
+    private class AccionAlertas extends AbstractAction {
+        
+        public AccionAlertas(String name, String tooltip){
+            putValue(Action.NAME, name);
+            putValue(Action.SHORT_DESCRIPTION, tooltip);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            MarcoConfiguradorAlertas marcoAlerta = new MarcoConfiguradorAlertas();
+            marcoAlerta.setVisible(true);
         }
         
     }
