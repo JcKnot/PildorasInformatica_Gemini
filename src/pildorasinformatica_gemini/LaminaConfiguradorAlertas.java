@@ -47,7 +47,7 @@ public class LaminaConfiguradorAlertas extends JPanel {
             boxTipoMensaje.add(listaMensaje.nextElement());
         }
         
-        boxTipoMensaje.add(Box.createVerticalStrut(50));
+        //boxTipoMensaje.add(Box.createVerticalStrut(50));
         
         llenaRadioButton(grupoOpcion, "Aceptar", true,String.valueOf(JOptionPane.DEFAULT_OPTION));
         llenaRadioButton(grupoOpcion, "Sí/No", false,String.valueOf(JOptionPane.YES_NO_OPTION));
@@ -59,7 +59,7 @@ public class LaminaConfiguradorAlertas extends JPanel {
             boxOpcion.add(listaOpciones.nextElement());
         }
         
-        boxOpcion.add(Box.createVerticalStrut(50));
+        //boxOpcion.add(Box.createVerticalStrut(50));
         
         JButton btnEjecutar = new JButton("Lanzar Alerta"); 
         btnEjecutar.addActionListener(new ActionListener(){
@@ -72,10 +72,12 @@ public class LaminaConfiguradorAlertas extends JPanel {
         boxBotones.add(btnEjecutar);
                 
         box.add(boxTipoMensaje);
+        box.add(Box.createVerticalStrut(20));
         box.add(boxOpcion);
-        box.add(Box.createGlue());
         box.add(Box.createVerticalStrut(30));
+        box.add(Box.createGlue());
         box.add(boxBotones);
+        box.add(Box.createVerticalStrut(15));
         box.add(lbInformacion);
         add(box);
         
@@ -111,18 +113,18 @@ public class LaminaConfiguradorAlertas extends JPanel {
     private void lanzaMensaje(){
         int msj = Integer.parseInt(grupoMensaje.getSelection().getActionCommand());
         int opt = Integer.parseInt(grupoOpcion.getSelection().getActionCommand());
-        String titulo = grupoMensaje.getSelection().getClass().getName();
+        JRadioButton bt = (JRadioButton) grupoMensaje.getSelection();
+        String titulo = bt.getText();
         
         int confirmacion = JOptionPane.showConfirmDialog(this, "Alerta", titulo, opt, msj);
         
-        if (confirmacion == JOptionPane.YES_OPTION) {
-            lbInformacion.setText("El administrador a pulsado: YES");
-        } else if (confirmacion == JOptionPane.NO_OPTION) {
-            lbInformacion.setText("El administrador a pulsado: NO");
-        } else if (confirmacion == JOptionPane.CANCEL_OPTION) {
-            lbInformacion.setText("El administrador a pulsado: CANCEL");
-        } else if (confirmacion == JOptionPane.CLOSED_OPTION) {
-            lbInformacion.setText("El diálogo fue cerrado por la X");
+        switch (confirmacion) {
+            case JOptionPane.YES_OPTION -> lbInformacion.setText("El administrador a pulsado: YES");
+            case JOptionPane.NO_OPTION -> lbInformacion.setText("El administrador a pulsado: NO");
+            case JOptionPane.CANCEL_OPTION -> lbInformacion.setText("El administrador a pulsado: CANCEL");
+            case JOptionPane.CLOSED_OPTION -> lbInformacion.setText("El diálogo fue cerrado por la X");
+            default -> {
+            }
         }
                 
     }

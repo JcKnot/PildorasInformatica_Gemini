@@ -19,7 +19,7 @@ public class MarcoConfiguradorAlertas extends JFrame {
     public MarcoConfiguradorAlertas(){
         setTitle("Alerta");
         setBounds(500, 500, 500, 350);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         add(miLamina);
     }
 
