@@ -14,12 +14,6 @@ import javax.swing.JPanel;
  *
  */
 public class PanelSeguridad extends JFrame{
-    
-//    public static void main(String[] args) {
-//        PanelSeguridad miPanel = new PanelSeguridad();
-//        miPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        miPanel.setVisible(true);
-//    }
         
     public PanelSeguridad(){
         setTitle("Panel Seguridad");
