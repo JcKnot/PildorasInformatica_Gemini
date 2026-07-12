@@ -8,7 +8,8 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 
 - **Inmutabilidad de `String`:** Las cadenas no se pueden modificar en memoria (no aceptan `UPDATE`). Al concatenar en un bucle, se crean múltiples objetos nuevos en el **Heap** (`INSERT`), dejando los anteriores sin referencia para que el *Garbage Collector* los elimine.
 - **Inferencia de Tipos (`var`):** El compilador deduce el tipo de dato basándose en la inicialización. **Regla de Arquitectura:** No se recomienda su uso con el operador diamante (`<>`) en colecciones, ya que infiere el tipo genérico `Object` y rompe la seguridad de tipos.
-- **Casting de Datos:** - *Implícito (Widening):* Automático y seguro (ej. pasar de `int` a `double`).
+- **Casting de Datos:**
+  - *Implícito (Widening):* Automático y seguro (ej. pasar de `int` a `double`).
   - *Explícito (Narrowing):* Requiere forzarlo manualmente con `(tipo)` (ej. de `double` a `int`). Conlleva un alto riesgo de pérdida de precisión (truncamiento de decimales).
 - **Modificadores Clave (`final` y `static`):**
   - `final`: Funciona como un constraint `READ ONLY`; garantiza que el valor de la variable no sea reasignado.
@@ -16,7 +17,8 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 
 ### 🚦 Módulo 2: Control de Flujo e Interactividad (Clases 14 - 22)
 
-- **Estrategias de Entrada (I/O):** - `Scanner`: Lectura secuencial conectada al flujo `System.in` (ideal para *backend* o ingesta por consola).
+- **Estrategias de Entrada (I/O):**
+  - `Scanner`: Lectura secuencial conectada al flujo `System.in` (ideal para *backend* o ingesta por consola).
   - `JOptionPane`: Interacción mediante interfaces gráficas y ventanas emergentes como `showInputDialog` (ideal para *frontend* rápido).
 - **Parsing vs. Casting:** Diferencia arquitectónica vital. No se puede "castear" (copiar bits de un tipo a otro) de un objeto `String` a un primitivo numérico. Se requiere un proceso de "Parsing" (traducción de datos) usando métodos estáticos como `Integer.parseInt()`.
 - **Operador Ternario (`? :`):** Herramienta de *Clean Code* con sintaxis compacta (`condición ? valor_true : valor_false`) para simplificar y reemplazar estructuras `if-else` en asignaciones simples.
@@ -39,7 +41,14 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 - **Protocolo de Construcción (Hallazgo de Auditoría):** Se ha identificado la necesidad de migrar de la dependencia de *Setters* hacia **Constructores con Parámetros** para garantizar la integridad del objeto desde su nacimiento.
 - **Variables Locales vs Instancia:** Las variables de instancia reciben valores por defecto (0, null, false); las locales **obligan** a una inicialización manual antes de su uso.
 
-### 🛠️ Módulo 5: Arquitectura, Gráficos y Optimización Swing (Clases 53 - 64)
+### 🧬 Módulo 5: POO Avanzada e Interfaces (Clases 40 - 52)
+
+- **Polimorfismo:** El tipo del objeto en el **Heap** determina *qué* código se ejecuta en tiempo de ejecución; el tipo de la variable en el **Stack** dicta *qué* métodos son visibles para el compilador.
+- **Herencia y `super()`:** La primera instrucción de un constructor hijo debe ser `super()` o `this()`. Sin esto, el compilador intenta instanciar el padre con argumentos por defecto, lo que puede causar errores de compilación.
+- **Interfaces y el "Diamante de la Muerte":** Java prohíbe la herencia múltiple de clases para evitar ambigüedad de métodos. Las **Interfaces** resuelven esto permitiendo que una clase adopte múltiples roles sin conflictos de implementación.
+- **`instanceof` y Casting Seguro:** Antes de hacer casting a un tipo específico, se debe validar con `instanceof` para evitar `ClassCastException` en tiempo de ejecución.
+
+### 🛠️ Módulo 6: Cimientos Swing, Gráficos y Recursos (Clases 53 - 64)
 
 - **Clases Internas de Miembro:** Permiten que una clase secundaria acceda a los campos privados de la clase externa sin necesidad de métodos públicos.
 - **Clases Internas Locales:** Se declaran dentro de un método. Son ideales para tareas que solo tienen sentido durante la ejecución de ese método (ej. una auditoría rápida).
@@ -49,14 +58,14 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 - **Figuras `geom`:** Uso de `Rectangle2D.Double` y `Ellipse2D.Double` para trabajar con coordenadas decimales (`double`), lo que evita errores de redondeo al escalar.
 - **Carga de Imágenes (`ImageIO`):** Uso de la clase `ImageIO` para leer archivos. Requiere obligatoriamente un bloque `try-catch` para manejar la excepción `IOException`.
 
-### ⚡ Módulo 6: Programación Dirigida por Eventos I (Clases 65 - 70)
+### ⚡ Módulo 7: Programación Dirigida por Eventos I (Clases 65 - 70)
 
 - **Modelo de Delegación:** El flujo interactivo requiere tres piezas: Fuente (`JButton`), Evento (`ActionEvent`) y Oyente (`ActionListener`).
 - **Interfaces Listener:** Un oyente DEBE implementar el método obligatorio `actionPerformed(ActionEvent e)` marcado con `@Override`.
 - **Arquitectura de Oyentes (Best Practice):** Usar **Clases Internas Privadas** para que el oyente pueda manipular la interfaz (ej. `setBackground`) sin romper el encapsulamiento.
 - **El Ciclo Gráfico y los Eventos (`repaint()`):** Cuando un evento modifica una variable (estado) que es utilizada para dibujar figuras o textos en el `paintComponent`, se debe invocar explícitamente al método `repaint()`.
 
-### ⌨️ Módulo 7: Eventos de Periféricos II (Clases 71 - 73)
+### ⌨️ Módulo 8: Eventos de Periféricos II (Clases 71 - 73)
 
 - **Teclado (`KeyListener` y `KeyAdapter`):**
   - Genera un flujo de tres fases: `keyPressed` (tecla baja), `keyReleased` (tecla sube) y `keyTyped` (generación de carácter imprimible).
@@ -66,13 +75,13 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
   - **Extracción de Métricas:** Coordenadas con `e.getX()` / `e.getY()` y agresividad con `e.getClickCount()`.
 - **Sincronización Híbrida (Reto Boss):** Coordinación de múltiples periféricos a través de una variable de estado booleana que condiciona el redibujado de la interfaz.
 
-### 🎯 Módulo 8: Foco, Múltiples Fuentes y Seguridad (Clases 74 - 76)
+### 🎯 Módulo 9: Foco, Múltiples Fuentes y Seguridad (Clases 74 - 76)
 
 - **Foco de Componente (`FocusListener`):** Gestión de la atención del teclado entre `JTextField`. El método `focusLost` es el lugar crítico para realizar validaciones en tiempo real (ej. comprobar si un campo está vacío o cumple un formato).
 - **Identificación de Origen (`getSource()`):** Técnica para centralizar la lógica. Un solo objeto oyente puede vigilar múltiples componentes; usamos `e.getSource() == variable` para determinar qué campo disparó el evento.
 - **Foco de Ventana (`WindowFocusListener`):** Supervisión a nivel de aplicación. Detecta cuándo el usuario "entra" o "sale" de la ventana (`windowGainedFocus` / `windowLostFocus`), permitiendo implementar protocolos de seguridad o pausa automática.
 
-### 🛰️ Módulo 9: Arquitectura de Eventos y Patrones de Difusión (Clases 77 - 80)
+### 🛰️ Módulo 10: Arquitectura de Eventos y Patrones de Difusión (Clases 77 - 80)
 
 - **Interfaz `Action` y `AbstractAction`:** Evolución profesional de los oyentes. Permite encapsular la lógica (cambio de color, borrado) junto con sus atributos (nombre, icono, tooltip) en un solo objeto.
 - **Múltiples Fuentes (Binding):** Técnica para que un botón y un atajo de teclado (`KeyStroke`) disparen la misma acción sin duplicar código.
@@ -81,7 +90,7 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
   - `ActionMap`: Relaciona ese ID simbólico con el objeto `Action` real.
 - **Difusión (Single Source -> Multiple Listeners):** Arquitectura donde un solo componente (ej: Botón "Cerrar Todo" o "Alerta General") notifica a una colección de objetos independientes para que reaccionen simultáneamente.
 
-### 🧩 Módulo 10: Gestores de Diseño y Layouts Avanzados (Clases 81 - 85)
+### 🧩 Módulo 11: Gestores de Diseño y Layouts Avanzados (Clases 81 - 85)
 
 - **Anidamiento Espacial:** Dominio de la arquitectura visual estructurada. Comprendo cómo construir interfaces complejas dividiéndolas en sub-paneles independientes (`BorderLayout` raíz, `FlowLayout` cabecera, `GridLayout` centro).
 - **Anti-Patrón Erradicado:** Instanciar ventanas (`JFrame`) dentro de ventanas corrompe la UI. La solución es extraer la lógica a clases que hereden de `JPanel` e inyectarlas.
@@ -93,111 +102,20 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 - **Validación en Tiempo Real (`DocumentListener`):** Escucha directa sobre el "modelo de datos" (el texto interno) en lugar de la tecla física. Los métodos obligatorios `insertUpdate` y `removeUpdate` permiten alterar dinámicamente la UI sin obligar al usuario a presionar "Aceptar".
 - **Refactorización Lógica:** Sustitución de bloques `if(condicion){return true;}else{return false;}` por el estándar senior: `return condicion;`.
 
----
+### 🖋️ Módulo 13: Áreas de Texto y Selección (Clases 90 - 92)
 
-## 🛠️ Notas Técnicas Avanzadas (Best Practices)
-
-- **Polimorfismo en Colecciones:** Al recuperar un objeto de un `ArrayList` genérico, el compilador lo trata como tipo `Object` [23, 24]. Es necesario realizar un **Casting** seguro (a menudo usando `instanceof`) para recuperar las capacidades específicas de la subclase [25, 26].
-- **Jerarquía del Lienzo:** La llamada a `super.paintComponent(g)` es innegociable; su función es limpiar el lienzo de "restos" visuales antes de que el nuevo frame se dibuje [18, 27].
-- **Integridad y Excepciones:** Aplicación obligatoria de bloques **try-catch** al usar `ImageIO.read()`. Comprendo que sin este manejo, una `IOException` (archivo faltante) detendría la ejecución del hilo de renderizado [19, 20].
-- **Metáfora de Optimización (Visión DBA):** * **Constructor:** Cargar recursos aquí actúa como una "caché" o `SELECT` único [19].
-  - **PaintComponent:** Cargar recursos aquí es como un `SELECT` dentro de un cursor infinito, lo que satura la CPU innecesariamente [17, 21].
-- **Mosaicos Eficientes:** Uso de `copyArea()` con incrementos de bucle iguales al ancho de la imagen (`i += width`) para evitar redundancia de procesamiento píxel a píxel [19, 22].
-- **Foco del Teclado:** Un componente solo escuchará los eventos de teclado si tiene el "foco" activo del sistema.
-
----
-
-## 🧠 Registro de Auto-Exámenes (Knowledge Checks)
-
-Esta sección documenta la validación de conceptos teóricos y técnicos más allá de la implementación del código.
-
-### 🏁 Módulo 0: Fundamentos y Gestión de Memoria
-
-- **Gestión de Memoria (Stack vs. Heap):** Comprendo que las variables locales y referencias viven en el **Stack**, mientras que todos los objetos nacen en el **Heap** [1, 2]. Las variables de instancia (atributos) residen dentro del objeto en el Heap, no en el Stack [3, 4].
-- **El Contrato de Paso por Valor:** Java **siempre pasa por valor** (copia de bits) [5, 6].
-  - En primitivos, se copia el valor real.
-  - En objetos, se copia la **referencia** (el "control remoto"), lo que permite alterar el objeto original pero no reasignar la variable externa a un nuevo objeto [7, 8].
-- **Arquitectura POO (IS-A vs. HAS-A):** Uso la prueba **IS-A** para la herencia (`extends`) y la prueba **HAS-A** para la composición (variables de instancia) [5, 9]. Ejemplo: Un `Jefe` IS-A `Empleado`; un `JFrame` HAS-A `JPanel` [10, 11].
-- **Interfaces y el "Diamante de la Muerte":** Entiendo que Java prohíbe la herencia múltiple de clases para evitar la ambigüedad de métodos (Diamante de la Muerte) [12, 13]. Las **Interfaces** resuelven esto permitiendo que una clase juegue múltiples "roles" sin conflictos de implementación [14, 15].
-
-### 🧱 Módulo 1: Sintaxis, Memoria y API (Clases 4-13)
-
-- **Inmutabilidad de String:** Los `String` son inmutables. En un bucle de 10 concatenaciones, no se hace un `UPDATE` en memoria, sino que se generan 11 objetos distintos (10 `INSERT` nuevos). La variable original simplemente actualiza su puntero al último objeto creado.
-- **Inferencia de Tipos (`var`):** Java sigue siendo de tipado fuerte. Al usar `var`, el compilador determina el tipo basándose en el valor asignado en la inicialización (ej. `var cadena = "esto"` se compila estrictamente como `String`).
-- **Constantes (`final`):** Funciona como un constraint `READ ONLY`. Garantiza que una variable no pueda ser reasignada. Si se intenta alterar, el compilador bloquea la ejecución.
-- **Casting y Precisión:** * *Implícito (Widening):* De un tipo menor a uno mayor (ej. `int` a `double`), es seguro.
-  - *Explícito (Narrowing):* De un tipo mayor a uno menor (ej. `double` a `int`), obliga a usar el operador `(int)` y conlleva el riesgo de pérdida de datos (truncamiento de decimales).
-- **Comparación de Objetos (`==` vs `.equals`):** El operador `==` evalúa el `ROWID` (la dirección en memoria / referencia). Para los `String`, es un error lógico usarlo si queremos validar el contenido. Siempre se debe usar `.equals()` para comparar el valor real de los datos.
-- **Métodos Estáticos (Clase `Math`):** El modificador `static` permite que un método pertenezca a la "Tabla" (Clase) y no a la "Fila" (Instancia). Por lo tanto, se pueden invocar directamente (ej. `Math.PI`) sin necesidad de usar `new` para crear un objeto.
-*(Calificación Auto-Examen: 100% - 6/6)*
-
-### 🔀 Módulo 2: Control de Flujo e I/O (Examen: 95%) (Clases 14-22)
-
-- **Interfaces de Entrada (`Scanner` vs `JOptionPane`):** Diferencia arquitectónica asimilada. `Scanner` lee secuencias planas de la consola (ideal para procesos batch/backend), mientras que `JOptionPane` dispara cuadros de diálogo gráficos para interacción visual (*frontend* rápido).
-- **Parsing vs. Casting (Lección Clave):** Comprendo la imposibilidad de "castear" un objeto `String` a un primitivo numérico. Para extraer un entero de un texto, es obligatorio usar un proceso de traducción (Parsing) invocando el método estático `Integer.parseInt(variableString)`.
-- **Operador Ternario (`? :`):** Asimilado como la herramienta de *Clean Code* óptima para asignaciones y retornos binarios en una sola línea (`condición ? valor_true : valor_false`), evitando la verbosidad de un `if-else`.
-- **Switch y el efecto *Fall-through*:** Entiendo el riesgo de omitir el `break`. Si no se detiene el flujo, el motor de Java "caerá" (*fall-through*) y ejecutará todo el código de los `case` posteriores sin evaluar sus condiciones, causando bugs lógicos.
-- **Estrategia de Bucles:**
-  - **Ejecución garantizada:** El bucle `do-while` ejecuta su bloque al menos una vez antes de evaluar la condición en la base. El `while` tradicional podría no ejecutarse nunca.
-  - **Iteraciones deterministas:** El bucle `for` es la elección lógica cuando el rango y el número exacto de ejecuciones a realizar son conocidos desde el principio.
-
-### 🧮 Módulo 3: Arrays y Estructuras Estáticas (Certificado 100%) (Clases 23-26)
-
-- **Control de Límites:** Dominio de la propiedad `.length`. Comprendo que cualquier acceso fuera del rango [0, length-1] dispara una `IndexOutOfBoundsException` (una violación crítica de arquitectura).
-- **Stack vs. Heap (Referencias):** Entiendo que la variable del array es un **Reference Type** (dirección de memoria en el Stack) y el contenido real vive en el Heap.
-- **Prevención de NullPointerException:** He validado que instanciar el contenedor (el "estacionamiento") no instanciar de forma automática los objetos que contiene. Se requiere un bucle de instanciación específico.
-*(Calificación: 100% - APROBADO Y SELLADO)*
-
-### 🏗️ Módulo 4: Fundamentos de POO (Clases 27-39)
-
-- **Status Auditoría:** ✅ Validado el dominio del control de memoria (Stack/Heap) y evaluación del Paso por Valor en Objetos.
-- **Vacío Técnico Detectado:** Riesgo en la inicialización de estado por exceso de uso de "Setters". Se debe priorizar el **Encadenamiento de Constructores** y el uso de constructores con parámetros obligatorios.
-
-### 🧬 Módulo 5: POO Avanzada e Interfaces (Pendiente de Examen Práctico) (Clases 40-54)
-
-- **Status Auditoría:** Conceptos teóricos validados; examen de código pendiente.
-- **Polimorfismo:** Entiendo que el objeto (su tipo en el Heap) determina *qué* código se ejecuta realmente en tiempo de ejecución, mientras que la variable (su tipo en el Stack) dicta *qué* métodos son visibles o permitidos por el compilador.
-- **Interfaces y Diamante de la Muerte:** Comprendo que las interfaces evitan colisiones de métodos entre herencias y permiten que las clases adopten "múltiples roles".
-- **Vacío Técnico Detectado:** Riesgo documentado en la falta de uso de `super()` como la primera instrucción en el constructor, lo que podría hacer que clases "hijas" intenten nacer antes de que los campos de sus clases "padre" se inicialicen en la memoria.
-
-### 🖼️ Módulo 6: Swing, Gráficos y Optimización (Clases 53-64)
-
-- **Encapsulamiento de Lógica:** Implementación de **Clases Internas Locales** dentro de métodos para blindar procesos que no deben ser accesibles desde fuera del alcance del método (ej. Auditoría en `Empleado.java`) [4, 16].
-- **Evolución Gráfica (Graphics2D):** Dominio del **Casting de Objetos** de `Graphics` a `Graphics2D` para acceder a la API de geometría avanzada (`java.awt.geom`) y precisión con tipos `double` [17, 18].
-- **Integridad y Excepciones:** Aplicación obligatoria de bloques **try-catch** al usar `ImageIO.read()`. Comprendo que sin este manejo, una `IOException` (archivo faltante) detendría la ejecución del hilo de renderizado [19, 20].
-- **Metáfora de Optimización (Visión DBA):** * **Constructor:** Cargar recursos aquí actúa como una "caché" o `SELECT` único [19].
-  - **PaintComponent:** Cargar recursos aquí es como un `SELECT` dentro de un cursor infinito, lo que satura la CPU innecesariamente [17, 21].
-- **Mosaicos Eficientes:** Uso de `copyArea()` con incrementos de bucle iguales al ancho de la imagen (`i += width`) para evitar redundancia de procesamiento píxel a píxel [19, 22].
-
-### ⚡ Módulo 7: Eventos y Arquitectura Reactiva (Clases 65-70)
-
-- **Delegación:** ✅ Completado. Comprensión del trípode Fuente-Evento-Oyente.
-- **Auditoría de Estados:** Uso de `WindowStateListener` y constantes de `Frame` (ej. `ICONIFIED`) para registrar comportamientos del sistema.
-- **Acceso VIP:** Las clases internas permiten al oyente alterar el back-end gráfico sin exponer variables públicas.
-
-### 🎯 Módulos 8 y 9: Periféricos y Foco (Clases 71-76)
-
-- **Limpieza Estructural:** Entiendo por qué extender de Clases Adaptadoras (`KeyAdapter`, `MouseAdapter`) es superior a implementar interfaces completas cuando solo necesito auditar un evento.
-- **Sincronización Híbrida:** Capacidad validada para construir sistemas reactivos complejos leyendo múltiples estados de periféricos (Ratón + Teclado) simultáneamente.
-- **Gestión de Foco:** Dominio de la delegación de eventos y uso de métodos de enrutamiento (`getSource()`). Comprendo la importancia de no instanciar componentes ni oyentes en el `paintComponent` para preservar la integridad de la memoria.
-- **Protocolos de Seguridad:** Uso de `WindowFocusListener` para proteger la privacidad de los datos al detectar la pérdida de foco global de la aplicación.
-- **Múltiples Fuentes y Acciones:** Capacidad para centralizar lógica interactiva mediante `AbstractAction`, abstrayendo la fuente (Botón vs Teclado) del proceso.
-- **Patrón de Difusión:** Implementación de sistemas de notificación masiva donde un emisor (`JButton`) controla múltiples receptores (`JFrame.dispose()`).
-
-### 🖋️ Módulo 13: Áreas de Texto y Selección (Clases 90-92)
-
-- **Visualización:** ✅ Implementación exitosa de `JTextArea` dentro de `JScrollPane`. Comprendo que el área de texto no gestiona el scroll por sí misma, sino que delega esa responsabilidad al contenedor.
+- **Visualización:** Implementación exitosa de `JTextArea` dentro de `JScrollPane`. Comprendo que el área de texto no gestiona el scroll por sí misma, sino que delega esa responsabilidad al contenedor.
 - **Interactividad de Selección:** Dominio de `JCheckBox` para el control de estados.
 - **Lógica Atómica:** Uso del operador ternario para la asignación de estilos de fuente, permitiendo que la interfaz reaccione instantáneamente a los cambios del usuario.
 
-### 🏢 Módulo 14: Botones de Selección y Menús Desplegables (Clases 93-95)
+### 🏢 Módulo 14: Botones de Selección y Menús Desplegables (Clases 93 - 95)
 
 - **Selección Excluyente (JRadioButton y ButtonGroup):** Los `JRadioButton` se agrupan con un `ButtonGroup` para forzar la exclusión mutua. **Regla de Oro:** `ButtonGroup` es un contenedor lógico de selección, NO un contenedor visual de interfaz. Se deben crear múltiples instancias de `ButtonGroup` si se requieren varias categorías independientes de selección (ej: Jornada y Ubicación).
 - **Abstracción del Estado con actionCommand:** En lugar de crear oyentes individuales y complejos por botón, se puede asignar un identificador con `.setActionCommand(texto)` a cada botón de radio y recuperarlo desde el grupo mediante `grupo.getSelection().getActionCommand()`, desacoplando la UI de la lógica del evento.
 - **Menús Desplegables Editables (JComboBox):** Al activar `.setEditable(true)`, el usuario puede registrar valores personalizados.
 - **Limitación de Genéricos en JComboBox:** Aunque parametricemos un `JComboBox<String>`, el método `getSelectedItem()` continúa retornando un tipo `Object` por motivos de diseño del JDK (soporte para editabilidad y retrocompatibilidad). La manera profesional de procesarlo de forma segura y unificada es mediante `String.valueOf(combo.getSelectedItem())`.
 
-### 🎛️ Módulo 15: Sliders, Spinners y Menús Swing (Clases 96-100)
+### 🎛️ Módulo 15: Sliders, Spinners y Menús Swing (Clases 96 - 100)
 
 - **`JSlider` - El Deslizador:** Componente de rango numérico continuo. Sus propiedades clave son:
   - `setMinorTickSpacing` / `setMajorTickSpacing`: Gradación visual de la escala.
@@ -213,7 +131,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
   - **Regla de Arquitectura:** La barra de menú se asocia al `JFrame` con `setJMenuBar(barra)`, **NO** con `add()` al `JPanel`. Esto garantiza: (1) independencia del `LayoutManager`, (2) comportamiento nativo del teclado (tecla `Alt`), (3) soporte multiplataforma (ej: macOS mueve la barra a la barra global del sistema) y (4) correcta gestión de la capa Z-Order para que los menús desplegables siempre se pinten por encima del contenido.
 - **Opacidad de Paneles (`setOpaque`):** Por defecto todos los `JPanel` son opacos (pintan su propio fondo gris). Al anidar paneles con `setOpaque(false)`, estos se vuelven transparentes y dejan ver el fondo del panel padre, evitando tener que propagar cambios de color a todos los hijos de forma explícita.
 
-### 📝 Módulo 16: Eventos Avanzados en Menús y JTextPane (Clases 101-106)
+### 📝 Módulo 16: Eventos Avanzados en Menús y JTextPane (Clases 101 - 106)
 
 - **`JTextPane` vs `JTextArea`:** El `JTextArea` maneja texto plano con un único estilo global. El `JTextPane` maneja **texto enriquecido (Rich Text)** mediante un `StyledDocument`, permitiendo que cada fragmento de caracteres tenga atributos de fuente, tamaño y estilo independientes.
 - **`StyledEditorKit`:** Clase que provee acciones de edición predefinidas (`BoldAction`, `ItalicAction`, `FontFamilyAction`, etc.). Su principal ventaja arquitectónica es que manipula únicamente los atributos del **texto seleccionado** internamente, resolviendo estados complejos (como el *toggle* entre negrita y cursiva) sin reconstruir manualmente objetos `Font`.
@@ -221,7 +139,7 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - **Acumulación de Estilos (OR Binario):** A nivel subyacente, los estilos (`Font.BOLD`, `Font.ITALIC`) son flags enteros. Para combinarlos sin perder el estado anterior de forma manual, se usa el operador OR a nivel de bits (`|`), ej. `getStyle() | Font.ITALIC`.
 - **Z-Order de `JMenuBar`:** Mantener el menú fuertemente acoplado al `JFrame` con `setJMenuBar()` asegura que el submenú flotante (`JPopupMenu`) se renderice siempre en la capa más alta de la UI (LayeredPane), impidiendo ser solapado por paneles del contenido.
 
-### 📋 Módulo 17: Menús Avanzados, Estado y Anidamiento (Clases 107-110)
+### 📋 Módulo 17: Menús Avanzados, Estado y Anidamiento (Clases 107 - 110)
 
 - **Menús con Estado Independiente (`JCheckBoxMenuItem`):** Componente ideal para opciones acumulativas o de alternancia (*toggle*), como efectos de texto (Negrita + Cursiva). Su estado `checked/unchecked` no afecta a otros elementos de su entorno.
 - **Menús de Exclusión Mutua (`JRadioButtonMenuItem`):** Se utiliza cuando varias opciones son estrictamente incompatibles entre sí (ej. alinear a la Izquierda vs Derecha). **Regla de Oro:** Deben agruparse lógicamente añadiéndolos a un `ButtonGroup` instanciado; de lo contrario, no sabrán "desmarcar" a sus hermanos al ser seleccionados.
@@ -231,13 +149,38 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
   - `setAccelerator(KeyStroke.getKeyStroke(...))`: Define un atajo de teclado global (ej. `Ctrl + G`). Se ejecuta instantáneamente desde cualquier parte de la aplicación, sin importar el estado del menú.
 - **Eficiencia en Instanciación (Anti-patrón):** Se debe evitar instanciar componentes con la palabra reservada `new` fuera de bloques de control (`if`/`else`) si estos podrían no ser utilizados. Retrasar la creación del objeto al bloque específico (Lazy instantiation en constructores) previene objetos huérfanos y aligera el *Garbage Collector*.
 
-### 🛠️ Módulo 18: Barras de Herramientas y Patrón Action (Clases 111-114)
+### 🛠️ Módulo 18: Barras de Herramientas y Patrón Action (Clases 111 - 114)
 
 - **Desacoplamiento Gráfico con Action:** El uso de `AbstractAction` permite desacoplar por completo la lógica de negocio de los componentes gráficos. Un único objeto `Action` actúa como la **Fuente de la Verdad** y puede alimentar simultáneamente a un `JMenuItem` de la barra de menús y a un `JButton` del `JToolBar`.
 - **`JToolBar` y BorderLayout:** Para que un `JToolBar` sea móvil o arrastrable, es fundamental que el contenedor principal use `BorderLayout`. Swing utiliza los puntos cardinales (NORTH, SOUTH, EAST, WEST) para re-acoplar la barra dinámicamente cuando el usuario la arrastra.
 - **Configuración de Acciones Centralizada:** Propiedades estéticas y de usabilidad como el Tooltip se definen en el constructor de la acción mediante `putValue(Action.SHORT_DESCRIPTION, tooltip)` en lugar de configurarse por separado en cada componente de la interfaz, lo cual evita duplicidad de código.
 - **Separadores Lógicos:** El método `.addSeparator()` divide la barra de herramientas en secciones organizadas lógicamente, separando los comandos de naturaleza distinta (ej. seguridad, administración, utilidades).
-*(Calificación Auto-Examen: 100% - APROBADO)*
+
+### 📦 Módulo 19: Box Layout y JOptionPane Avanzado (Clases 115 - 122)
+
+- **`Box` Layout - Maquetación por Cajas:** Sistema de diseño basado en contenedores flexibles. Dos tipos principales:
+  - `Box.createVerticalBox()`: Apila componentes de arriba a abajo.
+  - `Box.createHorizontalBox()`: Coloca componentes de izquierda a derecha.
+- **Espaciado Rígido:** `Box.createVerticalStrut(píxeles)` y `Box.createHorizontalStrut(píxeles)` crean espacio fijo entre componentes. **Regla:** `VerticalStrut` solo tiene efecto visual en cajas verticales; `HorizontalStrut` en cajas horizontales.
+- **Muelle Elástico (`Box.createGlue()`):** Componente invisible que ocupa todo el espacio restante, empujando los elementos hacia el lado opuesto. Ideal para anclar botones al fondo de una ventana dinámicamente.
+- **`TitledBorder` con CompoundBorder:** Agrupar componentes visualmente usando bordes titulados. Se pueden combinar bordes con `BorderFactory.createCompoundBorder()` para añadir márgenes internos (`EmptyBorder`).
+- **`JOptionPane` Dinámico:** Los métodos `showConfirmDialog()` y `showOptionDialog()` aceptan parámetros de tipo (`messageType`) y botones (`optionType`) que se pueden configurar en tiempo de ejecución usando `JRadioButton` y `ButtonGroup`.
+- **Interpretación de Respuestas:** `JOptionPane` retorna un `int` que se debe evaluar con las constantes `YES_OPTION`, `NO_OPTION`, `CANCEL_OPTION` y `CLOSED_OPTION` (cuando el usuario cierra la ventana con la X).
+- **`DISPOSE_ON_CLOSE` vs `EXIT_ON_CLOSE`:** Las ventanas secundarias deben usar `DISPOSE_ON_CLOSE` para no cerrar la aplicación completa al cerrarse. Solo la ventana principal (`MarcoCentradoComando`) debe usar `EXIT_ON_CLOSE`.
+- **Switch Expression (JDK 14+):** Alternativa moderna y legible a las cadenas de `if-else` para evaluar múltiples casos con constantes.
+
+---
+
+## 🛠️ Notas Técnicas Avanzadas (Best Practices)
+
+- **Polimorfismo en Colecciones:** Al recuperar un objeto de un `ArrayList` genérico, el compilador lo trata como tipo `Object`. Es necesario realizar un **Casting** seguro (a menudo usando `instanceof`) para recuperar las capacidades específicas de la subclase.
+- **Jerarquía del Lienzo:** La llamada a `super.paintComponent(g)` es innegociable; su función es limpiar el lienzo de "restos" visuales antes de que el nuevo frame se dibuje.
+- **Integridad y Excepciones:** Aplicación obligatoria de bloques **try-catch** al usar `ImageIO.read()`. Sin este manejo, una `IOException` (archivo faltante) detendría la ejecución del hilo de renderizado.
+- **Metáfora de Optimización (Visión DBA):**
+  - **Constructor:** Cargar recursos aquí actúa como una "caché" o `SELECT` único.
+  - **PaintComponent:** Cargar recursos aquí es como un `SELECT` dentro de un cursor infinito, lo que satura la CPU innecesariamente.
+- **Mosaicos Eficientes:** Uso de `copyArea()` con incrementos de bucle iguales al ancho de la imagen (`i += width`) para evitar redundancia de procesamiento píxel a píxel.
+- **Foco del Teclado:** Un componente solo escuchará los eventos de teclado si tiene el "foco" activo del sistema.
 
 ---
 
@@ -251,8 +194,10 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 | La variable cambia pero el dibujo no. | El método de dibujo no se volvió a ejecutar automáticamente. | Llamar a `repaint()` justo después de cambiar la variable. |
 | Matrioska de Marcos | Instanciar un `JFrame` dentro de otro `JFrame` corrompe la UI. | Extraer la lógica a clases que hereden de `JPanel` e inyectarlas. |
 | Componentes Fantasmas | Asignar un Layout al contenedor pero olvidar hacer el `.add(componente)`. | Validar visualmente y mapear cada `.add()` con su contenedor lógico. |
-| Incompatibilidad de tipos en `JComboBox<E>` | El método `getSelectedItem()` de `JComboBox<E>` retorna `Object` (no `E`) por razones de retrocompatibilidad y editabilidad. | Usar `String.valueOf(combo.getSelectedItem())` o un cast explícito `(String)`. |
-| Los botones de color dejaron de pintar el fondo. | Al anidar el panel de botones en un sub-panel opaco, el sub-panel cubre visualmente al panel principal cuyo color se modifica. | Aplicar `setOpaque(false)` a todos los sub-paneles intermedios para que el color del panel raíz sea visible a través de ellos. |
+| Incompatibilidad de tipos en `JComboBox<E>` | El método `getSelectedItem()` retorna `Object` por retrocompatibilidad. | Usar `String.valueOf(combo.getSelectedItem())` o un cast explícito `(String)`. |
+| Los botones de color dejaron de pintar el fondo. | Al anidar el panel de botones en un sub-panel opaco, este cubre el panel principal. | Aplicar `setOpaque(false)` a todos los sub-paneles intermedios. |
+| Ventana secundaria cierra toda la app | Usar `EXIT_ON_CLOSE` en un `JFrame` secundario. | Cambiar a `DISPOSE_ON_CLOSE` para ventanas que no sean la principal. |
+| `VerticalStrut` no añade espacio en caja horizontal | `createVerticalStrut()` tiene ancho cero, no funciona en cajas horizontales. | Usar `createHorizontalStrut()` o agregar el strut a la caja vertical correspondiente. |
 
 ---
 
@@ -277,19 +222,20 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Reto Editor de Borradores Corporativos (Clases 101-106):** Módulo de procesamiento de texto (Rich Text) basado en `JTextPane`, refactorización dinámica de ítems con `StyledEditorKit` y correcta orquestación arquitectónica en la barra de menú global del `MarcoCentradoComando`.
 - [x] **Reto Editor Corporativo Avanzado (Clases 107-110):** Refactorización dinámica de ítems con `JCheckBoxMenuItem` (efectos), exclusión mutua de fuentes mediante `JRadioButtonMenuItem` acoplados a un `ButtonGroup`, separación visual y menús anidados.
 - [x] **Reto Barra de Herramientas Dinámica (Clases 111-114):** Refactorización del Centro de Comando (`MarcoCentradoComando.java`) implementando un `JToolBar` no flotante en la región norte, integrando acciones desacopladas a través de `AbstractAction` compartidas con el menú "Gestión".
+- [x] **Reto Configurador de Alertas (Clases 115-122):** Módulo de configuración de alertas de red con `Box` layout (verticales/horizontales), `TitledBorder`, `createGlue()` y `JOptionPane` dinámico con `JRadioButton` para seleccionar tipo de mensaje y opciones de confirmación.
 
 ---
 
 ## Progreso
 
 - [x] **Módulo 1:** Fundamentos, Sintaxis y Memoria (Clases 4-13)
-- [x] **Módulo 2:** Control de Flujo e I/O (Examen 95% completado)
+- [x] **Módulo 2:** Control de Flujo e I/O (Clases 14-22)
 - [x] **Módulo 3:** Manejo de Estructuras Indexadas (Clases 23-26) - **APROBADO**
 - [x] **Módulo 4:** Fundamentos de POO (Clases 27-39) - **CERTIFICADO**
 - [ ] **Módulo 5:** POO Avanzada e Interfaces (Clases 40-52) - **PENDIENTE EXAMEN**
 - [x] **Módulo 6:** Cimientos Swing, Gráficos y Recursos (Clases 53-64)
 - [x] **Módulo 7:** Eventos I - Botones y Ventanas (Clases 65-70)
-- [x] **Módulo 8:** Eventos II - Teclado y Ratón (Clases 71-73 y Retos completados)
+- [x] **Módulo 8:** Eventos II - Teclado y Ratón (Clases 71-73)
 - [x] **Módulo 9:** Eventos III - Foco y Múltiples Fuentes (Clases 74-76) - **APROBADO**
 - [x] **Módulo 10:** Arquitectura de Difusión y Acciones (Clases 77-80) - **APROBADO**
 - [x] **Módulo 11:** Gestores de Diseño / Layouts (Clases 81-85) - **APROBADO**
@@ -300,3 +246,4 @@ Esta sección documenta la validación de conceptos teóricos y técnicos más a
 - [x] **Módulo 16:** Eventos Avanzados en Menús y JTextPane (Clases 101-106) - **APROBADO**
 - [x] **Módulo 17:** Menús Avanzados, Estado y Anidamiento (Clases 107-110) - **APROBADO**
 - [x] **Módulo 18:** Barras de Herramientas y Patrón Action (Clases 111-114) - **APROBADO**
+- [x] **Módulo 19:** Box Layout y JOptionPane Avanzado (Clases 115-122) - **APROBADO**

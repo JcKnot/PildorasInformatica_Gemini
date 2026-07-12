@@ -1,4 +1,4 @@
-# Estado: PENDIENTE DE IMPLEMENTACIÓN Y EVALUACIÓN
+# Estado: ✅ CERRADO Y APROBADO — 2026-07-11
 
 ## 📊 Reto Integrador: Configurador de Alertas de Red (JOptionPane y Box Layout)
 
@@ -12,24 +12,24 @@ Implementar el módulo de configurador de alertas en una nueva ventana secundari
 
 ### 📋 Checklist de Criterios de Aceptación
 
-- [ ] **Acceso desde el Centro de Comando:**
-  - Agregar una nueva acción `AccionAlertas` (heredando de `AbstractAction`) en `MarcoCentradoComando`.
-  - Inyectar esta acción como un ítem en el menú superior "Gestión" y como un nuevo botón en la barra de herramientas `JToolBar`.
-  - Esta acción debe instanciar y abrir de manera no bloqueante la ventana `MarcoConfiguradorAlertas`.
-- [ ] **Diseño del Panel con Box Layout:**
-  - El panel principal de la nueva ventana (`LaminaConfiguradorAlertas`) debe estructurarse utilizando el gestor de diseño por cajas de la clase `Box` (combinando cajas verticales y horizontales).
-  - Agrupar los controles visuales en secciones lógicas utilizando bordes o títulos descriptivos (ej: "Tipo de Mensaje", "Opciones de Confirmación").
-  - Insertar obligatoriamente espacios rígidos con `Box.createVerticalStrut(...)` o `Box.createHorizontalStrut(...)` para mantener márgenes consistentes entre grupos.
-  - Colocar un muelle elástico con `Box.createGlue()` en la parte inferior para empujar el botón de ejecución hacia abajo de forma dinámica cuando la ventana cambie de tamaño.
-- [ ] **Consola de Configuración de Alertas:**
-  - **Selector de Tipo de Mensaje:** Un grupo de `JRadioButton` excluyentes para elegir el tipo de diálogo (Error, Información, Advertencia, Pregunta) mapeado con las constantes de `JOptionPane` (ej: `ERROR_MESSAGE`, `INFORMATION_MESSAGE`, etc.).
-    - **Selector de Tipo de Opción:** Un grupo de `JRadioButton` excluyentes para elegir los botones de confirmación (Aceptar, Sí/No, Sí/No/Cancelar, Aceptar/Cancelar) mapeado con las constantes de `JOptionPane` (ej: `YES_NO_OPTION`, etc.).
-- [ ] **Disparo e Interpretación de Diálogos (JOptionPane):**
-  - Añadir un botón final que diga "Lanzar Alerta".
-  - Al pulsar el botón, se debe invocar a `JOptionPane.showConfirmDialog(...)` o `JOptionPane.showOptionDialog(...)` configurado dinámicamente con las opciones seleccionadas por el administrador en la lámina.
-  - El programa debe capturar el entero de retorno del diálogo y evaluar cada caso (incluyendo la constante de ventana cerrada `JOptionPane.CLOSED_OPTION`).
-  - Mostrar el resultado de la confirmación elegida (ej: "El administrador ha pulsado: SÍ", o "El diálogo fue cerrado por la X") mediante una etiqueta `JLabel` informativa en el panel de forma persistente.
-- [ ] **Estándares Profesionales (Auditoría):**
-  - Todos los componentes y variables de clase deben ser estrictamente `private` (encapsulamiento).
-  - Métodos e interfaces sobrescritas deben llevar la anotación `@Override`.
-  - Respetar la nomenclatura estándar (`PascalCase` para clases y `camelCase` para métodos/variables).
+- [x] **Acceso desde el Centro de Comando:**
+    - [x] Agregar una nueva acción `AccionAlertas` (heredando de `AbstractAction`) en `MarcoCentradoComando`.
+    - [x] Inyectar esta acción como un ítem en el menú superior "Gestión" y como un nuevo botón en la barra de herramientas `JToolBar`.
+    - [x] Esta acción debe instanciar y abrir de manera no bloqueante la ventana `MarcoConfiguradorAlertas`.
+- [x] **Diseño del Panel con Box Layout:**
+    - [x] El panel principal de la nueva ventana (`LaminaConfiguradorAlertas`) debe estructurarse utilizando el gestor de diseño por cajas de la clase `Box` (combinando cajas verticales y horizontales).
+    - [x] Agrupar los controles visuales en secciones lógicas utilizando bordes o títulos descriptivos (ej: "Tipo de Mensaje", "Opciones de Confirmación").
+    - [x] Insertar obligatoriamente espacios rígidos con `Box.createVerticalStrut(...)` o `Box.createHorizontalStrut(...)` para mantener márgenes consistentes entre grupos.
+    - [x] Colocar un muelle elástico con `Box.createGlue()` en la parte inferior para empujar el botón de ejecución hacia abajo de forma dinámica cuando la ventana cambie de tamaño.
+- [x] **Consola de Configuración de Alertas:**
+    - [x] **Selector de Tipo de Mensaje:** Un grupo de `JRadioButton` excluyentes para elegir el tipo de diálogo (Error, Información, Advertencia, Pregunta) mapeado con las constantes de `JOptionPane` (ej: `ERROR_MESSAGE`, `INFORMATION_MESSAGE`, etc.).
+    - [x] **Selector de Tipo de Opción:** Un grupo de `JRadioButton` excluyentes para elegir los botones de confirmación (Aceptar, Sí/No, Sí/No/Cancelar, Aceptar/Cancelar) mapeado con las constantes de `JOptionPane` (ej: `YES_NO_OPTION`, etc.).
+- [x] **Disparo e Interpretación de Diálogos (JOptionPane):**
+    - [x] Añadir un botón final que diga "Lanzar Alerta".
+    - [x] Al pulsar el botón, se debe invocar a `JOptionPane.showConfirmDialog(...)` o `JOptionPane.showOptionDialog(...)` configurado dinámicamente con las opciones seleccionadas por el administrador en la lámina.
+    - [x] El programa debe capturar el entero de retorno del diálogo y evaluar cada caso (incluyendo la constante de ventana cerrada `JOptionPane.CLOSED_OPTION`).
+    - [x] Mostrar el resultado de la confirmación elegida (ej: "El administrador ha pulsado: SÍ", o "El diálogo fue cerrado por la X") mediante una etiqueta `JLabel` informativa en el panel de forma persistente.
+- [x] **Estándares Profesionales (Auditoría):**
+    - [x] Todos los componentes y variables de clase deben ser estrictamente `private` (encapsulamiento).
+    - [x] Métodos e interfaces sobrescritas deben llevar la anotación `@Override`.
+    - [x] Respetar la nomenclatura estándar (`PascalCase` para clases y `camelCase` para métodos/variables).
