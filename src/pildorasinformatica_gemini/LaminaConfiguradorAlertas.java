@@ -6,15 +6,18 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
+import java.util.List;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JToggleButton;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
@@ -113,8 +116,17 @@ public class LaminaConfiguradorAlertas extends JPanel {
     private void lanzaMensaje(){
         int msj = Integer.parseInt(grupoMensaje.getSelection().getActionCommand());
         int opt = Integer.parseInt(grupoOpcion.getSelection().getActionCommand());
-        JRadioButton bt = (JRadioButton) grupoMensaje.getSelection();
-        String titulo = bt.getText();
+        Enumeration<AbstractButton> listRadioButton;
+        listRadioButton = grupoMensaje.getElements();
+        String titulo = "";
+        
+        while(listRadioButton.hasMoreElements()){
+            JRadioButton bt = (JRadioButton) listRadioButton.nextElement();
+            if (bt.isSelected()){
+                titulo = bt.getText();
+                break;
+            }            
+        }
         
         int confirmacion = JOptionPane.showConfirmDialog(this, "Alerta", titulo, opt, msj);
         
