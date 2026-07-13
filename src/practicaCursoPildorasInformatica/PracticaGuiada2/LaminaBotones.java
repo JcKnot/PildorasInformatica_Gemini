@@ -12,19 +12,25 @@ import javax.swing.JRadioButton;
  * @author jcastillo
  */
 public class LaminaBotones extends JPanel {
+    private ButtonGroup grupo;
     
     public LaminaBotones(String titulo, String[] opciones){
         setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), titulo));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
-        ButtonGroup grupo = new ButtonGroup();
+        grupo = new ButtonGroup();
         
         for(int i = 0; i < opciones.length; i++){
             JRadioButton bot = new JRadioButton(opciones[i]);
-            add(bot);
-            grupo.add(bot);
+            bot.setActionCommand(opciones[i]);
             bot.setSelected(i == 0);
+            add(bot);
+            grupo.add(bot);            
         }
+    }
+    
+    public String dameSeleccion(){
+        return grupo.getSelection().getActionCommand();
     }
     
 }
