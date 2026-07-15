@@ -94,23 +94,41 @@ public class MarcoDialogo extends JFrame {
         return null;
     }
     
-    public int dameTipoMensaje(){
-        String s = laminaTipoMensaje.dameSeleccion();
+    public int dameTipoMensajeOpciones(LaminaBotones lamina){
+        String s = lamina.dameSeleccion();
         
-        if(s.equals("ERRO_MESSAGE")){
+        if(s.equals("ERRO_MESSAGE") || s.equals("YES_NO_OPTION")){
             return 0;
-        }else if(s.equals("INFORMATION_MESSAGE")){
+        }else if(s.equals("INFORMATION_MESSAGE") || s.equals("YES_NO_CANCEL_OPTION")){
             return 1;
-        }else if(s.equals("WARNING_MESSAGE")){
+        }else if(s.equals("WARNING_MESSAGE") || s.equals("OK_CANCEL_OPTION")){
             return 2;
         }else if(s.equals("QUESTION_MESSAGE")){
             return 3;
-        }else if(s.equals("PLAIN_MESSAGE")){
+        }else if(s.equals("PLAIN_MESSAGE") || s.equals("DEFAULT_OPTION")){
             return -1;
         }else {
             return -2;
         }
         
+    }
+    
+    public Object[] dameArrayObjeto(LaminaBotones lamina){
+        String s = lamina.dameSeleccion();
+        
+        if(s.equals("String[]")){
+            return new String[]{"Amarillo","Azul","Rojo"};
+        }else if(s.equals("Icon[]")){
+            return new Object[]{
+                new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/IconoAzul.PNG")
+                , new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/IconoAmarillo.PNG")
+                , new ImageIcon("src/practicaCursoPildorasInformatica/PracticaGuiada/IconoRojo.PNG")
+            };
+        }else if(s.equals("Object[]")){
+            return new Object[]{cadenaMensaje, iconoMensaje, componenteMensaje, objetoMensaje};
+        }
+        
+        return null;
     }
     
     private class AccionMostrar implements ActionListener {
@@ -121,16 +139,20 @@ public class MarcoDialogo extends JFrame {
             
             switch (laminaTipo.dameSeleccion()) {
                 case "Mensaje":
-                    JOptionPane.showMessageDialog(MarcoDialogo.this, dameMensaje(), "Titulo", dameTipoMensaje());
+                    JOptionPane.showMessageDialog(MarcoDialogo.this, dameMensaje(), "Titulo", dameTipoMensajeOpciones(laminaTipoMensaje));
                     break;
                 case "Confirmar":
-                    JOptionPane.showConfirmDialog(MarcoDialogo.this, dameMensaje(), "Titulo", 0, dameTipoMensaje());
+                    JOptionPane.showConfirmDialog(MarcoDialogo.this, dameMensaje(), "Titulo", dameTipoMensajeOpciones(LaminaTipoOpciones), dameTipoMensajeOpciones(laminaTipoMensaje));
                     break;
                 case "Opciones":
-                    JOptionPane.showOptionDialog(MarcoDialogo.this, dameMensaje(), "Titulo", 0, dameTipoMensaje(), null, null, null);
+                    JOptionPane.showOptionDialog(MarcoDialogo.this, dameMensaje(), "Titulo", 0, dameTipoMensajeOpciones(laminaTipoMensaje), null, dameArrayObjeto(LaminaOpciones), null);
                     break;
                 case "Entrada":
-                    JOptionPane.showInputDialog(MarcoDialogo.this, dameMensaje(), "Titulo", dameTipoMensaje());
+                    if(LaminaEntrada.dameSeleccion().equals("Campo de Texto")){
+                        JOptionPane.showInputDialog(MarcoDialogo.this, dameMensaje(), "Titulo", dameTipoMensajeOpciones(laminaTipoMensaje));
+                    }else {
+                        JOptionPane.showInputDialog(MarcoDialogo.this, dameMensaje(), "Titulo", dameTipoMensajeOpciones(laminaTipoMensaje), null, new String[]{"Amarillo","Azul","Rojo"}, dameArrayObjeto(LaminaEntrada));
+                    }                    
                     break;
                 default:
                     break;
