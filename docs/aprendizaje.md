@@ -223,6 +223,9 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 - [x] **Reto Editor Corporativo Avanzado (Clases 107-110):** Refactorización dinámica de ítems con `JCheckBoxMenuItem` (efectos), exclusión mutua de fuentes mediante `JRadioButtonMenuItem` acoplados a un `ButtonGroup`, separación visual y menús anidados.
 - [x] **Reto Barra de Herramientas Dinámica (Clases 111-114):** Refactorización del Centro de Comando (`MarcoCentradoComando.java`) implementando un `JToolBar` no flotante en la región norte, integrando acciones desacopladas a través de `AbstractAction` compartidas con el menú "Gestión".
 - [x] **Reto Configurador de Alertas (Clases 115-122):** Módulo de configuración de alertas de red con `Box` layout (verticales/horizontales), `TitledBorder`, `createGlue()` y `JOptionPane` dinámico con `JRadioButton` para seleccionar tipo de mensaje y opciones de confirmación.
+- [x] **Práctica Guiada 2 (Clases 123-129):** Ejercicio dirigido del curso: "Prueba de Diálogos" (`MarcoDialogo`). Construcción de una consola avanzada para probar todas las variantes de `JOptionPane` (`showMessageDialog`, `showConfirmDialog`, `showOptionDialog`, `showInputDialog`) con selección dinámica de tipo de mensaje, tipo de opción y formato de salida. Código copiado/adaptado en `practicaCursoPildorasInformatica.PracticaGuiada2`.
+- [x] **Applets (Clases 130-136) — OBSOLETO:** Tema de tecnología descontinuada. Los navegadores modernos no soportan Java Applets. Clases vistas para contexto histórico; no se implementa ejercicio práctico.
+- [x] **Despliegue de Aplicaciones (Clases 137-141) — Conceptual:** Archivos JAR (creación, firma, `MANIFEST.MF`, JAR ejecutables). Java Web Start (Clase 141) es tecnología **obsoleta** eliminada desde JDK 11. Conocimiento teórico adquirido; sin reto integrador.
 
 ---
 
@@ -247,3 +250,6 @@ Este archivo centraliza los conceptos clave, apuntes y ejercicios de mi curso de
 - [x] **Módulo 17:** Menús Avanzados, Estado y Anidamiento (Clases 107-110) - **APROBADO**
 - [x] **Módulo 18:** Barras de Herramientas y Patrón Action (Clases 111-114) - **APROBADO**
 - [x] **Módulo 19:** Box Layout y JOptionPane Avanzado (Clases 115-122) - **APROBADO**
+- [x] **Módulo 20:** Práctica Guiada — Procesador de Diálogos (Clases 123-129) - **COMPLETADO (Ejercicio del curso)**
+- [x] **Módulo 21:** Applets (Clases 130-136) - **OMITIDO (Tecnología obsoleta)**
+- [x] **Módulo 22:** Despliegue — Archivos JAR y Java Web Start (Clases 137-141) - **CONCEPTUAL (Sin reto integrador)**

@@ -8,11 +8,15 @@ Si estás leyendo esto recién iniciada la conversación, por favor asimila este
 ---
 
 ## Estado Actual del Proyecto
-* **Proyecto:** `PildorasInformatica_Gemini` (Java Swing - Entorno CachyOS/Arch Linux).
+* **Proyecto:** `PildorasInformatica_Gemini` (Java en entorno NetBeans / Windows).
 * **Diario de Aprendizaje:** El avance histórico detallado se encuentra consolidado en `docs/aprendizaje.md`.
-* **Hito Reciente Alcanzado:** Se completó y aprobó el **Reto Configurador de Alertas de Red (Clases 115-122)**. Dominio de `Box` layout (verticales/horizontales), `TitledBorder`, `createGlue()`, `JOptionPane` dinámico y `switch` expression.
-* **Estado del Reto:** CERRADO Y APROBADO. Pendiente definir el siguiente módulo de estudio.
-* **JDK Configurado:** Zulu JDK 22 instalado en `/usr/lib/jvm/zulu-22-amd64/` y configurado como predeterminado via `archlinux-java`.
+* **Última clase vista:** **141** (Despliegue de aplicaciones — JAR ejecutables y Java Web Start obsoleto).
+* **Hitos Recientes:**
+  - ✅ **Módulo 19 (Clases 115-122):** Box Layout y JOptionPane Avanzado — **APROBADO**.
+  - ✅ **Módulo 20 (Clases 123-129):** Práctica guiada del curso "Prueba de Diálogos" (`MarcoDialogo`) — **COMPLETADO**. Código en `practicaCursoPildorasInformatica.PracticaGuiada2`.
+  - ✅ **Módulo 21 (Clases 130-136):** Applets — **OMITIDO** (tecnología descontinuada).
+  - ✅ **Módulo 22 (Clases 137-141):** Despliegue JAR y Java Web Start — **CONCEPTUAL** (sin reto integrador).
+* **Estado del Reto:** Sin retos pendientes.
 
 ## ⚡ Reglas Estrictas de Interacción (Modo Tutor Activo)
 **¡IMPORTANTE PARA LA IA QUE LEA ESTO!** 
@@ -23,5 +27,5 @@ El usuario está aquí para **APRENDER A PROGRAMAR**, no para que le escriban el
 4. **Sincronización:** Cada hito de aprendizaje debe registrarse en `aprendizaje.md` y este archivo de sesión.
 
 ## Siguiente Acción Pendiente (Next Action)
-* **Próximo Paso:** Definir el siguiente módulo de estudio (Clases 123+ o reforzar un tema pendiente como el Módulo 5 pendiente de examen).
-* **Rol de la IA:** Esperar a que el usuario indique qué tema quiere abordar a continuación.
+* **Próximo Paso:** Continuar con la **clase 142** en adelante usando `/iniciarclase`.
+* **Rol de la IA:** Esperar a que el usuario indique cuándo quiere arrancar el siguiente módulo.
